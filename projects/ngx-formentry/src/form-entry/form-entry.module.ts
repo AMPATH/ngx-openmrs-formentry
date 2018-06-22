@@ -19,6 +19,7 @@ import { HistoricalFieldHelperService } from './helpers/historical-field-helper-
 import { SelectModule } from '../components/select';
 import { RemoteFileUploadModule } from '../components/file-upload/file-upload.module';
 import { DateTimePickerModule } from '../components/date-time-picker';
+import { NgxDateTimePickerModule } from '../components/ngx-date-time-picker/ngx-date-time-picker.module';
 import { AfeNgSelectComponent } from '../components/afe-ng-select.component';
 import { HidersDisablersFactory } from './form-factory/hiders-disablers.factory';
 import { AlertsFactory } from './form-factory/show-messages.factory';
@@ -39,6 +40,8 @@ import {
 } from '../components/appointments-overview/appointments-overview.component';
 import { EncounterViewerModule } from '../encounter-viewer/encounter-viewer.module';
 import { CheckboxModule } from '../components/check-box/checkbox.module';
+
+
 @NgModule({
     imports: [CommonModule,
         ReactiveFormsModule,
@@ -51,7 +54,8 @@ import { CheckboxModule } from '../components/check-box/checkbox.module';
         CheckboxModule,
         MatIconModule,
         MatTabsModule,
-        MatCardModule
+        MatCardModule,
+        NgxDateTimePickerModule
     ],
     declarations: [
         FormRendererComponent,
@@ -84,7 +88,7 @@ import { CheckboxModule } from '../components/check-box/checkbox.module';
         DataSources
     ],
     exports: [FormRendererComponent, AfeNgSelectComponent,
-        ErrorRendererComponent, DateTimePickerModule, EncounterViewerModule]
+        ErrorRendererComponent, DateTimePickerModule, EncounterViewerModule , NgxDateTimePickerModule]
 })
 export class FormEntryModule {
 
