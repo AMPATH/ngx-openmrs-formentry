@@ -1,7 +1,7 @@
 <!--CONTAINERS-->
 <div *ngIf="node.question.renderingType === 'form'">
   <div class="dropdown dropdown-tabs forms-dropdown">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" >
       <i class="fa fa-angle-double-down"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-right forms-dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
@@ -45,7 +45,7 @@
 
 <!-- MESSAGES -->
 <div *ngIf="node.control && node.control.alert && node.control.alert !== ''" class="alert alert-warning">
-  <a href="#" class="close" data-dismiss="alert">&times;</a> {{node.control.alert}}
+  <a class="close" data-dismiss="alert">&times;</a> {{node.control.alert}}
 </div>
 
 <!--CONTROLS-->
