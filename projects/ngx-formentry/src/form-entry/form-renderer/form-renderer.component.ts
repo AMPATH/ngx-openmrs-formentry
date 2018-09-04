@@ -80,8 +80,8 @@ export class FormRendererComponent implements OnInit {
   public setUpFileUpload() {
     if (this.node && this.node.question.extras && this.node.question.renderingType === 'file') {
       this.dataSource = this.dataSources.dataSources[this.node.question.dataSource];
-      console.log('Key', this.node.question);
-      console.log('Data source', this.dataSource);
+      // console.log('Key', this.node.question);
+      // console.log('Data source', this.dataSource);
     }
 
   }
@@ -157,13 +157,13 @@ export class FormRendererComponent implements OnInit {
   }
 
   public onDateChanged(node: LeafNode) {
-    console.log('Node', node);
+    // console.log('Node', node);
     this.node = node;
   }
 
   public upload(event) {
-    console.log('Event', event);
-    console.log('Data', this.dataSource);
+    // console.log('Event', event);
+    // console.log('Data', this.dataSource);
   }
 
   public toggleInformation(infoId) {

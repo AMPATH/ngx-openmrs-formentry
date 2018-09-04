@@ -115,7 +115,7 @@ MIT
 MIT
 MIT
 
-@angular/material-moment-adapter@6.4.3
+@angular/material-moment-adapter@6.4.5
 MIT
 The MIT License
 

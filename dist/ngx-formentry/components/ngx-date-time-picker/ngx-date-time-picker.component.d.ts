@@ -26,6 +26,9 @@ export declare class NgxDateTimePickerComponent implements OnInit, ControlValueA
     value: any;
     writeValue(value: any): void;
     setFormValues(val: any): void;
+    getWeekPickerCssClass(): "col-sm-2 form-group" | "col-sm-3 form-group";
+    getDatePickerCssClass(): "col-sm-5 form-group" | "col-sm-9 form-group" | "col-sm-8 form-group" | "col-sm-12 form-group";
+    getTimePickerCssClass(): "col-sm-5 form-group" | "col-sm-9 form-group" | "col-sm-4 form-group";
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;
     onDateSelect($event: any): void;
