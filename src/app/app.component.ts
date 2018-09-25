@@ -222,5 +222,5 @@ export class AppComponent {
     public toggleEncounterViewer() {
         this.showingEncounterViewer === true ?
         this.showingEncounterViewer = false : this.showingEncounterViewer = true;
-    }
+    }  
 }
