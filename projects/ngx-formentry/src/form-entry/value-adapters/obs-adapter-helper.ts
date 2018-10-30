@@ -311,6 +311,8 @@ export class ObsAdapterHelper {
 
         // handle date fields
         if (node.question.extras.questionOptions.rendering === 'date') {
+            console.log('Question', node.question);
+            console.log('Question value', obs.value);
             obs.value = this.toOpenMrsDateTimeString(node.control.value);
         }
 
@@ -324,6 +326,7 @@ export class ObsAdapterHelper {
     }
 
     getComplexObsPayload(node: NodeBase) {
+        console.log('getComplexObsPayload');
         let valueField: LeafNode; // essential memmber
         let dateField: LeafNode; // other member to be manipulated by user
 
@@ -340,10 +343,12 @@ export class ObsAdapterHelper {
         }
 
         const valuePayload = this.getObsNodePayload(valueField);
+        console.log('valuePayload', valuePayload);
 
         // set obs datetime for the generated payload
         if (valuePayload.length > 0) {
             valuePayload[0].obsDatetime = this.toOpenMrsDateTimeString(dateField.control.value);
+            console.log('valuePayload[0]', valuePayload[0].obsDatetime);
             return valuePayload[0];
         } else if (valuePayload.length === 0 && node.initialValue) {
             // determine if date changed
@@ -352,6 +357,7 @@ export class ObsAdapterHelper {
                     uuid: node.initialValue.uuid,
                 };
                 payload.obsDatetime = this.toOpenMrsDateTimeString(dateField.control.value);
+                console.log('payload', payload.obsDatetime);
                 return payload;
             }
         }
@@ -565,11 +571,16 @@ export class ObsAdapterHelper {
     }
 
     toOpenMrsDateTimeString(datetime: string): string {
+        console.log('dateTime', datetime);
         if (this.isEmpty(datetime)) {
             return undefined;
+        } else {
+            // transform value to memoent value to avoid error
+            const formattedVal = moment(datetime).format();
+            const val = formattedVal.substring(0, 19).replace('T', ' ');
+            return this.isEmpty(val) ? undefined : val;
+
         }
-        const val = datetime.substring(0, 19).replace('T', ' ');
-        return this.isEmpty(val) ? undefined : val;
     }
 
 }
