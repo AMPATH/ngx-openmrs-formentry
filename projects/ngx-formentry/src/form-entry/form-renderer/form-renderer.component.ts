@@ -11,14 +11,6 @@ import { ValidationFactory } from '../form-factory/validation.factory';
 import { DataSource } from '../question-models/interfaces/data-source';
 import { FormErrorsService } from '../services/form-errors.service';
 import { QuestionGroup } from '../question-models/group-question';
-<<<<<<< HEAD
-=======
-import { concat, of, Observable, Subject, BehaviorSubject } from 'rxjs';
-import * as _ from 'lodash';
-
-import { debounceTime, distinctUntilChanged, tap, switchMap, catchError, map } from 'rxjs/operators';
-import { QuestionBase } from '../question-models';
->>>>>>> 157482c... HIV-184:Request to hide the section headers in a form if all questions under it are hidden
 
 @Component({
   selector: 'form-renderer',
@@ -82,30 +74,6 @@ export class FormRendererComponent implements OnInit {
     if (this.node && this.node.question.extras &&
     this.node.question.renderingType === 'remote-select') {
       this.dataSource = this.dataSources.dataSources[this.node.question.dataSource];
-<<<<<<< HEAD
-=======
-      let defaltValues = of([]);
-      if (this.dataSource.resolveSelectedValue(selectQuestion.control.value)) {
-        defaltValues = this.dataSource.resolveSelectedValue(selectQuestion.control.value).pipe(
-          catchError(() => of([])), // empty list on error
-        );
-      }
-
-      this.items$ = concat(
-        defaltValues,
-        this.itemsInput$.pipe(
-          debounceTime(200),
-          distinctUntilChanged(),
-          tap(() => this.itemsLoading = true),
-          switchMap(term => this.dataSource.searchOptions(term).pipe(
-            catchError(() => of([])), // empty list on error
-            tap(() => {
-              this.itemsLoading = false
-            })
-          ))
-        )
-      );
->>>>>>> 157482c... HIV-184:Request to hide the section headers in a form if all questions under it are hidden
       if (this.dataSource && this.node.question.dataSourceOptions) {
         this.dataSource.dataSourceOptions = this.node.question.dataSourceOptions;
       }
