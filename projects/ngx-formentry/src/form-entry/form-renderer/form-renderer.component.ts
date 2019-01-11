@@ -1,16 +1,24 @@
 import {
-  Component, OnInit, Input, Inject
+  Component, OnInit, Input, Inject, OnChanges, SimpleChanges
 } from '@angular/core';
 import 'hammerjs';
 import { DEFAULT_STYLES } from './form-renderer.component.css';
 import { DOCUMENT } from '@angular/common';
 import { DataSources } from '../data-sources/data-sources';
-import { NodeBase, LeafNode } from '../form-factory/form-node';
+import { NodeBase, LeafNode, GroupNode } from '../form-factory/form-node';
 import { AfeFormGroup } from '../../abstract-controls-extension/afe-form-group';
 import { ValidationFactory } from '../form-factory/validation.factory';
 import { DataSource } from '../question-models/interfaces/data-source';
 import { FormErrorsService } from '../services/form-errors.service';
 import { QuestionGroup } from '../question-models/group-question';
+<<<<<<< HEAD
+=======
+import { concat, of, Observable, Subject, BehaviorSubject } from 'rxjs';
+import * as _ from 'lodash';
+
+import { debounceTime, distinctUntilChanged, tap, switchMap, catchError, map } from 'rxjs/operators';
+import { QuestionBase } from '../question-models';
+>>>>>>> 157482c... HIV-184:Request to hide the section headers in a form if all questions under it are hidden
 
 @Component({
   selector: 'form-renderer',
@@ -18,6 +26,7 @@ import { QuestionGroup } from '../question-models/group-question';
   styles: ['../../style/app.css', DEFAULT_STYLES]
 })
 export class FormRendererComponent implements OnInit {
+
 
   @Input() public parentComponent: FormRendererComponent;
   @Input() public node: NodeBase;
@@ -63,6 +72,8 @@ export class FormRendererComponent implements OnInit {
     }
   }
 
+
+
   public addChildComponent(child: FormRendererComponent) {
     this.childComponents.push(child);
   }
@@ -71,6 +82,30 @@ export class FormRendererComponent implements OnInit {
     if (this.node && this.node.question.extras &&
     this.node.question.renderingType === 'remote-select') {
       this.dataSource = this.dataSources.dataSources[this.node.question.dataSource];
+<<<<<<< HEAD
+=======
+      let defaltValues = of([]);
+      if (this.dataSource.resolveSelectedValue(selectQuestion.control.value)) {
+        defaltValues = this.dataSource.resolveSelectedValue(selectQuestion.control.value).pipe(
+          catchError(() => of([])), // empty list on error
+        );
+      }
+
+      this.items$ = concat(
+        defaltValues,
+        this.itemsInput$.pipe(
+          debounceTime(200),
+          distinctUntilChanged(),
+          tap(() => this.itemsLoading = true),
+          switchMap(term => this.dataSource.searchOptions(term).pipe(
+            catchError(() => of([])), // empty list on error
+            tap(() => {
+              this.itemsLoading = false
+            })
+          ))
+        )
+      );
+>>>>>>> 157482c... HIV-184:Request to hide the section headers in a form if all questions under it are hidden
       if (this.dataSource && this.node.question.dataSourceOptions) {
         this.dataSource.dataSourceOptions = this.node.question.dataSourceOptions;
       }
@@ -86,6 +121,20 @@ export class FormRendererComponent implements OnInit {
 
   }
 
+  checkSection(node: NodeBase) {
+    if (node.question.renderingType === 'section') {
+      let groupChildrenHidden = false;
+      let allSectionControlsHidden = Object.keys(node.children).every((k) => {
+        let innerNode = node.children[k];
+        if (innerNode instanceof GroupNode) {
+          groupChildrenHidden = Object.keys(innerNode.children).every((i) => innerNode.children[i].control.hidden)
+        }
+        return node.children[k].control.hidden || groupChildrenHidden;
+      });
+      return !allSectionControlsHidden;
+    }
+    return true;
+  }
 
  public clickTab(tabNumber) {
     this.activeTab = tabNumber;
