@@ -2,10 +2,12 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NodeBase, GroupNode, LeafNode } from '../../form-entry/form-factory/form-node';
 import { QuestionBase } from '../../form-entry/question-models/question-base';
 import * as _ from 'lodash';
-import { EncounterViewerService } from '../encounter-viewer.service';
+
 import { AfeFormGroup } from '../../abstract-controls-extension/afe-form-group';
 import { DataSources } from '../../form-entry/data-sources/data-sources';
 import { DataSource } from '../../form-entry/question-models/interfaces/data-source';
+
+import { EncounterViewerService } from '../encounter-viewer.service';
 
 @Component({
     selector: 'encounter-viewer',
@@ -39,7 +41,7 @@ export class EncounterViewerComponent implements OnInit {
     }
 
     constructor(private encounterViewerService: EncounterViewerService,
-               private dataSources: DataSources) {
+        private dataSources: DataSources) {
     }
 
     public ngOnInit() {
@@ -69,5 +71,4 @@ export class EncounterViewerComponent implements OnInit {
     public checkForColon(questionLabel: string) {
         if (questionLabel.indexOf(':') === -1) { return true; } else { return false; }
     }
-
 }
