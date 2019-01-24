@@ -129,7 +129,7 @@ export class FormRendererComponent implements OnInit {
       document.body.scrollTop = 0;
     }
   }
-  public  tabSelected($event) {
+  public tabSelected($event) {
     this.activeTab = $event;
     this.setPreviousTab();
   }
