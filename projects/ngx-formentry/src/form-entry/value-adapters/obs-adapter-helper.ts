@@ -340,7 +340,7 @@ export class ObsAdapterHelper {
         }
 
         const valuePayload = this.getObsNodePayload(valueField);
-        console.log('valuePayload', valuePayload);
+        // console.log('valuePayload', valuePayload);
 
         // set obs datetime for the generated payload
         if (valuePayload.length > 0) {

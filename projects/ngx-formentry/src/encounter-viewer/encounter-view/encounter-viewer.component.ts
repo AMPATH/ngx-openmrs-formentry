@@ -37,7 +37,7 @@ export class EncounterViewerComponent implements OnInit {
      @Input() set form(form: any) {
          this.rootNode = form.rootNode;
          this._schema = form.schema;
-         console.log(this.getQuestionNodes(this.traverse(this.rootNode)));
+         // console.log(this.getQuestionNodes(this.traverse(this.rootNode)));
     }
 
     constructor(
@@ -118,7 +118,7 @@ export class EncounterViewerComponent implements OnInit {
                     }
                 }
             }else{
-                console.log('Console.log',o);
+                // console.log('Console.log',o);
             }
 
         }

@@ -103,7 +103,7 @@ export class NgxDateTimePickerComponent implements OnInit, ControlValueAccessor 
     }
 
     public selectionChange($event) {
-        console.log('Week selected', $event);
+        // console.log('Week selected', $event);
     }
 
 

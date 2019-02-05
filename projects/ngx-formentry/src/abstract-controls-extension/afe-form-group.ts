@@ -8,12 +8,17 @@ import { CanGenerateAlert, Alert } from '../form-entry/control-alerts/can-genera
 import { HiderHelper } from '../form-entry/control-hiders-disablers/hider-helpers';
 import { DisablerHelper } from '../form-entry/control-hiders-disablers/disabler-helper';
 import { AlertHelper } from '../form-entry/control-alerts/alert-helpers';
+import { Subject } from 'rxjs';
+import { Touchable } from './touchable';
 
-export class AfeFormGroup extends FormGroup implements CanHide, CanDisable , CanGenerateAlert {
+export class AfeFormGroup extends FormGroup implements CanHide, CanDisable, Touchable, CanGenerateAlert {
     private _controlRelations: ControlRelations;
 
     public uuid: string;
     public pathFromRoot: string;
+    public hiddenStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public disabledStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public touchedStatusChanges: Subject<boolean> = new Subject<boolean>();
 
     hidden: false;
     hiders: Hider[];
@@ -49,6 +54,22 @@ export class AfeFormGroup extends FormGroup implements CanHide, CanDisable , Can
     disable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
         super.disable(param);
         super.setValue({});
+        this.disabledStatusChanges.next(true);
+    }
+
+    enable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
+        super.enable(param);
+        this.disabledStatusChanges.next(false);
+    }
+
+    markAsTouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsTouched(opts);
+        this.touchedStatusChanges.next(true);
+    }
+
+    markAsUntouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsUntouched(opts);
+        this.touchedStatusChanges.next(false);
     }
 
     setHidingFn(newHider: Hider) {

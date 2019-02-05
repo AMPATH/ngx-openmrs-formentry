@@ -102,7 +102,7 @@ describe('Obs Value Adapter: ', () => {
                 const obsPayload = [];
                 s.processNewMultiSelectObs([{ value: { concept: 'concept1', value: 'value1' } },
                 { value: { concept: 'concept1', value: 'value2' } }], obsPayload);
-                console.log(JSON.stringify(obsPayload));
+                // console.log(JSON.stringify(obsPayload));
                 expect(obsPayload).toEqual([{ concept: 'concept1', value: 'value1' }, { concept: 'concept1', value: 'value2' }]);
             }));
     });

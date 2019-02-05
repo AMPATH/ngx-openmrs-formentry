@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, Input, Inject, OnChanges, SimpleChanges
+  Component, OnInit, Input, Inject, OnChanges, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy
 } from '@angular/core';
 import 'hammerjs';
 import { DEFAULT_STYLES } from './form-renderer.component.css';
@@ -11,6 +11,7 @@ import { ValidationFactory } from '../form-factory/validation.factory';
 import { DataSource } from '../question-models/interfaces/data-source';
 import { FormErrorsService } from '../services/form-errors.service';
 import { QuestionGroup } from '../question-models/group-question';
+import { Subscription } from 'rxjs';
 // import { concat, of, Observable, Subject, BehaviorSubject } from 'rxjs';
 // import * as _ from 'lodash';
 
@@ -20,9 +21,10 @@ import { QuestionGroup } from '../question-models/group-question';
 @Component({
   selector: 'form-renderer',
   templateUrl: 'form-renderer.component.html',
-  styles: ['../../style/app.css', DEFAULT_STYLES]
+  styles: ['../../style/app.css', DEFAULT_STYLES],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormRendererComponent implements OnInit {
+export class FormRendererComponent implements OnInit, OnDestroy {
 
 
   @Input() public parentComponent: FormRendererComponent;
@@ -35,6 +37,9 @@ export class FormRendererComponent implements OnInit {
   public dataSource: DataSource;
   public isCollapsed = false;
   public auto: any;
+  private lastStatus: string;
+  private lastIsTouched: boolean;
+  private subs: Subscription[] = [];
 
   // items$: Observable<any[]>;
   // itemsLoading = false;
@@ -44,6 +49,7 @@ export class FormRendererComponent implements OnInit {
     private validationFactory: ValidationFactory,
     private dataSources: DataSources,
     private formErrorsService: FormErrorsService,
+    private cd: ChangeDetectorRef,
     @Inject(DOCUMENT) private document: any) {
     this.activeTab = 0;
   }
@@ -71,6 +77,32 @@ export class FormRendererComponent implements OnInit {
     if (this.parentComponent) {
       this.parentComponent.addChildComponent(this);
     }
+
+    this.subscribeToFormControlChanges();
+  }
+
+  public ngOnDestroy() {
+    // console.log('destroying');
+    this.subs.forEach((sub) => {
+      sub.unsubscribe();
+    });
+  }
+
+  public subscribeToFormControlChanges() {
+    if (this.node && this.node.control) {
+      this.subs.push(this.node.control.statusChanges.subscribe((val) => {
+        this.triggerChangeDetection();
+        // console.log('triggering change detection from Status', this.lastStatus, this.node.control.status, this.node.question.label);
+      }));
+
+      this.subs.push(this.node.control.touchedStatusChanges.subscribe((val) => {
+        this.triggerChangeDetection();
+      }));
+    }
+  }
+
+  public triggerChangeDetection() {
+    this.cd.detectChanges();
   }
 
 
@@ -84,28 +116,28 @@ export class FormRendererComponent implements OnInit {
       this.node.question.renderingType === 'remote-select') {
       // let selectQuestion = this.node.form.searchNodeByQuestionId(this.node.question.key)[0];
       this.dataSource = this.dataSources.dataSources[this.node.question.dataSource];
-     /*
-      let defaltValues = of([]);
-      if (this.dataSource.resolveSelectedValue(selectQuestion.control.value)) {
-        defaltValues = this.dataSource.resolveSelectedValue(selectQuestion.control.value).pipe(
-          catchError(() => of([])), // empty list on error
-        );
-      }
-      this.items$ = concat(
-        defaltValues,
-        this.itemsInput$.pipe(
-          debounceTime(200),
-          distinctUntilChanged(),
-          tap(() => this.itemsLoading = true),
-          switchMap(term => this.dataSource.searchOptions(term).pipe(
-            catchError(() => of([])), // empty list on error
-            tap(() => {
-              this.itemsLoading = false
-            })
-          ))
-        )
-      );
-      */
+      /*
+       let defaltValues = of([]);
+       if (this.dataSource.resolveSelectedValue(selectQuestion.control.value)) {
+         defaltValues = this.dataSource.resolveSelectedValue(selectQuestion.control.value).pipe(
+           catchError(() => of([])), // empty list on error
+         );
+       }
+       this.items$ = concat(
+         defaltValues,
+         this.itemsInput$.pipe(
+           debounceTime(200),
+           distinctUntilChanged(),
+           tap(() => this.itemsLoading = true),
+           switchMap(term => this.dataSource.searchOptions(term).pipe(
+             catchError(() => of([])), // empty list on error
+             tap(() => {
+               this.itemsLoading = false
+             })
+           ))
+         )
+       );
+       */
       if (this.dataSource && this.node.question.dataSourceOptions) {
         this.dataSource.dataSourceOptions = this.node.question.dataSourceOptions;
       }
@@ -226,9 +258,6 @@ export class FormRendererComponent implements OnInit {
     } else {
       e.style.display = 'block';
     }
-
-
-    console.log('InfoId', infoId);
   }
 
 

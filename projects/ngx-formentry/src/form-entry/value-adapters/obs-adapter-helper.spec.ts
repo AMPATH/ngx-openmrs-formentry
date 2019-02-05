@@ -334,7 +334,7 @@ describe('Obs Value Adapter Helper: ', () => {
         // case 4: group obs node
         const groupObsNode = form.searchNodeByQuestionId('groupStartDateTbTreatment')[0];
         expect(helper.getObsNodeType(groupObsNode)).toEqual('group');
-        console.log('groupObsNode', groupObsNode);
+        // console.log('groupObsNode', groupObsNode);
 
         // case 5: repeating obs node
         const repeatingGroupNode = form.searchNodeByQuestionId('tb_current_regimen_group')[0];

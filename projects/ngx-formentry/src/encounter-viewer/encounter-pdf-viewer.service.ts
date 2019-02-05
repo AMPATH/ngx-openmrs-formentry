@@ -415,7 +415,7 @@ export class EncounterPdfViewerService {
         pdf.createPdf(docDefinition).open({}, win);
       }
     }, (error) => {
-      console.log('Error: ', error);
+      // console.log('Error: ', error);
     });
   }
 

@@ -6,10 +6,12 @@ export class HiderHelper {
         if (control.disable) {
             control.disable();
         }
+        control.hiddenStatusChanges.next(true);
     }
 
     public showControl(control: CanHide) {
         control.hidden = false;
+        control.hiddenStatusChanges.next(false);
     }
 
     public setHiderForControl(control: CanHide, hider: Hider) {

@@ -8,14 +8,19 @@ import { CanDisable, Disabler } from '../form-entry/control-hiders-disablers/can
 import { HiderHelper } from '../form-entry/control-hiders-disablers/hider-helpers';
 import { AlertHelper } from '../form-entry/control-alerts/alert-helpers';
 import { DisablerHelper } from '../form-entry/control-hiders-disablers/disabler-helper';
+import { Subscription, Observable, Subject } from 'rxjs';
+import { Touchable } from './touchable';
 
 
-export class AfeFormArray extends FormArray implements CanHide, CanDisable, CanGenerateAlert, ValueChangeListener {
+export class AfeFormArray extends FormArray implements CanHide, CanDisable, Touchable, CanGenerateAlert, ValueChangeListener {
     private _controlRelations: ControlRelations;
     private _valueChangeListener: any;
     private _previousValue;
     private _uuid: string;
     public pathFromRoot: string;
+    public hiddenStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public disabledStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public touchedStatusChanges: Subject<boolean> = new Subject<boolean>();
 
     hidden: false;
     hiders: Hider[];
@@ -61,11 +66,28 @@ export class AfeFormArray extends FormArray implements CanHide, CanDisable, CanG
 
     show() {
         this.hiderHelper.showControl(this);
+        this.disabledStatusChanges.next(false);
     }
 
     disable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
         super.disable(param);
         super.setValue([]);
+        this.disabledStatusChanges.next(true);
+    }
+
+    enable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
+        super.enable(param);
+        this.disabledStatusChanges.next(false);
+    }
+
+    markAsTouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsTouched(opts);
+        this.touchedStatusChanges.next(true);
+    }
+
+    markAsUntouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsUntouched(opts);
+        this.touchedStatusChanges.next(false);
     }
 
     setHidingFn(newHider: Hider) {

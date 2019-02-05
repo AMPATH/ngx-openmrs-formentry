@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { EvaluateExpressionFn } from './can-disable';
 
@@ -7,6 +7,7 @@ export interface CanHide {
     hidden: boolean;
     disabled?: boolean;
     valueChanges?: Observable<any>;
+    hiddenStatusChanges: Subject<boolean>;
     disable?();
     hide();
     show();

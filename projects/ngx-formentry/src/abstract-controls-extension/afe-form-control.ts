@@ -10,13 +10,18 @@ import { AlertHelper } from '../form-entry/control-alerts/alert-helpers';
 import { DisablerHelper } from '../form-entry/control-hiders-disablers/disabler-helper';
 import { CanCalculate } from '../form-entry/control-calculators/can-calculate';
 import { ExpressionRunner } from '../form-entry/expression-runner/expression-runner';
+import { Subject } from 'rxjs';
+import { Touchable } from './touchable';
 
-class AfeFormControl extends FormControl implements CanHide, CanDisable, CanCalculate, CanGenerateAlert, ValueChangeListener {
+class AfeFormControl extends FormControl implements CanHide, CanDisable, Touchable, CanCalculate, CanGenerateAlert, ValueChangeListener {
     private _controlRelations: ControlRelations;
     private _valueChangeListener: any;
     private _previousValue;
     public uuid: string;
     public pathFromRoot: string;
+    public hiddenStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public disabledStatusChanges: Subject<boolean> = new Subject<boolean>();
+    public touchedStatusChanges: Subject<boolean> = new Subject<boolean>();
 
     hidden = false;
     hiders: Hider[];
@@ -51,6 +56,12 @@ class AfeFormControl extends FormControl implements CanHide, CanDisable, CanCalc
     disable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
         super.disable(param);
         super.setValue('');
+        this.disabledStatusChanges.next(true);
+    }
+
+    enable(param?: { onlySelf?: boolean, emitEvent?: boolean }) {
+        super.enable(param);
+        this.disabledStatusChanges.next(false);
     }
 
     hide() {
@@ -59,6 +70,16 @@ class AfeFormControl extends FormControl implements CanHide, CanDisable, CanCalc
 
     show() {
         this.hiderHelper.showControl(this);
+    }
+
+    markAsTouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsTouched(opts);
+        this.touchedStatusChanges.next(true);
+    }
+
+    markAsUntouched(opts: { onlySelf?: boolean; } = {}): void {
+        super.markAsUntouched(opts);
+        this.touchedStatusChanges.next(false);
     }
 
     setHidingFn(newHider: Hider) {

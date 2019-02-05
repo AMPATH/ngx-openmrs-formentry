@@ -693,7 +693,7 @@ export class QuestionFactory {
       case 'file':
         return this.toFileUploadQuestion(schema);
       default:
-        console.warn('New Schema Question Type found.........' + renderType);
+        console.warn('New Schema Question Type found: ' + renderType);
         return this.toTextQuestion(schema);
     }
 
