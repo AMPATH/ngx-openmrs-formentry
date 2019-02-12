@@ -36,7 +36,7 @@
     "ngx-file-uploader-ampath": "0.0.10",
     "reflect-metadata": "^0.1.9",
     "rxjs": "~6.3.3",
-    "rxjs-compat": "^6.2.1",
+    "rxjs-compat": "~6.3.3",
     "shelljs": "^0.7.0",
     "slick-carousel": "^1.6.0",
     "tree-model": "^1.0.5",
