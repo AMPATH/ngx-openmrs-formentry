@@ -1,0 +1,149 @@
+{
+	"name": "oncology_poc_general_oncology_return_form_v1.02",
+	"uuid": "xxxx",
+	"processor": "EncounterFormProcessor",
+	"referencedForms": [
+	],
+	"pages": [
+		{
+			"label": "Encounter Details",
+			"sections": [
+				{
+					"label": "Encounter Details",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Visit Date",
+							"type": "encounterDatetime",
+							"required": "true",
+							"default": "",
+							"id": "encDate",
+							"questionOptions": {
+								"rendering": "date"
+							},
+							"validators": [
+								{
+									"type": "date"
+								}
+							]
+						},
+						{
+							"type": "encounterProvider",
+							"label": "Provider",
+							"id": "provider",
+							"required": "true",
+							"default": "",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						},
+						{
+							"type": "encounterLocation",
+							"label": "Facility name (site/satellite clinic required):",
+							"id": "location",
+							"required": "true",
+							"questionOptions": {
+								"rendering": "ui-select-extended"
+							}
+						}
+					]
+				}
+			]
+		},
+		
+		
+
+		{
+			"label": "Procedure Order's",
+			"sections": [
+				
+                {
+					"label": "Procedure Orders",
+                    "isExpanded": "true",
+                    "questions":[{
+                        "type": "obsGroup",
+                        "label": "Procedure orders",
+                        "questionOptions": {
+                            "concept": "e3514ed8-caaf-471a-888d-bef6cecf706f",
+                            "rendering": "group"
+                        },
+                        "questions": [
+                            {
+                                "label": "Procedure Type",
+                                "id": "order1",
+                                "type": "Order",
+                                "questionOptions": {
+                                    "rendering": "repeating",
+                                    "orderSettingUuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
+                                    "orderType": "Order",
+                                    "selectableOrders": [
+                                        {
+                                            "concept": "369dd7ae-7d43-429e-b76e-bcf5baf4f4b2",
+                                            "label": "Punch biopsy"
+                                        },
+                                        {
+                                            "concept": "b6fccd82-c622-4c3e-9563-39899e709b3b",
+                                            "label": "LEEP"
+										},
+										{ "concept": "0589723c-b0fe-4a28-923a-39957f12dd7f",
+											"label": "COMPUTED TOMOGRAPHY SCAN GUIDED BIOPSY"}                                    
+                                    ]
+                                }
+                            }
+                        ]
+                    
+                        
+                    }],
+		
+							"type": "obs",
+							"validators": []
+						}
+					]
+				},
+			
+		
+		{
+			"label": "Next Appointment",
+			"sections": [
+				{
+					"label": "Next appointment",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Return to clinic Date:",
+							"type": "obs",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
+								"rendering": "date",
+								"weeksList": [
+									1,
+									2,
+									3,
+									4,
+									6,
+									8,
+									12,
+									16,
+									24,
+									48
+								]
+							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "true"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isAfter((new moment(myValue)), 'day') || (new moment(encDate)).isSame((new moment(myValue)), 'day')",
+									"message": "Return to clinic date should be greater than the encounter date."
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

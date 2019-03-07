@@ -67,6 +67,13 @@
                 " [parentGroup]="child.control " [schema]="_schema"></encounter-viewer>
             </div>
           </div>
+          <div *ngSwitchCase="'Order'">
+            <label>{{rootNode.question.label}}:</label>
+            <div *ngFor="let child of rootNode.children; let i=index ">
+              <encounter-viewer *ngFor="let question of child.question.questions " [parentComponent]="this" [node]="child.children[question.key]
+                " [parentGroup]="child.control " [schema]="_schema"></encounter-viewer>
+            </div>
+          </div>
           
           <div *ngSwitchCase="'obsGroup'">
             <div *ngFor="let child of rootNode.children; let i=index ">

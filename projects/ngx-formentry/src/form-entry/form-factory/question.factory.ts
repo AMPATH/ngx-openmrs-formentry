@@ -26,6 +26,7 @@ import { DummyDataSource } from '../data-sources/dummy-data-source';
 import { HistoricalHelperService } from '../helpers/historical-expression-helper-service';
 import { Form } from './form';
 import { CheckBoxQuestion } from '../question-models/models';
+import { OrderQuestion } from '../question-models/order-question';
 
 export class QuestionFactory {
   dataSources: any = {};
@@ -383,6 +384,10 @@ export class QuestionFactory {
       const testOrder = this.toTestOrderQuestion(schemaQuestion);
       const orders = []; orders.push(testOrder);
       question.questions = orders;
+    } else if (schemaQuestion.type === 'Order') {
+      const Order = this.toOrderQuestion(schemaQuestion);
+      const orders = []; orders.push(Order);
+      question.questions = orders;
     }
 
     const mappings: any = {
@@ -555,6 +560,32 @@ export class QuestionFactory {
   toTestOrderQuestion(schemaQuestion: any): TestOrderQuestion {
 
     const question = new TestOrderQuestion({
+      type: '', key: '', orderType: '', selectableOrders: [],
+      orderSettingUuid: '', label: '', rendering: ''
+    });
+
+    question.label = schemaQuestion.label;
+    question.key = schemaQuestion.id;
+    question.validators = this.addValidators(schemaQuestion);
+    question.extras = schemaQuestion;
+    question.options = schemaQuestion.questionOptions.selectableOrders.map(function (obj) {
+      return {
+        label: obj.label,
+        value: obj.concept
+      };
+    });
+
+    const mappings: any = {
+      label: 'label',
+      required: 'required',
+      id: 'key'
+    };
+    this.copyProperties(mappings, schemaQuestion, question);
+    return question;
+  }
+  toOrderQuestion(schemaQuestion: any): OrderQuestion {
+
+    const question = new OrderQuestion({
       type: '', key: '', orderType: '', selectableOrders: [],
       orderSettingUuid: '', label: '', rendering: ''
     });

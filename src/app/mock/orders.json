@@ -333,6 +333,88 @@
             ],
             "type": "testorder",
             "resourceVersion": "1.10"
+        },
+        {
+            "uuid": "84a57a48-b6b3-449b-85bf-661cd3ea7dcb",
+            "orderNumber": "ORD-2596",
+            "accessionNumber": null,
+            "patient": {
+                "uuid": "5de55880-1359-11df-a1f1-0026b9348838",
+                "display": "454545454 - MARK BRIAN MARK BRIAN MARK BRIAN",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/patient/5de55880-1359-11df-a1f1-0026b9348838"
+                    }
+                ]
+            },
+            "concept": {
+                "uuid": "0589723c-b0fe-4a28-923a-39957f12dd7f",
+                "display": "COMPUTED TOMOGRAPHY SCAN GUIDED BIOPSY",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/concept/0589723c-b0fe-4a28-923a-39957f12dd7f"
+                    }
+                ]
+            },
+            "action": "NEW",
+            "careSetting": {
+                "uuid": "6f0c9a92-6f24-11e3-af88-005056821db0",
+                "display": "Outpatient",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/caresetting/6f0c9a92-6f24-11e3-af88-005056821db0"
+                    }
+                ]
+            },
+            "previousOrder": null,
+            "dateActivated": "2019-03-01T14:31:21.000+0300",
+            "scheduledDate": null,
+            "dateStopped": null,
+            "autoExpireDate": null,
+            "encounter": {
+                "uuid": "a124c8b7-daa8-4087-aea0-b6e703b6a9bb",
+                "display": "LABORDERENCOUNTER 13/02/2019",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/encounter/a124c8b7-daa8-4087-aea0-b6e703b6a9bb"
+                    }
+                ]
+            },
+            "orderer": {
+                "uuid": "b691b281-4d8d-40f9-86ff-36b3eb3fa539",
+                "display": "167721-0 - Worcester Student",
+                "links": [
+                    {
+                        "rel": "self",
+                        "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/provider/b691b281-4d8d-40f9-86ff-36b3eb3fa539"
+                    }
+                ]
+            },
+            "orderReason": null,
+            "orderReasonNonCoded": null,
+            "urgency": "ROUTINE",
+            "instructions": null,
+            "commentToFulfiller": null,
+            "auditInfo": {
+                "dateVoided": ""
+            },
+            "display": "COMPUTED TOMOGRAPHY SCAN GUIDED BIOPSY",
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/order/84a57a48-b6b3-449b-85bf-661cd3ea7dcb"
+                },
+                {
+                    "rel": "full",
+                    "uri": "https://ngx.ampath.or.ke/test-amrs/ws/rest/v1/order/84a57a48-b6b3-449b-85bf-661cd3ea7dcb?v=full"
+                }
+            ],
+            "type": "Order",
+            "resourceVersion": "1.10"
         }
     ]
 }

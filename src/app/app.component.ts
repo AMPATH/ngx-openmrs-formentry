@@ -12,6 +12,7 @@ import { Observable, Subject, of } from 'rxjs';
 import { MockObs } from './mock/mock-obs';
 
 const adultForm = require('./adult-1.4.json');
+const OncologyreturnForm = require('./oncology-return.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
 @Component({
@@ -38,7 +39,7 @@ export class AppComponent {
 		private encAdapter: EncounterAdapter, private dataSources: DataSources,
 		private encounterPdfViewerService: EncounterPdfViewerService,
     private formErrorsService: FormErrorsService, private http: Http) {
-        this.schema = adultForm;
+        this.schema = OncologyreturnForm;
 		}
 		
   ngOnInit() {

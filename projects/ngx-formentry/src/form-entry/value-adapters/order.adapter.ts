@@ -119,7 +119,8 @@ export class OrderValueAdapter implements ValueAdapter {
             concept: '',
             type: '',
             orderer: '',
-            careSetting: ''
+            careSetting: '',
+            dateActivated : ''
         };
         order.concept = orderConcept;
         order.type = quesitonExtras.questionOptions.orderType;
@@ -130,6 +131,9 @@ export class OrderValueAdapter implements ValueAdapter {
         if (order.orderer === '') {
             delete order.orderer;
         }
+        // if (quesitonExtras.questionOptions.orderType === 'Order') {
+        //   order.dateActivated = quesitonExtras.questionOptions.orderDate;
+        // }
 
         return order;
     }
@@ -191,6 +195,8 @@ export class OrderValueAdapter implements ValueAdapter {
                                         const question = formNode.children[node].question;
                                         if (question.extras && question.extras.type === 'testOrder') {
                                             this.formOrderNodes.push(formNode.children[node]);
+                                        } else if (question.extras && question.extras.type === 'Order') {
+                                            this.formOrderNodes.push(formNode.children[node]);
                                         }
                                     }
 
@@ -206,5 +212,7 @@ export class OrderValueAdapter implements ValueAdapter {
 
         }
     }
+
+
 
 }
