@@ -1,6 +1,7 @@
-<div *ngFor="let option of options; let i = index;">
-    <label class="form-control no-border">
-        <input type="checkbox" id="i + 'id'" (change)="selectOpt(option, $event)" value="option.value">
-        {{ option.label }}
+
+<div *ngFor="let option of options; let i = index;" [style.display]="getDisplay(options.length)">
+    <label >
+        <input type="checkbox"  id="i + 'id'" (change)="selectOpt(option, $event)" value="option.value">
+        {{ option.label }} 
     </label>
 </div>

@@ -17,13 +17,27 @@ import * as _ from 'lodash';
   .no-border {
     border: 0;
     box-shadow: none;
-  }`]
+  }
+  div {
+    width: 50%;
+    margin-bottom: 5px;
+    max-width: 100%;
+}
+`]
 })
 export class CheckboxControlComponent implements OnInit, AfterViewInit {
+
 
   @Input() public options;
 
   public _value: Array<any> = [];
+  getDisplay(options) {
+    if (options < 3) {
+      return 'inline-block';
+    } else {
+      return 'block';
+    }
+  }
 
   public ngOnInit() {}
 
