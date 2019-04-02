@@ -909,6 +909,7 @@
                                 ],
                                 "showDate": "true",
                                 "shownDateOptions": {
+                                    "historicalExpression": "HD.getObject('prevEnc').getValue('a8afdb8c-1350-11df-a1f1-0026b9348838.a899e5f2-1350-11df-a1f1-0026b9348838')",
                                     "validators": [
                                         {
                                             "type": "date"
@@ -3613,6 +3614,7 @@
                                 "showDate": "true",
                                 "rendering": "number",
                                 "shownDateOptions": {
+                                    "historicalExpression": "HD.getObject('prevEnc').getValue('a8afdb8c-1350-11df-a1f1-0026b9348838.a899e5f2-1350-11df-a1f1-0026b9348838')",
                                     "validators": [
                                         {
                                             "type": "date"

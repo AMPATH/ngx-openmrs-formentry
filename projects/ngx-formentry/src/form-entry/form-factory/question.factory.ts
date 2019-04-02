@@ -728,8 +728,9 @@ export class QuestionFactory {
       schemaQuestion.questionOptions.shownDateOptions);
     dateField.validators = dateOptions.validators;
     dateField.hide = dateOptions.hide;
-
-
+    if (dateOptions.historicalExpression) {
+      dateField.historicalExpression = dateOptions.historicalExpression;
+    }
     converted.questions.push(mainField);
     converted.questions.push(dateField);
 
