@@ -1,0 +1,18 @@
+import * as tslib_1 from "tslib";
+import { QuestionBase } from './question-base';
+import { AfeControlType } from '../../abstract-controls-extension/afe-control-type';
+var FileUploadQuestion = /** @class */ (function (_super) {
+    tslib_1.__extends(FileUploadQuestion, _super);
+    function FileUploadQuestion(options) {
+        var _this = _super.call(this, options) || this;
+        _this.showTime = true;
+        _this.showWeeksAdder = false;
+        _this.renderingType = 'file';
+        _this.dataSource = options.dataSource;
+        _this.controlType = AfeControlType.AfeFormControl;
+        return _this;
+    }
+    return FileUploadQuestion;
+}(QuestionBase));
+export { FileUploadQuestion };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZS11cGxvYWQtcXVlc3Rpb24uanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZ3gtb3Blbm1ycy1mb3JtZW50cnkvIiwic291cmNlcyI6WyJmb3JtLWVudHJ5L3F1ZXN0aW9uLW1vZGVscy9maWxlLXVwbG9hZC1xdWVzdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBRS9DLE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxvREFBb0QsQ0FBQztBQUVwRjtJQUF3Qyw4Q0FBWTtJQUloRCw0QkFBWSxPQUFrQztRQUE5QyxZQUNJLGtCQUFNLE9BQU8sQ0FBQyxTQUlqQjtRQVJELGNBQVEsR0FBRyxJQUFJLENBQUM7UUFDaEIsb0JBQWMsR0FBRyxLQUFLLENBQUM7UUFJbkIsS0FBSSxDQUFDLGFBQWEsR0FBRyxNQUFNLENBQUM7UUFDNUIsS0FBSSxDQUFDLFVBQVUsR0FBRyxPQUFPLENBQUMsVUFBVSxDQUFDO1FBQ3JDLEtBQUksQ0FBQyxXQUFXLEdBQUcsY0FBYyxDQUFDLGNBQWMsQ0FBQzs7SUFDckQsQ0FBQztJQUNMLHlCQUFDO0FBQUQsQ0FBQyxBQVZELENBQXdDLFlBQVksR0FVbkQiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBRdWVzdGlvbkJhc2UgfSBmcm9tICcuL3F1ZXN0aW9uLWJhc2UnO1xuaW1wb3J0IHsgRmlsZVVwbG9hZFF1ZXN0aW9uT3B0aW9ucyB9IGZyb20gJy4vaW50ZXJmYWNlcy9maWxlLXVwbG9hZC1xdWVzdGlvbi1vcHRpb25zJztcbmltcG9ydCB7IEFmZUNvbnRyb2xUeXBlIH0gZnJvbSAnLi4vLi4vYWJzdHJhY3QtY29udHJvbHMtZXh0ZW5zaW9uL2FmZS1jb250cm9sLXR5cGUnO1xuXG5leHBvcnQgY2xhc3MgRmlsZVVwbG9hZFF1ZXN0aW9uIGV4dGVuZHMgUXVlc3Rpb25CYXNlIHtcbiAgICBzaG93VGltZSA9IHRydWU7XG4gICAgc2hvd1dlZWtzQWRkZXIgPSBmYWxzZTtcbiAgICBkYXRhU291cmNlPzogYW55O1xuICAgIGNvbnN0cnVjdG9yKG9wdGlvbnM6IEZpbGVVcGxvYWRRdWVzdGlvbk9wdGlvbnMpIHtcbiAgICAgICAgc3VwZXIob3B0aW9ucyk7XG4gICAgICAgIHRoaXMucmVuZGVyaW5nVHlwZSA9ICdmaWxlJztcbiAgICAgICAgdGhpcy5kYXRhU291cmNlID0gb3B0aW9ucy5kYXRhU291cmNlO1xuICAgICAgICB0aGlzLmNvbnRyb2xUeXBlID0gQWZlQ29udHJvbFR5cGUuQWZlRm9ybUNvbnRyb2w7XG4gICAgfVxufVxuIl19
