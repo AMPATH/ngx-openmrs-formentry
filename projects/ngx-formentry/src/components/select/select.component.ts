@@ -63,9 +63,9 @@ export class SelectComponent
     @Output() typed: EventEmitter<any> = new EventEmitter<any>();
 
 
-    @ViewChild('selection') selectionSpan: any;
-    @ViewChild('dropdown') dropdown: SelectDropdownComponent;
-    @ViewChild('filterInput') filterInput: any;
+    @ViewChild('selection', {static: false}) selectionSpan: any;
+    @ViewChild('dropdown', {static: false}) dropdown: SelectDropdownComponent;
+    @ViewChild('filterInput', {static: false}) filterInput: any;
 
     private _value: Array<any> = [];
     optionList: OptionList;

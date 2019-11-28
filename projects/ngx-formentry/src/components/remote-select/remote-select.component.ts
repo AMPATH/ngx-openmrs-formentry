@@ -28,7 +28,7 @@ export class RemoteSelectComponent implements OnInit, ControlValueAccessor {
     @Output() done: EventEmitter<any> = new EventEmitter<any>();
 
     characters = [];
-    @ViewChild(SelectComponent) private selectC: SelectComponent;
+    @ViewChild(SelectComponent, {static: false}) private selectC: SelectComponent;
 
 
     private _dataSource: DataSource;

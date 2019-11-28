@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { Http, ResponseContentType, Headers } from '@angular/http';
-import { Subscriber } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { Subscriber ,  Observable, Subject, of } from 'rxjs';
 
 import {
   QuestionFactory, Form, FormFactory, ObsValueAdapter, OrderValueAdapter,
   EncounterAdapter, DataSources, FormErrorsService, EncounterPdfViewerService
 } from '../../dist/ngx-formentry';
 import { FormGroup } from '@angular/forms';
-import { Observable, Subject, of } from 'rxjs';
 
 import { MockObs } from './mock/mock-obs';
 
@@ -37,7 +36,7 @@ export class AppComponent {
     private orderAdaptor: OrderValueAdapter,
 		private encAdapter: EncounterAdapter, private dataSources: DataSources,
 		private encounterPdfViewerService: EncounterPdfViewerService,
-    private formErrorsService: FormErrorsService, private http: Http) {
+    private formErrorsService: FormErrorsService, private http: HttpClient) {
         this.schema = adultForm;
 		}
 		
@@ -93,14 +92,14 @@ export class AppComponent {
 					console.log(url, 'APP COMPONENT');
 					return new Observable((observer: Subscriber<any>) => {
 						let objectUrl: string = null;
-							const headers = new Headers({ Accept: 'image/png,image/jpeg,image/gif,application/pdf' });
+							const headers = new HttpHeaders({ Accept: 'image/png,image/jpeg,image/gif,application/pdf' });
 							this.http
 								.get('https://unsplash.it/1040/720', {
 									headers,
-									responseType: ResponseContentType.Blob
+									responseType: "blob"
 								})
 								.subscribe(m => {
-									objectUrl = URL.createObjectURL(m.blob());
+									objectUrl = URL.createObjectURL(m);
 									console.log(objectUrl);
 									observer.next(objectUrl);
 								});

@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionControlComponent } from './display-controls/question-control.component';
 import { FilePreviewComponent } from './display-controls/file-preview.component';
 import { RemoteAnswerComponent } from './display-controls/remote-answer.component';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 import { SharedModule } from '../shared.module';
 @NgModule({
     declarations: [
@@ -22,7 +22,7 @@ import { SharedModule } from '../shared.module';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        HttpModule,
+        // HttpModule,
         SharedModule
     ],
     providers: [
@@ -30,8 +30,8 @@ import { SharedModule } from '../shared.module';
         EncounterPdfViewerService
     ],
     exports: [
-        EncounterContainerComponent,
-        HttpModule
+        EncounterContainerComponent
+        // HttpModule
     ],
 })
 export class EncounterViewerModule {}
