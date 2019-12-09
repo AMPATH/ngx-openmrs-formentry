@@ -1,6 +1,6 @@
 {
-  "name": "ngx-openmrs-formentry",
-  "version": "2.12.4-SNAPSHOT",
+  "name": "@ampath-kenya/ngx-openmrs-formentry",
+  "version": "3.0.0-alpha1",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
