@@ -1,0 +1,98 @@
+import * as tslib_1 from "tslib";
+import { NgModule } from '@angular/core';
+import { MatTabsModule, MatIconModule, MatCardModule } from '@angular/material';
+// import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { DebugModeService } from '../form-entry/services/debug-mode.service';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { FormErrorsService } from './services/form-errors.service';
+import { FormControlService } from './form-factory/form-control.service';
+import { ValidationFactory } from './form-factory/validation.factory';
+import { FormRendererComponent } from './form-renderer/form-renderer.component';
+import { ErrorRendererComponent } from './error-renderer/error-renderer.component';
+import { HistoricalValueDirective } from './directives/historical-value-directive';
+import { HistoricalFieldHelperService } from './helpers/historical-field-helper-service';
+import { SelectModule } from '../components/select/select.module';
+// import { NgSelectModule } from '@ng-select/ng-select';
+import { RemoteFileUploadModule } from '../components/file-upload/file-upload.module';
+import { DateTimePickerModule } from '../components/date-time-picker/date-time-picker.module';
+import { NgxDateTimePickerModule } from '../components/ngx-date-time-picker/ngx-date-time-picker.module';
+import { AfeNgSelectComponent } from '../components/afe-ng-select.component';
+import { HidersDisablersFactory } from './form-factory/hiders-disablers.factory';
+import { AlertsFactory } from './form-factory/show-messages.factory';
+import { ExpressionRunner } from './expression-runner/expression-runner';
+import { JsExpressionHelper } from './helpers/js-expression-helper';
+import { FormSchemaCompiler } from './services/form-schema-compiler.service';
+import { FormFactory } from './form-factory/form.factory';
+import { QuestionFactory } from './form-factory/question.factory';
+import { ControlRelationsFactory } from './form-factory/control-relations.factory';
+import { EncounterAdapter } from './value-adapters/encounter.adapter';
+import { PersonAttribuAdapter } from './value-adapters/person-attribute.adapter';
+import { OrderValueAdapter } from './value-adapters/order.adapter';
+import { ObsAdapterHelper } from './value-adapters/obs-adapter-helper';
+import { ObsValueAdapter } from './value-adapters/obs.adapter';
+import { RemoteSelectModule } from '../components/remote-select/remote-select.module';
+import { AppointmentsOverviewComponent } from '../components/appointments-overview/appointments-overview.component';
+import { EncounterViewerModule } from '../encounter-viewer/encounter-viewer.module';
+import { CheckboxModule } from '../components/check-box/checkbox.module';
+import { SharedModule } from '../shared.module';
+import { TimeAgoPipe } from 'time-ago-pipe';
+let FormEntryModule = class FormEntryModule {
+};
+FormEntryModule = tslib_1.__decorate([
+    NgModule({
+        imports: [CommonModule,
+            ReactiveFormsModule,
+            CollapseModule,
+            // NgSelectModule,
+            SelectModule,
+            DateTimePickerModule,
+            RemoteSelectModule,
+            // NoopAnimationsModule,
+            RemoteFileUploadModule,
+            EncounterViewerModule,
+            CheckboxModule,
+            MatIconModule,
+            MatTabsModule,
+            MatCardModule,
+            NgxDateTimePickerModule,
+            SharedModule
+        ],
+        declarations: [
+            FormRendererComponent,
+            AfeNgSelectComponent,
+            AppointmentsOverviewComponent,
+            HistoricalValueDirective,
+            ErrorRendererComponent,
+            TimeAgoPipe
+        ],
+        providers: [
+            FormBuilder,
+            FormControlService,
+            FormErrorsService,
+            ValidationFactory,
+            HidersDisablersFactory,
+            AlertsFactory,
+            ExpressionRunner,
+            JsExpressionHelper,
+            HistoricalFieldHelperService,
+            FormSchemaCompiler,
+            FormFactory,
+            QuestionFactory,
+            ValidationFactory,
+            ControlRelationsFactory,
+            ObsAdapterHelper,
+            ObsValueAdapter,
+            EncounterAdapter,
+            PersonAttribuAdapter,
+            OrderValueAdapter,
+            DebugModeService
+        ],
+        exports: [FormRendererComponent, AfeNgSelectComponent,
+            ErrorRendererComponent, DateTimePickerModule, EncounterViewerModule, NgxDateTimePickerModule]
+    })
+], FormEntryModule);
+export { FormEntryModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZm9ybS1lbnRyeS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYW1wYXRoLWtlbnlhL25neC1vcGVubXJzLWZvcm1lbnRyeS8iLCJzb3VyY2VzIjpbImZvcm0tZW50cnkvZm9ybS1lbnRyeS5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFFLGFBQWEsRUFBRyxhQUFhLEVBQUcsYUFBYSxFQUFDLE1BQU0sbUJBQW1CLENBQUM7QUFDakYsOEVBQThFO0FBQzlFLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSxpQkFBaUIsQ0FBQztBQUMvQyxPQUFPLEVBQUUsbUJBQW1CLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUNyRCxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFDN0MsT0FBTyxFQUFFLGdCQUFnQixFQUFFLE1BQU0sMkNBQTJDLENBQUM7QUFDN0UsT0FBTyxFQUFFLGNBQWMsRUFBRSxNQUFNLHdCQUF3QixDQUFDO0FBQ3hELE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLGdDQUFnQyxDQUFDO0FBQ25FLE9BQU8sRUFBRSxrQkFBa0IsRUFBRSxNQUFNLHFDQUFxQyxDQUFDO0FBQ3pFLE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLG1DQUFtQyxDQUFDO0FBQ3RFLE9BQU8sRUFBRSxxQkFBcUIsRUFBRSxNQUFNLHlDQUF5QyxDQUFDO0FBQ2hGLE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLDJDQUEyQyxDQUFDO0FBQ25GLE9BQU8sRUFBRSx3QkFBd0IsRUFBRSxNQUFNLHlDQUF5QyxDQUFDO0FBQ25GLE9BQU8sRUFBRSw0QkFBNEIsRUFBRSxNQUFNLDJDQUEyQyxDQUFDO0FBQ3pGLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSxvQ0FBb0MsQ0FBQztBQUNsRSx5REFBeUQ7QUFDekQsT0FBTyxFQUFFLHNCQUFzQixF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IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgTWF0VGFic01vZHVsZSAsIE1hdEljb25Nb2R1bGUgLCBNYXRDYXJkTW9kdWxlfSBmcm9tICdAYW5ndWxhci9tYXRlcmlhbCc7XG4vLyBpbXBvcnQgeyBOb29wQW5pbWF0aW9uc01vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlci9hbmltYXRpb25zJztcbmltcG9ydCB7IENvbW1vbk1vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XG5pbXBvcnQgeyBSZWFjdGl2ZUZvcm1zTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvZm9ybXMnO1xuaW1wb3J0IHsgRm9ybUJ1aWxkZXIgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XG5pbXBvcnQgeyBEZWJ1Z01vZGVTZXJ2aWNlIH0gZnJvbSAnLi4vZm9ybS1lbnRyeS9zZXJ2aWNlcy9kZWJ1Zy1tb2RlLnNlcnZpY2UnO1xuaW1wb3J0IHsgQ29sbGFwc2VNb2R1bGUgfSBmcm9tICduZ3gtYm9vdHN0cmFwL2NvbGxhcHNlJztcbmltcG9ydCB7IEZvcm1FcnJvcnNTZXJ2aWNlIH0gZnJvbSAnLi9zZXJ2aWNlcy9mb3JtLWVycm9ycy5zZXJ2aWNlJztcbmltcG9ydCB7IEZvcm1Db250cm9sU2VydmljZSB9IGZyb20gJy4vZm9ybS1mYWN0b3J5L2Zvcm0tY29udHJvbC5zZXJ2aWNlJztcbmltcG9ydCB7IFZhbGlkYXRpb25GYWN0b3J5IH0gZnJvbSAnLi9mb3JtLWZhY3RvcnkvdmFsaWRhdGlvbi5mYWN0b3J5JztcbmltcG9ydCB7IEZvcm1SZW5kZXJlckNvbXBvbmVudCB9IGZyb20gJy4vZm9ybS1yZW5kZXJlci9mb3JtLXJlbmRlcmVyLmNvbXBvbmVudCc7XG5pbXBvcnQgeyBFcnJvclJlbmRlcmVyQ29tcG9uZW50IH0gZnJvbSAnLi9lcnJvci1yZW5kZXJlci9lcnJvci1yZW5kZXJlci5jb21wb25lbnQnO1xuaW1wb3J0IHsgSGlzdG9yaWNhbFZhbHVlRGlyZWN0aXZlIH0gZnJvbSAnLi9kaXJlY3RpdmVzL2hpc3RvcmljYWwtdmFsdWUtZGlyZWN0aXZlJztcbmltcG9ydCB7IEhpc3RvcmljYWxGaWVsZEhlbHBlclNlcnZpY2UgfSBmcm9tICcuL2hlbHBlcnMvaGlzdG9yaWNhbC1maWVsZC1oZWxwZXItc2VydmljZSc7XG5pbXBvcnQgeyBTZWxlY3RNb2R1bGUgfSBmcm9tICcuLi9jb21wb25lbnRzL3NlbGVjdC9zZWxlY3QubW9kdWxlJztcbi8vIGltcG9ydCB7IE5nU2VsZWN0TW9kdWxlIH0gZnJvbSAnQG5nLXNlbGVjdC9uZy1zZWxlY3QnO1xuaW1wb3J0IHsgUmVtb3RlRmlsZVVwbG9hZE1vZHVsZSB9IGZyb20gJy4uL2NvbXBvbmVudHMvZmlsZS11cGxvYWQvZmlsZS11cGxvYWQubW9kdWxlJztcbmltcG9ydCB7IERhdGVUaW1lUGlja2VyTW9kdWxlIH0gZnJvbSAnLi4vY29tcG9uZW50cy9kYXRlLXRpbWUtcGlja2VyL2RhdGUtdGltZS1waWNrZXIubW9kdWxlJztcbmltcG9ydCB7IE5neERhdGVUaW1lUGlja2VyTW9kdWxlIH0gZnJvbSAnLi4vY29tcG9uZW50cy9uZ3gtZGF0ZS10aW1lLXBpY2tlci9uZ3gtZGF0ZS10aW1lLXBpY2tlci5tb2R1bGUnO1xuaW1wb3J0IHsgQWZlTmdTZWxlY3RDb21wb25lbnQgfSBmcm9tICcuLi9jb21wb25lbnRzL2FmZS1uZy1zZWxlY3QuY29tcG9uZW50JztcbmltcG9ydCB7IEhpZGVyc0Rpc2FibGVyc0ZhY3RvcnkgfSBmcm9tICcuL2Zvcm0tZmFjdG9yeS9oaWRlcnMtZGlzYWJsZXJzLmZhY3RvcnknO1xuaW1wb3J0IHsgQWxlcnRzRmFjdG9yeSB9IGZyb20gJy4vZm9ybS1mYWN0b3J5L3Nob3ctbWVzc2FnZXMuZmFjdG9yeSc7XG5pbXBvcnQgeyBFeHByZXNzaW9uUnVubmVyIH0gZnJvbSAnLi9leHByZXNzaW9uLXJ1bm5lci9leHByZXNzaW9uLXJ1bm5lcic7XG5pbXBvcnQgeyBKc0V4cHJlc3Npb25IZWxwZXIgfSBmcm9tICcuL2hlbHBlcnMvanMtZXhwcmVzc2lvbi1oZWxwZXInO1xuaW1wb3J0IHsgRm9ybVNjaGVtYUNvbXBpbGVyIH0gZnJvbSAnLi9zZXJ2aWNlcy9mb3JtLXNjaGVtYS1jb21waWxlci5zZXJ2aWNlJztcbmltcG9ydCB7IEZvcm1GYWN0b3J5IH0gZnJvbSAnLi9mb3JtLWZhY3RvcnkvZm9ybS5mYWN0b3J5JztcbmltcG9ydCB7IFF1ZXN0aW9uRmFjdG9yeSB9IGZyb20gJy4vZm9ybS1mYWN0b3J5L3F1ZXN0aW9uLmZhY3RvcnknO1xuaW1wb3J0IHsgQ29udHJvbFJlbGF0aW9uc0ZhY3RvcnkgfSBmcm9tICcuL2Zvcm0tZmFjdG9yeS9jb250cm9sLXJlbGF0aW9ucy5mYWN0b3J5JztcbmltcG9ydCB7IEVuY291bnRlckFkYXB0ZXIgfSBmcm9tICcuL3ZhbHVlLWFkYXB0ZXJzL2VuY291bnRlci5hZGFwdGVyJztcbmltcG9ydCB7IFBlcnNvbkF0dHJpYnVBZGFwdGVyIH0gZnJvbSAnLi92YWx1ZS1hZGFwdGVycy9wZXJzb24tYXR0cmlidXRlLmFkYXB0ZXInO1xuaW1wb3J0IHsgT3JkZXJWYWx1ZUFkYXB0ZXIgfSBmcm9tICcuL3ZhbHVlLWFkYXB0ZXJzL29yZGVyLmFkYXB0ZXInO1xuaW1wb3J0IHsgT2JzQWRhcHRlckhlbHBlciB9IGZyb20gJy4vdmFsdWUtYWRhcHRlcnMvb2JzLWFkYXB0ZXItaGVscGVyJztcbmltcG9ydCB7IE9ic1ZhbHVlQWRhcHRlciB9IGZyb20gJy4vdmFsdWUtYWRhcHRlcnMvb2JzLmFkYXB0ZXInO1xuaW1wb3J0IHsgUmVtb3RlU2VsZWN0TW9kdWxlIH0gZnJvbSAnLi4vY29tcG9uZW50cy9yZW1vdGUtc2VsZWN0L3JlbW90ZS1zZWxlY3QubW9kdWxlJztcbmltcG9ydCB7IEFwcG9pbnRtZW50c092ZXJ2aWV3Q29tcG9uZW50fSBmcm9tICcuLi9jb21wb25lbnRzL2FwcG9pbnRtZW50cy1vdmVydmlldy9hcHBvaW50bWVudHMtb3ZlcnZpZXcuY29tcG9uZW50JztcbmltcG9ydCB7IEVuY291bnRlclZpZXdlck1vZHVsZSB9IGZyb20gJy4uL2VuY291bnRlci12aWV3ZXIvZW5jb3VudGVyLXZpZXdlci5tb2R1bGUnO1xuaW1wb3J0IHsgQ2hlY2tib3hNb2R1bGUgfSBmcm9tICcuLi9jb21wb25lbnRzL2NoZWNrLWJveC9jaGVja2JveC5tb2R1bGUnO1xuaW1wb3J0IHsgU2hhcmVkTW9kdWxlIH0gZnJvbSAnLi4vc2hhcmVkLm1vZHVsZSc7XG5pbXBvcnQgeyBUaW1lQWdvUGlwZSB9IGZyb20gJ3RpbWUtYWdvLXBpcGUnO1xuXG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW0NvbW1vbk1vZHVsZSxcbiAgICAgICAgUmVhY3RpdmVGb3Jtc01vZHVsZSxcbiAgICAgICAgQ29sbGFwc2VNb2R1bGUsXG4gICAgICAgIC8vIE5nU2VsZWN0TW9kdWxlLFxuICAgICAgICBTZWxlY3RNb2R1bGUsXG4gICAgICAgIERhdGVUaW1lUGlja2VyTW9kdWxlLFxuICAgICAgICBSZW1vdGVTZWxlY3RNb2R1bGUsXG4gICAgICAgIC8vIE5vb3BBbmltYXRpb25zTW9kdWxlLFxuICAgICAgICBSZW1vdGVGaWxlVXBsb2FkTW9kdWxlLFxuICAgICAgICBFbmNvdW50ZXJWaWV3ZXJNb2R1bGUsXG4gICAgICAgIENoZWNrYm94TW9kdWxlLFxuICAgICAgICBNYXRJY29uTW9kdWxlLFxuICAgICAgICBNYXRUYWJzTW9kdWxlLFxuICAgICAgICBNYXRDYXJkTW9kdWxlLFxuICAgICAgICBOZ3hEYXRlVGltZVBpY2tlck1vZHVsZSxcbiAgICAgICAgU2hhcmVkTW9kdWxlXG4gICAgXSxcbiAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgRm9ybVJlbmRlcmVyQ29tcG9uZW50LFxuICAgICAgICBBZmVOZ1NlbGVjdENvbXBvbmVudCxcbiAgICAgICAgQXBwb2ludG1lbnRzT3ZlcnZpZXdDb21wb25lbnQsXG4gICAgICAgIEhpc3RvcmljYWxWYWx1ZURpcmVjdGl2ZSxcbiAgICAgICAgRXJyb3JSZW5kZXJlckNvbXBvbmVudCxcbiAgICAgICAgVGltZUFnb1BpcGVcbiAgICBdLFxuICAgIHByb3ZpZGVyczogW1xuICAgICAgICBGb3JtQnVpbGRlcixcbiAgICAgICAgRm9ybUNvbnRyb2xTZXJ2aWNlLFxuICAgICAgICBGb3JtRXJyb3JzU2VydmljZSxcbiAgICAgICAgVmFsaWRhdGlvbkZhY3RvcnksXG4gICAgICAgIEhpZGVyc0Rpc2FibGVyc0ZhY3RvcnksXG4gICAgICAgIEFsZXJ0c0ZhY3RvcnksXG4gICAgICAgIEV4cHJlc3Npb25SdW5uZXIsXG4gICAgICAgIEpzRXhwcmVzc2lvbkhlbHBlcixcbiAgICAgICAgSGlzdG9yaWNhbEZpZWxkSGVscGVyU2VydmljZSxcbiAgICAgICAgRm9ybVNjaGVtYUNvbXBpbGVyLFxuICAgICAgICBGb3JtRmFjdG9yeSxcbiAgICAgICAgUXVlc3Rpb25GYWN0b3J5LFxuICAgICAgICBWYWxpZGF0aW9uRmFjdG9yeSxcbiAgICAgICAgQ29udHJvbFJlbGF0aW9uc0ZhY3RvcnksXG4gICAgICAgIE9ic0FkYXB0ZXJIZWxwZXIsXG4gICAgICAgIE9ic1ZhbHVlQWRhcHRlcixcbiAgICAgICAgRW5jb3VudGVyQWRhcHRlcixcbiAgICAgICAgUGVyc29uQXR0cmlidUFkYXB0ZXIsXG4gICAgICAgIE9yZGVyVmFsdWVBZGFwdGVyLFxuICAgICAgICBEZWJ1Z01vZGVTZXJ2aWNlXG4gICAgXSxcbiAgICBleHBvcnRzOiBbRm9ybVJlbmRlcmVyQ29tcG9uZW50LCBBZmVOZ1NlbGVjdENvbXBvbmVudCxcbiAgICAgICAgRXJyb3JSZW5kZXJlckNvbXBvbmVudCwgRGF0ZVRpbWVQaWNrZXJNb2R1bGUsIEVuY291bnRlclZpZXdlck1vZHVsZSAsIE5neERhdGVUaW1lUGlja2VyTW9kdWxlXVxufSlcbmV4cG9ydCBjbGFzcyBGb3JtRW50cnlNb2R1bGUge1xuXG59XG4iXX0=

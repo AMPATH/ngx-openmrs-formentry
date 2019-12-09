@@ -1,0 +1,16 @@
+import * as tslib_1 from "tslib";
+import { QuestionBase } from './question-base';
+import { AfeControlType } from '../../abstract-controls-extension/afe-control-type';
+var CheckBoxQuestion = /** @class */ (function (_super) {
+    tslib_1.__extends(CheckBoxQuestion, _super);
+    function CheckBoxQuestion(options) {
+        var _this = _super.call(this, options) || this;
+        _this.renderingType = 'checkbox' || 'radio';
+        _this.options = options.options || [];
+        _this.controlType = AfeControlType.AfeFormControl;
+        return _this;
+    }
+    return CheckBoxQuestion;
+}(QuestionBase));
+export { CheckBoxQuestion };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2hlY2tib3gubW9kZWwuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYW1wYXRoLWtlbnlhL25neC1vcGVubXJzLWZvcm1lbnRyeS8iLCJzb3VyY2VzIjpbImZvcm0tZW50cnkvcXVlc3Rpb24tbW9kZWxzL2NoZWNrYm94Lm1vZGVsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFFL0MsT0FBTyxFQUFFLGNBQWMsRUFBRSxNQUFNLG9EQUFvRCxDQUFDO0FBRXBGO0lBQXNDLDRDQUFZO0lBSTlDLDBCQUFZLE9BQXdCO1FBQXBDLFlBQ0ksa0JBQU0sT0FBTyxDQUFDLFNBSWpCO1FBSEcsS0FBSSxDQUFDLGFBQWEsR0FBRyxVQUFVLElBQUksT0FBTyxDQUFDO1FBQzNDLEtBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFDLE9BQU8sSUFBSSxFQUFFLENBQUM7UUFDckMsS0FBSSxDQUFDLFdBQVcsR0FBRyxjQUFjLENBQUMsY0FBYyxDQUFDOztJQUNyRCxDQUFDO0lBRUwsdUJBQUM7QUFBRCxDQUFDLEFBWEQsQ0FBc0MsWUFBWSxHQVdqRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFF1ZXN0aW9uQmFzZSB9IGZyb20gJy4vcXVlc3Rpb24tYmFzZSc7XG5pbXBvcnQgeyBDaGVja2JveE9wdGlvbnMgfSBmcm9tICcuL2ludGVyZmFjZXMvY2hlY2tib3gtb3B0aW9ucyc7XG5pbXBvcnQgeyBBZmVDb250cm9sVHlwZSB9IGZyb20gJy4uLy4uL2Fic3RyYWN0LWNvbnRyb2xzLWV4dGVuc2lvbi9hZmUtY29udHJvbC10eXBlJztcblxuZXhwb3J0IGNsYXNzIENoZWNrQm94UXVlc3Rpb24gZXh0ZW5kcyBRdWVzdGlvbkJhc2Uge1xuXG4gICAgb3B0aW9uczogeyBrZXk6IHN0cmluZywgdmFsdWU6IHN0cmluZyB9W107XG5cbiAgICBjb25zdHJ1Y3RvcihvcHRpb25zOiBDaGVja2JveE9wdGlvbnMpIHtcbiAgICAgICAgc3VwZXIob3B0aW9ucyk7XG4gICAgICAgIHRoaXMucmVuZGVyaW5nVHlwZSA9ICdjaGVja2JveCcgfHwgJ3JhZGlvJztcbiAgICAgICAgdGhpcy5vcHRpb25zID0gb3B0aW9ucy5vcHRpb25zIHx8IFtdO1xuICAgICAgICB0aGlzLmNvbnRyb2xUeXBlID0gQWZlQ29udHJvbFR5cGUuQWZlRm9ybUNvbnRyb2w7XG4gICAgfVxuXG59XG4iXX0=
