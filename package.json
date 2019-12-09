@@ -1,7 +1,7 @@
 {
   "name": "@ampath-kenya/ngx-openmrs-formentry",
   "main": "ngx-openmrs-formentry/dist/ngx-formentry",
-  "version": "3.0.0-alpha1",
+  "version": "3.0.0-alpha2",
   "scripts": {
     "ng": "ng",
     "start": "npm run build:lib && ng serve",
