@@ -1,7 +1,7 @@
 {
-  "name": "ngx-openmrs-formentry",
+  "name": "@ampath-kenya/ngx-openmrs-formentry",
   "main": "ngx-openmrs-formentry/dist/ngx-formentry",
-  "version": "2.12.4-SNAPSHOT",
+  "version": "3.0.0-alpha2",
   "scripts": {
     "ng": "ng",
     "start": "npm run build:lib && ng serve",
@@ -69,5 +69,31 @@
     "tslib": "^1.10.0",
     "tslint": "~5.20.1",
     "typescript": "~3.5.0"
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.org/AMPATH/ngx-openmrs-formentry.svg?branch=master)](https://travis-ci.org/AMPATH/ngx-openmrs-formentry)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMPATH/ngx-openmrs-formentry.git"
+  },
+  "keywords": [
+    "openmrs",
+    "dynamic",
+    "forms",
+    "angular",
+    "8",
+    "angular",
+    "reactive",
+    "forms",
+    "openmrs",
+    "form",
+    "entry",
+    "ampath",
+    "EHR"
+  ],
+  "author": "Ampath Developers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AMPATH/ngx-openmrs-formentry/issues"
+  },
+  "homepage": "https://github.com/AMPATH/ngx-openmrs-formentry#readme"
 }
