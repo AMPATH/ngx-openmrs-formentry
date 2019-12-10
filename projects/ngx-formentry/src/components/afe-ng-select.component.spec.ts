@@ -22,7 +22,7 @@ describe('Component: AFE-select-component Unit Tests', () => {
     it('should have required properties', (done) => {
         expect(component.dataSource).toBeUndefined;
         expect(component.multiple).toBeUndefined;
-        expect(component.question_options.length).toBe(0);
+        expect(component.question_options).toBeDefined;
         expect(component.selected_question_option).toBeUndefined;
         expect(component.subject).toBeUndefined;
         expect(component.extras).toBeUndefined;

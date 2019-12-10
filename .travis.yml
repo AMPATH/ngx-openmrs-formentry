@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - "10"
 before_install:
   - export TZ=Africa/Nairobi
   - date
@@ -9,8 +9,9 @@ services:
 install:
   - npm install
 script:
+  - npm run lint
+  - npm run test:coverage
   - npm run build:lib
-  - npm run test
 addons:
   apt:
     packages:

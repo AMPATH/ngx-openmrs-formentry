@@ -1,10 +1,11 @@
+// tslint:disable:indent
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import { Subscriber ,  Observable, Subject, of } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Subscriber, Observable, Subject, of } from 'rxjs';
 
 import {
-  QuestionFactory, Form, FormFactory, ObsValueAdapter, OrderValueAdapter,
-  EncounterAdapter, DataSources, FormErrorsService, EncounterPdfViewerService
+	QuestionFactory, Form, FormFactory, ObsValueAdapter, OrderValueAdapter,
+	EncounterAdapter, DataSources, FormErrorsService, EncounterPdfViewerService
 } from '../../dist/ngx-formentry';
 import { FormGroup } from '@angular/forms';
 
@@ -14,45 +15,47 @@ const adultForm = require('./adult-1.4.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 	data: any;
-  schema: any;
-  sections: {} = {};
-  formGroup: FormGroup;
-  activeTab = 0;
-  form: Form;
-  stack = [];
-  encounterObject = adultFormObs;
-  showingEncounterViewer = false;
-  public header: string = 'UMD Demo';
+	schema: any;
+	sections: {} = {};
+	formGroup: FormGroup;
+	activeTab = 0;
+	form: Form;
+	stack = [];
+	encounterObject = adultFormObs;
+	showingEncounterViewer = false;
+	public header = 'UMD Demo';
 
-  constructor(
-    private questionFactory: QuestionFactory,
-    private formFactory: FormFactory, private obsValueAdapater: ObsValueAdapter,
-    private orderAdaptor: OrderValueAdapter,
+	constructor(
+		private questionFactory: QuestionFactory,
+		private formFactory: FormFactory, private obsValueAdapater: ObsValueAdapter,
+		private orderAdaptor: OrderValueAdapter,
 		private encAdapter: EncounterAdapter, private dataSources: DataSources,
 		private encounterPdfViewerService: EncounterPdfViewerService,
-    private formErrorsService: FormErrorsService, private http: HttpClient) {
-        this.schema = adultForm;
-		}
-		
-  ngOnInit() {
+		private formErrorsService: FormErrorsService, private http: HttpClient) {
+		this.schema = adultForm;
+	}
+
+	// tslint:disable-next-line:use-life-cycle-interface
+	ngOnInit() {
 		this.dataSources.registerDataSource('drug', { searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
 		this.dataSources.registerDataSource('personAttribute',
-    	{ searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
+			{ searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
 		this.dataSources.registerDataSource('problem', { searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
 		this.dataSources.registerDataSource('location', { searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
 		this.dataSources.registerDataSource('provider', { searchOptions: this.sampleSearch, resolveSelectedValue: this.sampleResolve });
-		
-    let ds = {
+
+		const ds = {
 			dataSourceOptions: { concept: undefined },
 			searchOptions: (text?: string) => {
 				if (ds.dataSourceOptions && ds.dataSourceOptions.concept) {
-					let items: Array<any> = [{ id: 1, text: 'Stage 1 Symptom' }, { id: 2, text: 'Stage 2 Symptom' }];
+					const items: Array<any> = [{ id: 1, text: 'Stage 1 Symptom' }, { id: 2, text: 'Stage 2 Symptom' }];
+					// tslint:disable-next-line
 					return Observable.create((observer: Subject<any>) => {
 						setTimeout(() => {
 							observer.next(items);
@@ -63,7 +66,8 @@ export class AppComponent {
 
 			resolveSelectedValue: (key: string) => {
 				if (ds.dataSourceOptions && ds.dataSourceOptions.concept) {
-					let item = { id: 1, text: 'Stage 1 Symptom' };
+					const item = { id: 1, text: 'Stage 1 Symptom' };
+					// tslint:disable-next-line
 					return Observable.create((observer: Subject<any>) => {
 						setTimeout(() => {
 							observer.next(item);
@@ -75,42 +79,42 @@ export class AppComponent {
 
 		this.dataSources.registerDataSource('conceptAnswers', ds);
 
-		let obs = new MockObs();
+		const obs = new MockObs();
 		this.dataSources.registerDataSource('rawPrevEnc', obs.getObs());
 
-		this.dataSources.registerDataSource('patient', { sex: 'M'}, true);
+		this.dataSources.registerDataSource('patient', { sex: 'M' }, true);
 
 		this.dataSources.registerDataSource('patientInfo', {
 			name: 'Test Patient', age: '37', birthdate: '7/7/1982', mui: '447062073-5', nid: '1234567'
 		});
 
 		this.dataSources.registerDataSource('file', {
-				fileUpload: (data) => {
-					return of({ image: 'https://unsplash.it/1040/720' });
-				},
-				fetchFile: (url) => {
-					console.log(url, 'APP COMPONENT');
-					return new Observable((observer: Subscriber<any>) => {
-						let objectUrl: string = null;
-							const headers = new HttpHeaders({ Accept: 'image/png,image/jpeg,image/gif,application/pdf' });
-							this.http
-								.get('https://unsplash.it/1040/720', {
-									headers,
-									responseType: "blob"
-								})
-								.subscribe(m => {
-									objectUrl = URL.createObjectURL(m);
-									console.log(objectUrl);
-									observer.next(objectUrl);
-								});
+			fileUpload: (data) => {
+				return of({ image: 'https://unsplash.it/1040/720' });
+			},
+			fetchFile: (url) => {
+				console.log(url, 'APP COMPONENT');
+				return new Observable((observer: Subscriber<any>) => {
+					let objectUrl: string = null;
+					const headers = new HttpHeaders({ Accept: 'image/png,image/jpeg,image/gif,application/pdf' });
+					this.http
+						.get('https://unsplash.it/1040/720', {
+							headers,
+							responseType: 'blob'
+						})
+						.subscribe(m => {
+							objectUrl = URL.createObjectURL(m);
+							console.log(objectUrl);
+							observer.next(objectUrl);
+						});
 
-							return () => {
-								if (objectUrl) {
-									URL.revokeObjectURL(objectUrl);
-									objectUrl = null;
-								}
-							};
-					});
+					return () => {
+						if (objectUrl) {
+							URL.revokeObjectURL(objectUrl);
+							objectUrl = null;
+						}
+					};
+				});
 			}
 		});
 
@@ -132,12 +136,12 @@ export class AppComponent {
 	}
 
 	public setUpCascadeSelectForWHOStaging() {
-		let subject = new Subject();
-		let source = this.dataSources.dataSources['conceptAnswers'];
+		const subject = new Subject();
+		const source = this.dataSources.dataSources['conceptAnswers'];
 		source.dataFromSourceChanged = subject.asObservable();
 
-		let whoStageQuestion = this.form.searchNodeByQuestionId('adultWHOStage')[0];
-		if (whoStageQuestion){
+		const whoStageQuestion = this.form.searchNodeByQuestionId('adultWHOStage')[0];
+		if (whoStageQuestion) {
 			whoStageQuestion.control.valueChanges.subscribe((val) => {
 				if (source.dataFromSourceChanged) {
 					console.log('changing value for WHO', val);
@@ -164,9 +168,10 @@ export class AppComponent {
 	public createForm() {
 		this.form = this.formFactory.createForm(this.schema, this.dataSources.dataSources);
 	}
-	
+
 	public sampleResolve(): Observable<any> {
-		let item = { value: '1', label: 'Art3mis' };
+		const item = { value: '1', label: 'Art3mis' };
+		// tslint:disable-next-line
 		return Observable.create((observer: Subject<any>) => {
 			setTimeout(() => {
 				observer.next(item);
@@ -175,12 +180,13 @@ export class AppComponent {
 	}
 
 	public sampleSearch(): Observable<any> {
-		let items: Array<any> = [{ value: '0', label: 'Aech' },
+		const items: Array<any> = [{ value: '0', label: 'Aech' },
 		{ value: '5b6e58ea-1359-11df-a1f1-0026b9348838', label: 'Art3mis' },
 		{ value: '2', label: 'Daito' },
 		{ value: '3', label: 'Parzival' },
 		{ value: '4', label: 'Shoto' }];
-		
+
+		// tslint:disable-next-line
 		return Observable.create((observer: Subject<any>) => {
 			setTimeout(() => {
 				observer.next(items);
@@ -204,7 +210,7 @@ export class AppComponent {
 
 		if (this.form.valid) {
 			this.form.showErrors = false;
-			let payload = this.encAdapter.generateFormPayload(this.form);
+			const payload = this.encAdapter.generateFormPayload(this.form);
 			console.log('encounter payload', payload);
 
 			// Alternative is to populate for each as shown below
@@ -223,6 +229,6 @@ export class AppComponent {
 
 	public toggleEncounterViewer() {
 		this.showingEncounterViewer === true ?
-		this.showingEncounterViewer = false : this.showingEncounterViewer = true;
+			this.showingEncounterViewer = false : this.showingEncounterViewer = true;
 	}
 }

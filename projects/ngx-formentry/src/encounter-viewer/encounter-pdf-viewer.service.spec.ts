@@ -29,6 +29,8 @@ const adultFormOrders = require('../../../../src/app/mock/orders.json');
 
 function sampleResolve(): Observable<any> {
   const item = { value: '1', label: 'Art3mis' };
+
+  // tslint:disable-next-line
   return Observable.create((observer: Subject<any>) => {
     setTimeout(() => {
       observer.next(item);
@@ -44,7 +46,7 @@ function sampleSearch(): Observable<any> {
     { value: '3', label: 'Parzival' },
     { value: '4', label: 'Shoto' }
   ];
-
+  // tslint:disable-next-line
   return Observable.create((observer: Subject<any>) => {
     setTimeout(() => {
       observer.next(items);
