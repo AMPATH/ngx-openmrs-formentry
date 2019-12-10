@@ -13,6 +13,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ```npm start```
 
+## Testing
+
+```npm run test```
+
+## Testing with coverage
+
+```npm run test:coverage```
+
 ## To publish
 
 Update the version in all the package.jsons

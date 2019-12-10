@@ -17,6 +17,7 @@ import { SelectDropdownComponent } from './select-dropdown.component';
 import { Option } from './option';
 import { OptionList } from './option-list';
 
+// tslint:disable-block
 export const SELECT_VALUE_ACCESSOR: ExistingProvider = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => SelectComponent),
