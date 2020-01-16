@@ -3,11 +3,11 @@ import { FormSchemaCompiler } from './form-schema-compiler.service';
 import * as _ from 'lodash';
 
 describe('FormSchemaCompiler Service:', () => {
-  const formSchemaAdult: any = require('../../mock/schema/adult-return.json');
-  const compiledSchemaExpectation: any = require('../../mock/schema/compiled-adult-return.json');
-  const componentArt: any = require('../../mock/schema/component_art.json');
-  const componentHosp: any = require('../../mock/schema/component_hospitalization.json');
-  const componentPreclinic: any = require('../../mock/schema/component_preclinic-review.json');
+  const formSchemaAdult: any = JSON.parse(JSON.stringify(require('../../mock/schema/adult-return.json')));
+  const compiledSchemaExpectation: any = JSON.parse(JSON.stringify(require('../../mock/schema/compiled-adult-return.json')));
+  const componentArt: any = JSON.parse(JSON.stringify(require('../../mock/schema/component_art.json')));
+  const componentHosp: any = JSON.parse(JSON.stringify(require('../../mock/schema/component_hospitalization.json')));
+  const componentPreclinic: any = JSON.parse(JSON.stringify(require('../../mock/schema/component_preclinic-review.json')));
   const referencedComponents: Array<any> = [componentArt, componentHosp, componentPreclinic];
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -16,10 +16,9 @@ describe('FormSchemaCompiler Service:', () => {
       ]
     });
   });
-  it('should have FormSchemaCompiler defined and compileFormSchema defined as a public property', () => {
+  it('should have FormSchemaCompiler defined', () => {
     const formSchemaCompiler: FormSchemaCompiler = TestBed.get(FormSchemaCompiler);
     expect(formSchemaCompiler).toBeTruthy();
-    expect(formSchemaCompiler.compileFormSchema).toBeTruthy();
   });
   it('should extract all pages from referenced components and append it to the compiled schema', () => {
     const formSchemaCompiler: FormSchemaCompiler = TestBed.get(FormSchemaCompiler);

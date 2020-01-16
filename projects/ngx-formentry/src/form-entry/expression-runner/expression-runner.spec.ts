@@ -22,7 +22,7 @@ describe('Control Hider Helper Service:', () => {
         const runner: ExpressionRunner = TestBed.get(ExpressionRunner);
         const control = new AfeFormControl();
         const expresion = '1===1';
-        const runnable: Runnable = runner.getRunnable(expresion, control, {}, {});
+        const runnable: Runnable = runner.getRunnable(expresion, control, {}, { a: 'a' });
         expect(runnable.run()).toBe(true);
     });
 

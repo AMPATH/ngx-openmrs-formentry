@@ -5,7 +5,7 @@ import { Subscriber, Observable, Subject, of } from 'rxjs';
 
 import {
 	QuestionFactory, Form, FormFactory, ObsValueAdapter, OrderValueAdapter,
-	EncounterAdapter, DataSources, FormErrorsService, EncounterPdfViewerService
+	EncounterAdapter, DataSources, FormErrorsService
 } from '../../dist/ngx-formentry';
 import { FormGroup } from '@angular/forms';
 
@@ -36,7 +36,6 @@ export class AppComponent {
 		private formFactory: FormFactory, private obsValueAdapater: ObsValueAdapter,
 		private orderAdaptor: OrderValueAdapter,
 		private encAdapter: EncounterAdapter, private dataSources: DataSources,
-		private encounterPdfViewerService: EncounterPdfViewerService,
 		private formErrorsService: FormErrorsService, private http: HttpClient) {
 		this.schema = adultForm;
 	}
