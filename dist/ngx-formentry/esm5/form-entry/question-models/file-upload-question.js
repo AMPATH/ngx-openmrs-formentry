@@ -1,0 +1,18 @@
+import * as tslib_1 from "tslib";
+import { QuestionBase } from './question-base';
+import { AfeControlType } from '../../abstract-controls-extension/afe-control-type';
+var FileUploadQuestion = /** @class */ (function (_super) {
+    tslib_1.__extends(FileUploadQuestion, _super);
+    function FileUploadQuestion(options) {
+        var _this = _super.call(this, options) || this;
+        _this.showTime = true;
+        _this.showWeeksAdder = false;
+        _this.renderingType = 'file';
+        _this.dataSource = options.dataSource;
+        _this.controlType = AfeControlType.AfeFormControl;
+        return _this;
+    }
+    return FileUploadQuestion;
+}(QuestionBase));
+export { FileUploadQuestion };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZS11cGxvYWQtcXVlc3Rpb24uanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYW1wYXRoLWtlbnlhL25neC1vcGVubXJzLWZvcm1lbnRyeS8iLCJzb3VyY2VzIjpbImZvcm0tZW50cnkvcXVlc3Rpb24tbW9kZWxzL2ZpbGUtdXBsb2FkLXF1ZXN0aW9uLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFFL0MsT0FBTyxFQUFFLGNBQWMsRUFBRSxNQUFNLG9EQUFvRCxDQUFDO0FBRXBGO0lBQXdDLDhDQUFZO0lBSWhELDRCQUFZLE9BQWtDO1FBQTlDLFlBQ0ksa0JBQU0sT0FBTyxDQUFDLFNBSWpCO1FBUkQsY0FBUSxHQUFHLElBQUksQ0FBQztRQUNoQixvQkFBYyxHQUFHLEtBQUssQ0FBQztRQUluQixLQUFJLENBQUMsYUFBYSxHQUFHLE1BQU0sQ0FBQztRQUM1QixLQUFJLENBQUMsVUFBVSxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUM7UUFDckMsS0FBSSxDQUFDLFdBQVcsR0FBRyxjQUFjLENBQUMsY0FBYyxDQUFDOztJQUNyRCxDQUFDO0lBQ0wseUJBQUM7QUFBRCxDQUFDLEFBVkQsQ0FBd0MsWUFBWSxHQVVuRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFF1ZXN0aW9uQmFzZSB9IGZyb20gJy4vcXVlc3Rpb24tYmFzZSc7XG5pbXBvcnQgeyBGaWxlVXBsb2FkUXVlc3Rpb25PcHRpb25zIH0gZnJvbSAnLi9pbnRlcmZhY2VzL2ZpbGUtdXBsb2FkLXF1ZXN0aW9uLW9wdGlvbnMnO1xuaW1wb3J0IHsgQWZlQ29udHJvbFR5cGUgfSBmcm9tICcuLi8uLi9hYnN0cmFjdC1jb250cm9scy1leHRlbnNpb24vYWZlLWNvbnRyb2wtdHlwZSc7XG5cbmV4cG9ydCBjbGFzcyBGaWxlVXBsb2FkUXVlc3Rpb24gZXh0ZW5kcyBRdWVzdGlvbkJhc2Uge1xuICAgIHNob3dUaW1lID0gdHJ1ZTtcbiAgICBzaG93V2Vla3NBZGRlciA9IGZhbHNlO1xuICAgIGRhdGFTb3VyY2U/OiBhbnk7XG4gICAgY29uc3RydWN0b3Iob3B0aW9uczogRmlsZVVwbG9hZFF1ZXN0aW9uT3B0aW9ucykge1xuICAgICAgICBzdXBlcihvcHRpb25zKTtcbiAgICAgICAgdGhpcy5yZW5kZXJpbmdUeXBlID0gJ2ZpbGUnO1xuICAgICAgICB0aGlzLmRhdGFTb3VyY2UgPSBvcHRpb25zLmRhdGFTb3VyY2U7XG4gICAgICAgIHRoaXMuY29udHJvbFR5cGUgPSBBZmVDb250cm9sVHlwZS5BZmVGb3JtQ29udHJvbDtcbiAgICB9XG59XG4iXX0=

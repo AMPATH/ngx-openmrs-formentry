@@ -1,0 +1,11 @@
+import * as tslib_1 from "tslib";
+import { QuestionBase } from '../question-base';
+var NestedQuestion = /** @class */ (function (_super) {
+    tslib_1.__extends(NestedQuestion, _super);
+    function NestedQuestion(options) {
+        return _super.call(this, options) || this;
+    }
+    return NestedQuestion;
+}(QuestionBase));
+export { NestedQuestion };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmVzdGVkLXF1ZXN0aW9ucy5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0BhbXBhdGgta2VueWEvbmd4LW9wZW5tcnMtZm9ybWVudHJ5LyIsInNvdXJjZXMiOlsiZm9ybS1lbnRyeS9xdWVzdGlvbi1tb2RlbHMvaW50ZXJmYWNlcy9uZXN0ZWQtcXVlc3Rpb25zLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0sa0JBQWtCLENBQUM7QUFHaEQ7SUFBNkMsMENBQVk7SUFFckQsd0JBQVksT0FBb0I7ZUFDNUIsa0JBQU0sT0FBTyxDQUFDO0lBQ2xCLENBQUM7SUFDTCxxQkFBQztBQUFELENBQUMsQUFMRCxDQUE2QyxZQUFZLEdBS3hEIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUXVlc3Rpb25CYXNlIH0gZnJvbSAnLi4vcXVlc3Rpb24tYmFzZSc7XG5pbXBvcnQgeyBCYXNlT3B0aW9ucyB9IGZyb20gJy4vYmFzZS1vcHRpb25zJztcblxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIE5lc3RlZFF1ZXN0aW9uIGV4dGVuZHMgUXVlc3Rpb25CYXNlIHtcbiAgICBhYnN0cmFjdCBxdWVzdGlvbnM6IFF1ZXN0aW9uQmFzZVtdO1xuICAgIGNvbnN0cnVjdG9yKG9wdGlvbnM6IEJhc2VPcHRpb25zKSB7XG4gICAgICAgIHN1cGVyKG9wdGlvbnMpO1xuICAgIH1cbn1cbiJdfQ==
