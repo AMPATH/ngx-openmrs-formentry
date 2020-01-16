@@ -70,4 +70,21 @@ describe('JS Expression Helper Service:', () => {
     result = helper.arrayContainsAny(arr, members);
     expect(result).toBe(false);
   });
+
+  it('should extract repeating group values', () => {
+    const helper: JsExpressionHelper = TestBed.get(JsExpressionHelper);
+
+    const input = [
+      {
+        uuid: 'uuid',
+        value: 1
+      },
+      {
+        uuid: 'uuid2',
+        value: 2
+      }
+    ];
+    const result = helper.extractRepeatingGroupValues('value', input);
+    expect(result).toEqual([1, 2]);
+  });
 });
