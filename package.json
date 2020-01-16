@@ -37,7 +37,6 @@
     "ngx-cookie": "^4.1.2",
     "ngx-file-uploader": "0.0.18",
     "ngx-webcam": "^0.2.2",
-    "pdfmake": "0.1.62",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3",
     "shelljs": "^0.8.3",

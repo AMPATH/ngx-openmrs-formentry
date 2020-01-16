@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Form } from '../../form-entry/form-factory/form';
-import { NodeBase } from '../../form-entry/form-factory/form-node';
 import { EncounterAdapter } from '../../form-entry/value-adapters/encounter.adapter';
-
-import { EncounterPdfViewerService } from '../encounter-pdf-viewer.service';
 
 @Component({
     selector: 'encounter-renderer',
@@ -22,13 +19,12 @@ export class EncounterContainerComponent implements OnInit {
     }
 
     constructor(
-        private encAdapter: EncounterAdapter,
-        private encounterPdfViewerService: EncounterPdfViewerService) { }
+        private encAdapter: EncounterAdapter) { }
 
     ngOnInit() {
     }
 
     displayPdf() {
-        this.encounterPdfViewerService.displayPdf(this.$form);
+        console.warn('Functionality removed from this repository during angular 8 upgrade!');
     }
 }
