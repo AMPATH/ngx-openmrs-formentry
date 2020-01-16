@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatTabsModule , MatIconModule , MatCardModule} from '@angular/material';
+import { MatTabsModule , MatIconModule , MatCardModule, MatExpansionModule} from '@angular/material';
 // import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -55,6 +55,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
         MatIconModule,
         MatTabsModule,
         MatCardModule,
+        MatExpansionModule,
         NgxDateTimePickerModule,
         SharedModule
     ],
