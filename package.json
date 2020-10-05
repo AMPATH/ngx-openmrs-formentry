@@ -56,6 +56,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.5",
     "codelyzer": "~4.2.1",
+    "husky": "^4.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.0.0",
@@ -64,12 +65,25 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lint-staged": "^10.4.0",
     "ng-packagr": "^3.0.0-rc.2",
+    "prettier": "2.1.2",
     "protractor": "^5.4.0",
     "ts-node": "~5.0.1",
     "tsickle": ">=0.25.5",
     "tslib": "^1.7.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": [
+      "ng lint ngx-openmrs-formentry",
+      "prettier --write"
+    ]
   }
 }
