@@ -82,7 +82,6 @@
   },
   "lint-staged": {
     "*.{js,css,md}": [
-      "ng lint ngx-openmrs-formentry",
       "prettier --write"
     ]
   }
