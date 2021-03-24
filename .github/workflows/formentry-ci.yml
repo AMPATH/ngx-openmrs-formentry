@@ -7,14 +7,19 @@ on:
 
 jobs:
   set-timezone:
-    name: Set timezone
-    uses: zcong1993/setup-timezone@master
-    with:
-      timezone: Africa/Nairobi
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Africa/Nairobi
 
   build:
     name: 'Build'
     runs-on: ubuntu-latest
+
+    needs: set-timezone
 
     steps:
       - uses: actions/checkout@v2
