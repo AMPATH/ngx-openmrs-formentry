@@ -91,8 +91,8 @@ export class AppointmentsOverviewComponent implements OnInit, OnChanges {
                   this.loadingAppointments = false;
                   _data.map((appointment, index) => {
                     appointment.count =
-                      data[index] !== undefined
-                        ? data[index].count.scheduled
+                    data.results[index] !== undefined
+                        ? data.results[index].count.scheduled
                         : 0;
                   });
                   this.appointments = _data;
