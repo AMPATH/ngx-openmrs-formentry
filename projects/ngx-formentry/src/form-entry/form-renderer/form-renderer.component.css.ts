@@ -163,4 +163,15 @@ export const DEFAULT_STYLES = `a {
 [hidden] {
   display: none !important;
 }
+.repeating {
+  position: relative;
+  padding: 16px;
+  background-color: #f4f4f4;
+  margin-bottom: 16px;
+}
+.repeating button  {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
     `;

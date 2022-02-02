@@ -169,56 +169,66 @@
   [ngClass]="{ disabled: node.control.disabled }">
   <!--ARRAY CONTROL-->
   <div [ngSwitch]="node.question.renderingType">
-    <div class="well" style="padding: 2px" *ngSwitchCase="'repeating'">
-      <h4 style="margin: 2px; font-weight: bold">{{ node.question.label }}</h4>
-      <hr style="
-          margin-left: -2px;
-          margin-right: -2px;
-          margin-bottom: 4px;
-          margin-top: 8px;
-          border-width: 2px;
-        " />
-      <div [ngSwitch]="node.question.extras.type">
-        <div *ngSwitchCase="'testOrder'">
-          <div *ngFor="let child of node.children; let i = index">
-            <form-renderer *ngFor="let question of child.question.questions" [parentComponent]="this"
-              [node]="child.children[question.key]" [parentGroup]="child.control"></form-renderer>
-            <div>{{ child.orderNumber }}</div>
-            <button type="button " class="bx--btn bx--btn--danger bx--btn--sm" (click)="node.removeAt(i)">
-              Remove
-            </button>
-            <br />
-            <hr style="
-                margin-left: -2px;
-                margin-right: -2px;
-                margin-bottom: 4px;
-                margin-top: 8px;
-                border-width: 1px;
-              " />
+    <div  *ngSwitchCase="'repeating'">
+      <fieldset>
+        <legend style="font-weight: bold; padding-left: 0px; padding-bottom: 16px;">{{ node.question.label }}</legend>
+        <div [ngSwitch]="node.question.extras.type">
+          <div *ngSwitchCase="'testOrder'">
+            <div *ngFor="let child of node.children; let i = index">
+              <div class="repeating">
+                <form-renderer *ngFor="let question of child.question.questions" [parentComponent]="this"
+                  [node]="child.children[question.key]" [parentGroup]="child.control"></form-renderer>
+                <span style="position: absolute; bottom: 16px;">{{ child.orderNumber }}</span>
+                <button type="button" class="bx--btn bx--btn--danger-ghost" (click)="node.removeAt(i)">
+                  Remove
+                  <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                    aria-hidden="true">
+                    <g id="surface1">
+                      <path d="M 6 6 L 7 6 L 7 12 L 6 12 Z M 6 6 " />
+                      <path d="M 9 6 L 10 6 L 10 12 L 9 12 Z M 9 6 " />
+                      <path
+                        d="M 2 3 L 2 4 L 3 4 L 3 14 C 3 14.550781 3.449219 15 4 15 L 12 15 C 12.550781 15 13 14.550781 13 14 L 13 4 L 14 4 L 14 3 Z M 4 14 L 4 4 L 12 4 L 12 14 Z M 4 14 " />
+                      <path d="M 6 1 L 10 1 L 10 2 L 6 2 Z M 6 1 " />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div *ngSwitchCase="'obsGroup'" style="margin-bottom: 20px">
-          <div *ngFor="let child of node.children; let i = index">
-            <form-renderer *ngFor="let question of child.question.questions" [parentComponent]="this"
-              [node]="child.children[question.key]" [parentGroup]="child.control"></form-renderer>
-            <button type="button " class="bx--btn bx--btn--danger bx--btn--sm" (click)="node.removeAt(i)">
-              Remove
-            </button>
-            <br />
-            <hr style="
-                margin-left: -2px;
-                margin-right: -2px;
-                margin-bottom: 4px;
-                margin-top: 8px;
-                border-width: 1px;
-              " />
+          <div *ngSwitchCase="'obsGroup'">
+            <div class="repeating" *ngFor="let child of node.children; let i = index">
+              <div class="repeating">
+                <form-renderer *ngFor="let question of child.question.questions" [parentComponent]="this"
+                  [node]="child.children[question.key]" [parentGroup]="child.control"></form-renderer>
+                <button type="button" class="bx--btn bx--btn--danger-ghost" (click)="node.removeAt(i)">
+                  Remove
+                  <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                    aria-hidden="true">
+                    <g id="surface1">
+                      <path d="M 6 6 L 7 6 L 7 12 L 6 12 Z M 6 6 " />
+                      <path d="M 9 6 L 10 6 L 10 12 L 9 12 Z M 9 6 " />
+                      <path
+                        d="M 2 3 L 2 4 L 3 4 L 3 14 C 3 14.550781 3.449219 15 4 15 L 12 15 C 12.550781 15 13 14.550781 13 14 L 13 4 L 14 4 L 14 3 Z M 4 14 L 4 4 L 12 4 L 12 14 Z M 4 14 " />
+                      <path d="M 6 1 L 10 1 L 10 2 L 6 2 Z M 6 1 " />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <button type="button" class="bx--btn bx--btn--primary" (click)="node.createChildNode()">
-        Add
-      </button>
+        <button class="bx--btn bx--btn--ghost" type="button" (click)="node.createChildNode()">
+          Add
+          <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+            xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+            aria-hidden="true">
+            <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+          </svg>
+        </button>
+      </fieldset>
     </div>
   </div>
 </div>
