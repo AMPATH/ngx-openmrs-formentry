@@ -43,6 +43,7 @@ import { InputModule } from '../components/input/input.module';
 import { CustomControlWrapperModule } from '../components/custom-control-wrapper/custom-control-wrapper..module';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { CustomComponentWrapperModule } from '../components/custom-component-wrapper/custom-component-wrapper..module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     SharedModule,
     CustomControlWrapperModule,
     CustomComponentWrapperModule,
-    NgxTabSetModule.forRoot()
+    NgxTabSetModule.forRoot(),
+    TranslateModule.forRoot(),
   ],
   declarations: [
     FormRendererComponent,
@@ -101,7 +103,8 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     AfeNgSelectComponent,
     ErrorRendererComponent,
     DateTimePickerModule,
-    NgxDateTimePickerModule
-  ]
+    NgxDateTimePickerModule,
+    TranslateModule,
+  ],
 })
 export class FormEntryModule { }

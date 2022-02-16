@@ -16,10 +16,12 @@ import {
   // EncounterPdfViewerService
 } from '@ampath-kenya/ngx-formentry';
 import { MockObs } from './mock/mock-obs';
+import { TranslateService } from '@ngx-translate/core';
 
 const adultForm = require('./adult-1.6.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -47,7 +49,8 @@ export class AppComponent implements OnInit {
     private dataSources: DataSources,
     // private encounterPdfViewerService: EncounterPdfViewerService,
     private formErrorsService: FormErrorsService,
-    private http: HttpClient
+    private http: HttpClient,
+    private translate: TranslateService,
   ) {
     this.schema = adultForm;
   }
@@ -74,6 +77,14 @@ export class AppComponent implements OnInit {
       resolveSelectedValue: this.sampleResolve
     });
 
+    this.translate.addLangs(['en', 'fr']);
+    this.translate.setDefaultLang('en');
+    
+    // const TRANSLATIONS_FR = require('./i18n/adult-14_fr.json');
+    // this.translate.setTranslation('fr', TRANSLATIONS_FR);
+
+    const browserLang = this.translate.getBrowserLang();
+    this.translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
 
     const ds = {
       dataSourceOptions: { concept: undefined },
