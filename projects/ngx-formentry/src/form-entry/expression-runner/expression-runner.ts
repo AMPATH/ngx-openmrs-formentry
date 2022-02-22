@@ -8,7 +8,7 @@ import { ArrayNode } from '../form-factory/form-node';
 import { ControlRelationsFactory } from '../form-factory/control-relations.factory';
 import { Form } from '../form-factory/form';
 import * as moment_ from 'moment';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 const moment = moment_;
 @Injectable()
@@ -56,7 +56,7 @@ export class ExpressionRunner {
 
         // prevent more than one return statements
         if (expression.indexOf('return') === -1) {
-          expression = 'return ' + expression;
+          expression = `"return  ${expression}"`;
         }
         const afeDynamicFunc = new Function(paramList, expression);
         scope[Symbol.iterator] = function* () {
@@ -151,16 +151,21 @@ export class ExpressionRunner {
     }
   }
 
-  private setControlQuestion(control: AfeFormArray | AfeFormGroup | AfeFormControl,
-    form: Form, scope: any) {
+  private setControlQuestion(
+    control: AfeFormArray | AfeFormGroup | AfeFormControl,
+    form: Form,
+    scope: any
+  ) {
     if (
       control &&
       control.controlRelations &&
-      control.controlRelations.relations) {
+      control.controlRelations.relations
+    ) {
       control.controlRelations.relations.forEach((relation) => {
         const related = relation.relatedTo as any;
-        const question = form.searchNodeByQuestionId(related.uuid)[0]?.question?.extras;
-        scope["FORM"][related.uuid] = question;
+        const question = form.searchNodeByQuestionId(related.uuid)[0]?.question
+          ?.extras;
+        scope['FORM'][related.uuid] = question;
       });
     }
   }
