@@ -237,6 +237,32 @@ export class OwlDateTimeInputDirective<T>
         return this.disabled;
     }
 
+
+    constructor(private elmRef: ElementRef,
+        private renderer: Renderer2,
+        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
+        @Optional() @Inject(OWL_DATE_TIME_FORMATS) private dateTimeFormats: OwlDateTimeFormats) {
+        if (!this.dateTimeAdapter) {
+            throw Error(
+                `OwlDateTimePicker: No provider found for DateTimePicker. You must import one of the following ` +
+                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
+                `custom implementation.`
+            );
+        }
+
+        if (!this.dateTimeFormats) {
+            throw Error(
+                `OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ` +
+                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
+                `custom implementation.`
+            );
+        }
+
+        this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
+            this.value = this.value;
+        });
+    }
+
     private _dateTimeFilter: (date: T | null) => boolean;
 
     /** Whether the date time picker's input is disabled. */
@@ -283,6 +309,21 @@ export class OwlDateTimeInputDirective<T>
     private localeSub: Subscription = Subscription.EMPTY;
 
     private lastValueValid = true;
+
+    /** The combined form control validator for this input. */
+    private validator: ValidatorFn | null = Validators.compose([
+        this.parseValidator,
+        this.minValidator,
+        this.maxValidator,
+        this.filterValidator,
+        this.rangeValidator
+    ]);
+
+    /** Emits when the value changes (either due to user input or programmatic change). */
+    public valueChange = new EventEmitter<T[] | T | null>();
+
+    /** Emits when the disabled state has changed */
+    public disabledChange = new EventEmitter<boolean>();
 
     /** The form control validator for whether the input parses. */
     private parseValidator: ValidatorFn = (): ValidationErrors | null => {
@@ -398,50 +439,9 @@ export class OwlDateTimeInputDirective<T>
             : { owlDateTimeRange: true };
     }
 
-    /** The combined form control validator for this input. */
-    private validator: ValidatorFn | null = Validators.compose([
-        this.parseValidator,
-        this.minValidator,
-        this.maxValidator,
-        this.filterValidator,
-        this.rangeValidator
-    ]);
-
-    /** Emits when the value changes (either due to user input or programmatic change). */
-    public valueChange = new EventEmitter<T[] | T | null>();
-
-    /** Emits when the disabled state has changed */
-    public disabledChange = new EventEmitter<boolean>();
-
     private onModelChange: Function = () => { };
     private onModelTouched: Function = () => { };
     private validatorOnChange: Function = () => { };
-
-
-    constructor(private elmRef: ElementRef,
-        private renderer: Renderer2,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
-        @Optional() @Inject(OWL_DATE_TIME_FORMATS) private dateTimeFormats: OwlDateTimeFormats) {
-        if (!this.dateTimeAdapter) {
-            throw Error(
-                `OwlDateTimePicker: No provider found for DateTimePicker. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
-            );
-        }
-
-        if (!this.dateTimeFormats) {
-            throw Error(
-                `OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
-            );
-        }
-
-        this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
-            this.value = this.value;
-        });
-    }
     public ngOnInit(): void {
         if (!this.dtPicker) {
             throw Error(
