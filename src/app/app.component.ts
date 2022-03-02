@@ -235,7 +235,15 @@ export class AppComponent implements OnInit {
         this.labelMap[concept.reqId] = concept.display;
       });
     });
+
+    this.fetchMockedTranslationsData().then((translationsData: any) => {
+      this.translate.setTranslation('en', translationsData?.en);
+      this.translate.setTranslation('fr', translationsData?.fr);
+    });
+
+
   }
+  
 
   fetchMockedConceptData (concepts) {
     const promise = new Promise(function(resolve, reject) {
@@ -264,6 +272,24 @@ export class AppComponent implements OnInit {
           }
         ];
         resolve(conceptData);
+      }, 2000);
+    });
+    return promise;
+  }
+
+  fetchMockedTranslationsData () {
+    const promise = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        const translationsData = {
+          "form": "d8e47fbe-3ea1-3271-a9de-23c5c4c67a82",
+          "en": {
+            "Provider:": "Provider in English"
+          },
+          "fr": {
+            "Provider:": "Provider in French"
+          }
+        };
+        resolve(translationsData);
       }, 2000);
     });
     return promise;
