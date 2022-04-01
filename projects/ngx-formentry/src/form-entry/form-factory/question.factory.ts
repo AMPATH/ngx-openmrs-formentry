@@ -8,6 +8,7 @@ import { TextAreaInputQuestion } from '../question-models/text-area-input-questi
 import { SelectQuestion } from '../question-models/select-question';
 import { UiSelectQuestion } from '../question-models/ui-select-question';
 import { DateQuestion } from '../question-models/date-question';
+import { TimeQuestion } from './../question-models/time-question';
 import { MultiSelectQuestion } from '../question-models/multi-select-question';
 import { QuestionGroup } from '../question-models/group-question';
 import { RepeatingQuestion } from '../question-models/repeating-question';
@@ -149,6 +150,27 @@ export class QuestionFactory {
       required: 'required',
       id: 'key'
     };
+
+    this.copyProperties(mappings, schemaQuestion, question);
+    this.addDisableOrHideProperty(schemaQuestion, question);
+    this.addAlertProperty(schemaQuestion, question);
+    this.addHistoricalExpressions(schemaQuestion, question);
+    this.addCalculatorProperty(schemaQuestion, question);
+    return question;
+  }
+
+  toTimeQuestion(schemaQuestion: any): TimeQuestion {
+    const question = new TimeQuestion({ type: '', key: '' });
+    question.renderingType = 'time';
+    question.validators = this.addValidators(schemaQuestion);
+    question.extras = schemaQuestion;
+
+    const mappings: any = {
+      label: 'label',
+      required: 'required',
+      id: 'key'
+    };
+
 
     this.copyProperties(mappings, schemaQuestion, question);
     this.addDisableOrHideProperty(schemaQuestion, question);
@@ -705,6 +727,8 @@ export class QuestionFactory {
         return this.toEncounterDatetimeQuestion(schema);
       case 'date':
         return this.toDateQuestion(schema);
+      case 'time':
+          return this.toTimeQuestion(schema);
       case 'multiCheckbox':
         return this.toMultiCheckboxQuestion(schema);
       case 'drug':

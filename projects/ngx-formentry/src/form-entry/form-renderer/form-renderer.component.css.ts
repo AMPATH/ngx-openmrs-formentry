@@ -60,6 +60,9 @@ export const DEFAULT_STYLES = `a {
       .slick-initialized .swipe-tab-content {
         min-height: 500px;
       }
+      .time-control{
+        width:50%;
+      }
     }
     .slick-initialized .swipe-tab {
       display: flex;
@@ -150,6 +153,9 @@ export const DEFAULT_STYLES = `a {
  .no-border {
   border: 0;
   box-shadow: none;
+}
+.time-control{
+  width:100%;
 }
 
     `;

@@ -185,6 +185,11 @@
         (onDateChange)="onDateChanged(node)"
         [showWeeks]="node.question.showWeeksAdder"
       ></ngx-date-time-picker>
+      <ngx-time-picker  
+      *ngSwitchCase="'time'"  
+      id="node.question.key + 'id'"  
+      [formControlName]="node.question.key"
+      ></ngx-time-picker>
       <ng-select
         *ngSwitchCase="'multi-select'"
         [style.height]="'auto'"
