@@ -38,6 +38,7 @@ import { EncounterViewerModule } from '../encounter-viewer/encounter-viewer.modu
 import { CheckboxModule } from '../components/check-box/checkbox.module';
 import { SharedModule } from '../shared.module';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { NgxTimePickerModule } from '../components/ngx-time-picker/ngx-time-picker.module';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     MatTabsModule,
     MatCardModule,
     NgxDateTimePickerModule,
+    NgxTimePickerModule,
     SharedModule
   ],
   declarations: [
@@ -94,7 +96,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     ErrorRendererComponent,
     DateTimePickerModule,
     EncounterViewerModule,
-    NgxDateTimePickerModule
+    NgxDateTimePickerModule,
+    NgxTimePickerModule
   ]
 })
 export class FormEntryModule {}

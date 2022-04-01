@@ -11,6 +11,7 @@ export class QuestionBase implements BaseOptions {
   hidden?: any;
   showTime?: any;
   showWeek?: any;
+  showDate?: boolean;
   historicalDisplay?: any;
   rows?: any;
   showWeeksAdder?: any;
@@ -36,6 +37,8 @@ export class QuestionBase implements BaseOptions {
   disable?: string | boolean;
   calculateExpression?: string;
   options?: any;
+  maxTime?: string;
+  minTime?: string;
 
   constructor(options: BaseOptions) {
     this.defaultValue = options.defaultValue;
