@@ -1,5 +1,5 @@
 {
-  "name": "ngx-openmrs-formentry",
+  "name": "@ampath-kenya/ngx-openmrs-formentry",
   "main": "ngx-openmrs-formentry/dist/ngx-formentry",
   "version": "2.12.17",
   "scripts": {
