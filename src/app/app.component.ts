@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 import { Subscriber, Observable, Subject, of, Observer } from 'rxjs';
+//import { TranslateService } from '@ngx-translate/core';
+import * as ngTranslate from '@ngx-translate/core';
 
 import {
   QuestionFactory,
@@ -47,7 +49,10 @@ export class AppComponent implements OnInit {
     private dataSources: DataSources,
     // private encounterPdfViewerService: EncounterPdfViewerService,
     private formErrorsService: FormErrorsService,
-    private http: HttpClient
+    private http: HttpClient,
+    private translate: ngTranslate.TranslateService
+    
+
   ) {
     this.schema = adultForm;
   }
@@ -72,6 +77,13 @@ export class AppComponent implements OnInit {
     this.dataSources.registerDataSource('provider', {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
+    });
+
+    this.translate.addLangs(['en', 'fr']);
+    this.translate.setDefaultLang('en');
+    this.fetchMockedTranslationsData().then((translationsData: any) => {
+      this.translate.setTranslation('en', translationsData?.en);
+      this.translate.setTranslation('fr', translationsData?.fr);
     });
 
 
@@ -253,6 +265,25 @@ export class AppComponent implements OnInit {
           }
         ];
         resolve(conceptData);
+      }, 2000);
+    });
+    return promise;
+  }
+
+  fetchMockedTranslationsData () {
+    const promise = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        const translationsData = {
+          "form": "d8e47fbe-3ea1-3271-a9de-23c5c4c67a82",
+          "en": {
+            "Reason For Attendance": "Reason For Attendance in English"
+          },
+          "fr": {
+            "Place of Consultation:": "Place of Consultation in French:",
+            "Consultation Details": "Consultation Details in French"
+          }
+        };
+        resolve(translationsData);
       }, 2000);
     });
     return promise;

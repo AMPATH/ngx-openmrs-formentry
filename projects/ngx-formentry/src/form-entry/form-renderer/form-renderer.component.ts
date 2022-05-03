@@ -17,6 +17,7 @@ import { DataSource } from '../question-models/interfaces/data-source';
 import { FormErrorsService } from '../services/form-errors.service';
 import { QuestionGroup } from '../question-models/group-question';
 import { SelectOption } from '../question-models/interfaces/select-option';
+import  * as ngTranslate from '@ngx-translate/core';
 
 // import { concat, of, Observable, Subject, BehaviorSubject } from 'rxjs';
 // import * as _ from 'lodash';
@@ -53,6 +54,7 @@ export class FormRendererComponent implements OnInit, OnChanges {
     private validationFactory: ValidationFactory,
     private dataSources: DataSources,
     private formErrorsService: FormErrorsService,
+    public translate: ngTranslate.TranslateService,
     @Inject(DOCUMENT) private document: any
   ) {
     this.activeTab = 0;

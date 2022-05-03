@@ -43,6 +43,7 @@ import { InputModule } from '../components/input/input.module';
 import { CustomControlWrapperModule } from '../components/custom-control-wrapper/custom-control-wrapper..module';
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { CustomComponentWrapperModule } from '../components/custom-component-wrapper/custom-component-wrapper..module';
+import  * as ngTranslate from '@ngx-translate/core';
 
 
 @NgModule({
@@ -63,7 +64,9 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     SharedModule,
     CustomControlWrapperModule,
     CustomComponentWrapperModule,
-    NgxTabSetModule.forRoot()
+    NgxTabSetModule.forRoot(),
+    ngTranslate.TranslateModule.forRoot(),
+
   ],
   declarations: [
     FormRendererComponent,
