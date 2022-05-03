@@ -18,10 +18,12 @@ import {
   // EncounterPdfViewerService
 } from '@ampath-kenya/ngx-formentry';
 import { MockObs } from './mock/mock-obs';
+import { TranslateService } from '@ngx-translate/core';
 
 const adultForm = require('./adult-1.6.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -236,7 +238,15 @@ export class AppComponent implements OnInit {
         this.labelMap[concept.reqId] = concept.display;
       });
     });
+
+    this.fetchMockedTranslationsData().then((translationsData: any) => {
+      this.translate.setTranslation('en', translationsData?.en);
+      this.translate.setTranslation('fr', translationsData?.fr);
+    });
+
+
   }
+  
 
   fetchMockedConceptData (concepts) {
     const promise = new Promise(function(resolve, reject) {

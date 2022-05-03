@@ -104,7 +104,8 @@ import  * as ngTranslate from '@ngx-translate/core';
     AfeNgSelectComponent,
     ErrorRendererComponent,
     DateTimePickerModule,
-    NgxDateTimePickerModule
-  ]
+    NgxDateTimePickerModule,
+    ngTranslate.TranslateModule,
+  ],
 })
 export class FormEntryModule { }

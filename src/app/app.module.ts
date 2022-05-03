@@ -1,11 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormEntryModule } from '@ampath-kenya/ngx-formentry';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
-import { HttpClient } from '@angular/common/http';
 import * as ngTranslateLoader from '@ngx-translate/http-loader';
 //import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 //import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -15,10 +15,13 @@ import { of } from 'rxjs';
 
 class CustomLoader implements ngTranslate.TranslateLoader {
     getTranslation(lang: string): any {
-        return of({"Patient Other ICRC ID (Prot6, ect):": 'value'});
+        return of({"Provider:": 'Provider 2:'});
     }
 }
 
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
