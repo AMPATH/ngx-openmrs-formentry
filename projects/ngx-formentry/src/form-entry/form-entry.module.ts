@@ -1,11 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-// import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+
+
 import { DebugModeService } from '../form-entry/services/debug-mode.service';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
-
 import { FormErrorsService } from './services/form-errors.service';
 import { FormControlService } from './form-factory/form-control.service';
 import { ValidationFactory } from './form-factory/validation.factory';
@@ -41,7 +41,6 @@ import { NgxTabSetModule } from '../components/ngx-tabset/modules/ngx-tabset.mod
 import { SelectModule as SelectModuleCarbon } from '../components/select/select.module';
 import { InputModule } from '../components/input/input.module';
 import { CustomControlWrapperModule } from '../components/custom-control-wrapper/custom-control-wrapper..module';
-import { LazyElementsModule } from '@angular-extensions/elements';
 import { CustomComponentWrapperModule } from '../components/custom-component-wrapper/custom-component-wrapper..module';
 
 
@@ -56,7 +55,6 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     InputModule,
     DateTimePickerModule,
     NgxRemoteSelectModule,
-    // NoopAnimationsModule,
     RemoteFileUploadModule,
     CheckboxModule,
     NgxDateTimePickerModule,

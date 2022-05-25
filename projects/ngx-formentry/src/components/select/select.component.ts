@@ -112,7 +112,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
             margin-top: 0;
         }
         .bx--select-input__wrapper{
-            min-width: 16rem;
+            max-width: 18rem;
+            width:100%
         }
     `],
     providers: [

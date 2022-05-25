@@ -10,12 +10,12 @@ import {
   SimpleChanges
 } from '@angular/core';
 
-import { TabComponent } from './tab';
+import { TabComponent } from './tab.component';
 
 @Component({
-  selector: 'ngx-tabset',
-  styleUrls: ['ngx-tabset.css'],
-  templateUrl: 'tabset.html'
+  selector: 'tab-set',
+  styleUrls: ['./tab-set.component.css'],
+  templateUrl: './tab-set.component.html'
 })
 export class TabsetComponent implements AfterContentInit, OnChanges {
   @ContentChildren(TabComponent) public tabs: QueryList<TabComponent>;

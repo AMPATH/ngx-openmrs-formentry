@@ -1,9 +1,14 @@
 .date-time-picker-container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.date-time-picker-container input{
+    width: 100%
 }
 
 .week-select-wrapper {
-    margin-left: 1rem;
-    width: 30%;
+    width: 18rem;
+    margin-top: 0.5rem;
 }

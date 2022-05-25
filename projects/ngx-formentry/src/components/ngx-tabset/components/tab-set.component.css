@@ -1,12 +1,9 @@
 .tab-container {
-  overflow-x: hidden;
-  display: flex;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 200px auto;
 }
 
 .tab {
-  width: 219px;
-  position: fixed;
 }
 
 .tab button {
@@ -24,7 +21,6 @@
   margin: 0 0 0.063rem;
 }
 
-
 @media screen and (max-width: 768px) {
   .tab button {
     height: 3rem;
@@ -41,7 +37,6 @@
 .tab button.enabled.hover {
   background-color: var(--gray-gray-10);
 }
-
 
 .tab button.enabled.hover {
   background-color: var(--gray-gray-10);
@@ -119,7 +114,12 @@
 }
 
 .tabcontent {
-  width: 100%;
-  padding: 0 0.625rem;
-  margin-left: 230px;
+  height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.tabcontent::-webkit-scrollbar {
+  display: none;
 }

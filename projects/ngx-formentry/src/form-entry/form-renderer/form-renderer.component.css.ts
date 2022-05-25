@@ -173,6 +173,11 @@ export const DEFAULT_STYLES = `a {
 }
 
 .question-area {
-  width: 100%
+  width:100%;
+  max-width:18.25rem
+}
+
+.question-area textarea {
+  max-width:100%;
 }
     `;
