@@ -1,4 +1,4 @@
-<div style="position: fixed; width: 95%;" *ngIf="form && form.rootNode">
+<div  *ngIf="form && form.rootNode">
   <form [formGroup]="form.rootNode.control">
     <form-renderer [node]="form.rootNode" [labelMap]="labelMap"></form-renderer>
   </form>

@@ -1,20 +1,21 @@
 <!--CONTAINERS-->
 <div *ngIf="node.question.renderingType === 'form'">
-  <tab-set (onSelect)="tabSelected($event)" [selectedIndex]="activeTab">
-    <ngx-tab
-      [tabTitle]="question.label"
-      *ngFor="let question of node.question.questions; let i = index"
-    >
+  <div style="display: grid; grid-template-columns: 200px auto">
+    <div class="navLinks">
+      <ul *ngFor="let question of node.question.questions; let i = index">
+        <li (click)="tabSelected(i)">{{ question.label }}</li>
+      </ul>
+    </div>
+    <div>
       <form-renderer
-        [node]="node.children[question.key]"
+        [node]="node.children[node.question.questions[activeTab].key]"
         [parentComponent]="this"
         [parentGroup]="node.control"
         [labelMap]="labelMap"
       >
       </form-renderer>
-    </ngx-tab>
-    <error-renderer [form]="node.form"></error-renderer>
-  </tab-set>
+    </div>
+  </div>
 </div>
 <div *ngIf="node.question.renderingType === 'page'">
   <!--Page Components-->

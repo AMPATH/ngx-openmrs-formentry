@@ -3,9 +3,6 @@
   grid-template-columns: 200px auto;
 }
 
-.tab {
-}
-
 .tab button {
   font-family: inherit;
   display: block;
