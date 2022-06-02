@@ -3,12 +3,11 @@ import {
   OnInit,
   Input,
   Inject,
-  Output,
-  EventEmitter, OnChanges, SimpleChanges
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
-// import 'hammerjs';
-import { DEFAULT_STYLES } from './form-renderer.component.css';
 import { DOCUMENT } from '@angular/common';
+
 import { DataSources } from '../data-sources/data-sources';
 import { NodeBase, LeafNode, GroupNode } from '../form-factory/form-node';
 import { AfeFormGroup } from '../../abstract-controls-extension/afe-form-group';
@@ -24,11 +23,12 @@ import  * as ngTranslate from '@ngx-translate/core';
 
 // import { debounceTime, distinctUntilChanged, tap, switchMap, catchError, map } from 'rxjs/operators';
 // import { QuestionBase } from '../question-models';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'form-renderer',
   templateUrl: 'form-renderer.component.html',
-  styles: ['../../style/app.css', DEFAULT_STYLES]
+  styleUrls: ['../../style/app.css', './form-renderer.component.css']
 })
 export class FormRendererComponent implements OnInit, OnChanges {
   @Input() public parentComponent: FormRendererComponent;
@@ -48,7 +48,6 @@ export class FormRendererComponent implements OnInit, OnChanges {
   public isNavigation = true;
   public type = 'default';
   inlineDatePicker: Date = new Date();
-
 
   constructor(
     private validationFactory: ValidationFactory,
@@ -101,32 +100,10 @@ export class FormRendererComponent implements OnInit, OnChanges {
       this.node.question.extras &&
       this.node.question.renderingType === 'remote-select'
     ) {
-      // let selectQuestion = this.node.form.searchNodeByQuestionId(this.node.question.key)[0];
       this.dataSource = this.dataSources.dataSources[
         this.node.question.dataSource
       ];
-      /*
-      let defaltValues = of([]);
-      if (this.dataSource.resolveSelectedValue(selectQuestion.control.value)) {
-        defaltValues = this.dataSource.resolveSelectedValue(selectQuestion.control.value).pipe(
-          catchError(() => of([])), // empty list on error
-        );
-      }
-      this.items$ = concat(
-        defaltValues,
-        this.itemsInput$.pipe(
-          debounceTime(200),
-          distinctUntilChanged(),
-          tap(() => this.itemsLoading = true),
-          switchMap(term => this.dataSource.searchOptions(term).pipe(
-            catchError(() => of([])), // empty list on error
-            tap(() => {
-              this.itemsLoading = false
-            })
-          ))
-        )
-      );
-      */
+
       if (this.dataSource && this.node.question.dataSourceOptions) {
         this.dataSource.dataSourceOptions = this.node.question.dataSourceOptions;
       }
@@ -142,14 +119,17 @@ export class FormRendererComponent implements OnInit, OnChanges {
       this.dataSource = this.dataSources.dataSources[
         this.node.question.dataSource
       ];
-      // console.log('Key', this.node.question);
-      // console.log('Data source', this.dataSource);
     }
   }
 
   public loadLabels() {
-    if (!this.node.question.label && this.labelMap[this.node.question.extras?.questionOptions?.concept]) {
-      this.node.question.label = this.labelMap[this.node.question.extras.questionOptions.concept];
+    if (
+      !this.node.question.label &&
+      this.labelMap[this.node.question.extras?.questionOptions?.concept]
+    ) {
+      this.node.question.label = this.labelMap[
+        this.node.question.extras.questionOptions.concept
+      ];
     }
     if (this.node.question.options) {
       this.node.question.options.forEach((option) => {
@@ -177,7 +157,7 @@ export class FormRendererComponent implements OnInit, OnChanges {
     return true;
   }
 
-  public clickTab(tabNumber) {
+  public clickTab(tabNumber: number) {
     this.activeTab = tabNumber;
   }
 
@@ -245,13 +225,11 @@ export class FormRendererComponent implements OnInit, OnChanges {
   }
 
   public onDateChanged(node: LeafNode) {
-    // console.log('Node', node);
     this.node = node;
   }
 
   public upload(event) {
-    // console.log('Event', event);
-    // console.log('Data', this.dataSource);
+    // TO DO Add upload functionality
   }
 
   public toggleInformation(infoId) {
@@ -264,7 +242,7 @@ export class FormRendererComponent implements OnInit, OnChanges {
     }
   }
   private getErrors(node: NodeBase) {
-    const errors: any = node.control.errors;
+    const errors: ValidationErrors = node.control.errors;
 
     if (errors) {
       return this.validationFactory.errors(errors, node.question);
@@ -272,5 +250,4 @@ export class FormRendererComponent implements OnInit, OnChanges {
 
     return [];
   }
-
 }
