@@ -21,7 +21,7 @@ import {
   Runnable
 } from '../expression-runner/expression-runner';
 import { JsExpressionHelper } from '../helpers/js-expression-helper';
-
+import { JsExpressionAutopopulate } from '../helpers/autopopulate-expression-helper';
 @Injectable()
 export class FormControlService {
   controls = [];
@@ -145,6 +145,12 @@ export class FormControlService {
       form,
       form.dataSourcesContainer.dataSources
     );
+    this.wireAutopopulator(
+      question,
+      control,
+      form,
+      form.dataSourcesContainer.dataSources
+    );
 
     if (parentControl instanceof AfeFormGroup) {
       parentControl.setControl(question.key, control);
@@ -209,6 +215,29 @@ export class FormControlService {
       );
       // this functionality strictly assumes the calculateExpression function has been defined in the JsExpressionHelper class
       control.setCalculatorFn(runnable.run);
+    }
+  }
+  // autopopulate values based on previous inputs
+  private wireAutopopulator(
+    question: QuestionBase,
+    control: AfeFormControl,
+    form: Form,
+    dataSource?: any
+  ) {
+    if (
+      question.autopopulateExpression &&
+      question.autopopulateExpression !== ''
+    ) {
+      const autopopulate: JsExpressionAutopopulate = new JsExpressionAutopopulate();
+      const runner: ExpressionRunner = new ExpressionRunner();
+      const runnable: Runnable = runner.getRunnable(
+        question.autopopulateExpression,
+        control,
+        autopopulate.autopopulateFunctions,
+        dataSource,
+        form
+      );
+      control.setAutopopulateFn(runnable.run);
     }
   }
 }

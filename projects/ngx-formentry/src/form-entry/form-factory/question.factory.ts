@@ -79,6 +79,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -108,6 +109,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -137,6 +139,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -165,6 +168,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -194,6 +198,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -224,6 +229,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -260,6 +266,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -292,6 +299,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -320,6 +328,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -344,6 +353,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -367,6 +377,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -390,6 +401,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -417,6 +429,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -453,6 +466,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -478,6 +492,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -553,6 +568,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -583,6 +599,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -621,6 +638,7 @@ export class QuestionFactory {
     this.addAlertProperty(schemaQuestion, question);
     this.addHistoricalExpressions(schemaQuestion, question);
     this.addCalculatorProperty(schemaQuestion, question);
+    this.addAutopoulateProperty(schemaQuestion, question);
     return question;
   }
 
@@ -961,6 +979,16 @@ export class QuestionFactory {
     ) {
       question.calculateExpression =
         schemaQuestion.questionOptions.calculate.calculateExpression;
+    }
+  }
+
+  addAutopoulateProperty(schemaQuestion: any, question: QuestionBase): any {
+    if (
+      schemaQuestion.questionOptions &&
+      typeof schemaQuestion.questionOptions.autopopulate === 'object'
+    ) {
+      question.autopopulateExpression =
+        schemaQuestion.questionOptions.autopopulate.autopopulateExpression;
     }
   }
 

@@ -14,12 +14,14 @@ import {
 import { QuestionBase } from '../question-models/question-base';
 import { JsExpressionHelper } from '../helpers/js-expression-helper';
 import { Form } from './form';
+import { JsExpressionAutopopulate } from '../helpers/autopopulate-expression-helper';
 
 @Injectable()
 export class AlertsFactory {
   constructor(
     private expressionRunner: ExpressionRunner,
-    private expressionHelper: JsExpressionHelper
+    private expressionHelper: JsExpressionHelper,
+    private expressionAutopopulate: JsExpressionAutopopulate,
   ) {}
   getJsExpressionshowAlert(
     question: QuestionBase,
@@ -30,6 +32,7 @@ export class AlertsFactory {
       question.alert.alertWhenExpression,
       control,
       this.expressionHelper.helperFunctions,
+      this.expressionAutopopulate.autopopulateFunctions,
       {},
       form
     );

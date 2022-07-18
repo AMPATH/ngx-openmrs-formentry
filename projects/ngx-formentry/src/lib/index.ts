@@ -50,3 +50,4 @@ export { NestedQuestion } from '../form-entry/question-models/interfaces/nested-
 export { DateTimePickerModule } from '../components/date-time-picker/date-time-picker.module';
 export { NgxDateTimePickerModule } from '../components/ngx-datetime-picker/ngx-datetime-picker.module';
 export { JsExpressionHelper } from '../form-entry/helpers/js-expression-helper';
+export { JsExpressionAutopopulate } from '../form-entry/helpers/autopopulate-expression-helper';

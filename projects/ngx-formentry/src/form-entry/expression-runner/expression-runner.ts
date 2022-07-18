@@ -17,6 +17,7 @@ export class ExpressionRunner {
     expression: string,
     control: AfeFormArray | AfeFormGroup | AfeFormControl,
     helper: any,
+    autopopulate: any,
     dataDependencies: any,
     form?: Form
   ): Runnable {
@@ -35,6 +36,7 @@ export class ExpressionRunner {
         runner.setControlQuestion(control, form, scope);
         runner.getControlRelationValueString(control, scope);
         runner.getHelperMethods(helper, scope);
+        runner.getAutopopulateMethods(autopopulate, scope);
         runner.getDataDependencies(dataDependencies, scope);
         if (form) {
           // console.error('Form defined', form);
@@ -161,7 +163,7 @@ export class ExpressionRunner {
     ) {
       control.controlRelations.relations.forEach((relation) => {
         const related = relation.relatedTo as any;
-        const question = form.searchNodeByQuestionId(related.uuid)[0]?.question
+        const question = form?.searchNodeByQuestionId(related.uuid)[0]?.question
           ?.extras;
         scope['FORM'][related.uuid] = question;
       });
@@ -210,6 +212,14 @@ export class ExpressionRunner {
   }
 
   private getHelperMethods(obj: any, scope?: any) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        scope[key] = obj[key];
+      }
+    }
+  }
+
+  private getAutopopulateMethods(obj: any, scope?: any) {
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         scope[key] = obj[key];

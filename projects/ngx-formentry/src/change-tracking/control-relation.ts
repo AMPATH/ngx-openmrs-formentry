@@ -34,6 +34,10 @@ export class ControlRelation {
         (this._control as any).updateCalculatedValue();
       }
 
+      if ((this._control as any).updateAutopopulatedValue) {
+        (this._control as any).updateAutopopulatedValue();
+      }
+
       this._control.updateValueAndValidity();
       if ((this._control as any).updateHiddenState) {
         (this._control as any).updateHiddenState();

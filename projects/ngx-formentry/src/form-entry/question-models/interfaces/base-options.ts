@@ -18,6 +18,7 @@ export interface BaseOptions {
   enableHistoricalValue?: boolean;
   historicalDataValue?: any;
   calculateExpression?: string;
+  autopopulateExpression?: string;
   questions?: any;
   placeholder?: any;
   hidden?: any;

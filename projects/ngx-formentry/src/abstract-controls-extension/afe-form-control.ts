@@ -23,6 +23,7 @@ import { HiderHelper } from '../form-entry/control-hiders-disablers/hider-helper
 import { AlertHelper } from '../form-entry/control-alerts/alert-helpers';
 import { DisablerHelper } from '../form-entry/control-hiders-disablers/disabler-helper';
 import { CanCalculate } from '../form-entry/control-calculators/can-calculate';
+import { CanAutopopulate } from '../form-entry/can-autopopulate/can-autopopulate';
 import { ExpressionRunner } from '../form-entry/expression-runner/expression-runner';
 
 class AfeFormControl
@@ -31,6 +32,7 @@ class AfeFormControl
     CanHide,
     CanDisable,
     CanCalculate,
+    CanAutopopulate,
     CanGenerateAlert,
     ValueChangeListener {
   private _controlRelations: ControlRelations;
@@ -44,6 +46,7 @@ class AfeFormControl
   alert: string;
   alerts: Alert[];
   calculator: Function;
+  autopopulate: Function;
   disablers: Disabler[];
 
   private hiderHelper: HiderHelper = new HiderHelper();
@@ -96,6 +99,17 @@ class AfeFormControl
   updateCalculatedValue() {
     if (this.calculator) {
       const _val = this.calculator.call(ExpressionRunner, {});
+      this.setValue(_val);
+    }
+  }
+
+  setAutopopulateFn(newAutopopulate: Function) {
+    this.autopopulate = newAutopopulate;
+  }
+
+  updateAutopopulatedValue() {
+    if (this.autopopulate) {
+      const _val = this.autopopulate.call(ExpressionRunner, {});
       this.setValue(_val);
     }
   }

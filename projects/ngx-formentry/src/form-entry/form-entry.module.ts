@@ -24,6 +24,7 @@ import { HidersDisablersFactory } from './form-factory/hiders-disablers.factory'
 import { AlertsFactory } from './form-factory/show-messages.factory';
 import { ExpressionRunner } from './expression-runner/expression-runner';
 import { JsExpressionHelper } from './helpers/js-expression-helper';
+import { JsExpressionAutopopulate } from './helpers/autopopulate-expression-helper';
 import { FormSchemaCompiler } from './services/form-schema-compiler.service';
 import { FormFactory } from './form-factory/form.factory';
 import { QuestionFactory } from './form-factory/question.factory';
@@ -83,6 +84,7 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     AlertsFactory,
     ExpressionRunner,
     JsExpressionHelper,
+    JsExpressionAutopopulate,
     HistoricalFieldHelperService,
     FormSchemaCompiler,
     FormFactory,

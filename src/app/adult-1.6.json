@@ -7986,6 +7986,176 @@
 					]
 				}
 			]
-		}
+		},
+		{
+			"label": "Test Autopopulate Section",
+			"isExpanded": "true",
+			"sections": [
+				{
+					"label": "HTS Test Section",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Initial Test Results:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"answers": [
+									{
+										"concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Positive"
+									},
+									{
+										"concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Negative"
+									},
+									{
+										"concept": "1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Inconclusive"
+									}
+								]
+							},
+							"id": "initialTestResult",
+							"validators": []
+						},
+						{
+							"label": "Confirmatory Test Results:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"answers": [
+									{
+										"concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Positive"
+									},
+									{
+										"concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Negative"
+									},
+									{
+										"concept": "1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Inconclusive"
+									}
+								]
+							},
+							"id": "confirmatoryTestResult",
+							"validators": []
+						},
+						{
+							"label": "Final Test Results:",
+							"type": "obs",
+							"questionOptions": {
+								"rendering": "select",
+								"concept": "159427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"answers": [
+									{
+										"concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Positive"
+									},
+									{
+										"concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Negative"
+									},
+									{
+										"concept": "1138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Inconclusive"
+									}
+								],
+								"autopopulate": {
+									"autopopulateExpression": "autopopHtsTest(initialTestResult,confirmatoryTestResult)"
+								}
+							},
+							"id": "finalTestResult",
+							"validators": []
+						}
+					]
+				}
+			]		
+		},
+		{
+			"label": "Nutrition Autopopulate Section",
+			"isExpanded": "true",
+			"sections": [
+				{
+					"label": "Nutrition Test Section",
+					"isExpanded": "true",
+					"questions": [
+						{
+							"label": "Weight (Kg):",
+							"id": "weight",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+								"max": "250",
+								"min": "0"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Height (Cm):",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+							"id": "height",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+								"max": "228",
+								"min": "0"
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "BMI (Kg/m2):",
+							"id": "bmi",
+							"questionOptions": {
+								"rendering": "number",
+								"concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+								"max": "100",
+								"min": "0",
+								"calculate": {
+									"calculateExpression": "calcBMI(height,weight)"
+								}
+							},
+							"type": "obs",
+							"validators": []
+						},
+						{
+							"label": "Nutritional status",
+							"type": "obs",
+							"id": "nutritionalStatus",
+							"questionOptions": {
+								"concept": "163300AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+								"rendering": "radio",
+								"answers": [
+									{
+										"concept": "163303AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Moderate acute malnutrition"
+									},
+									{
+										"concept": "114413AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Overweight/Obese"
+									},
+									{
+										"concept": "163302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Severe acute malnutrition"
+									},
+									{
+										"concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"label": "Normal"
+									}
+								],
+								"autopopulate": {
+									"autopopulateExpression": "autopopNutritionStatus(bmi)"
+								}
+							}
+						}
+					]
+				}
+			]		
+		}	
+
 	]
 }
