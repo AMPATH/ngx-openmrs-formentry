@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 import { Subscriber, Observable, Subject, of, Observer } from 'rxjs';
-//import { TranslateService } from '@ngx-translate/core';
 import * as ngTranslate from '@ngx-translate/core';
 
 import {
@@ -18,7 +17,6 @@ import {
   // EncounterPdfViewerService
 } from '@ampath-kenya/ngx-formentry';
 import { MockObs } from './mock/mock-obs';
-import { TranslateService } from '@ngx-translate/core';
 
 const adultForm = require('./adult-1.6.json');
 const adultFormObs = require('./mock/obs.json');
