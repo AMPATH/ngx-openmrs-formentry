@@ -194,9 +194,15 @@
             [id]="node.question.key + 'id'"
           ></ngx-remote-select>
 
-          <ngx-datetimepicker [weeks]="node.question.extras.questionOptions.weeksList"
-            [showWeeks]="node.question.showWeeksAdder" [theme]="theme" [id]="node.question.key + 'id'"
-            [formControlName]="node.question.key" *ngSwitchCase="'date'" [datePickerFormat]="node.question.datePickerFormat">
+          <ngx-datetimepicker
+            [weeks]="node.question.extras.questionOptions.weeksList"
+            [showWeeks]="node.question.showWeeksAdder"
+            [theme]="theme"
+            [id]="node.question.key + 'id'"
+            [formControlName]="node.question.key"
+            *ngSwitchCase="'date'"
+            [datePickerFormat]="node.question.datePickerFormat"
+          >
           </ngx-datetimepicker>
           <ng-select
             [ngClass]="{ 'afe-custom': theme === 'light' }"
@@ -249,7 +255,12 @@
           />
 
           <div *ngSwitchCase="'radio'">
-            <div *ngFor="let o of node.question.options" [ngClass]="{'in-line': node.question.orientation === 'horizontal'}">
+            <div
+              *ngFor="let o of node.question.options"
+              [ngClass]="{
+                'in-line': node.question.orientation === 'horizontal'
+              }"
+            >
               <label class="form-control no-border">
                 <input
                   type="radio"
@@ -286,7 +297,7 @@
                   <span *ngIf="node.question.showHistoricalValueDate">
                     <span> | </span>
                     <strong class="text-primary"
-                      >{{ node.question.historicalDisplay?._date }}
+                      >{{ node.question.historicalDisplay?._date | date }}
                     </strong>
                     <span
                       class="text-primary"

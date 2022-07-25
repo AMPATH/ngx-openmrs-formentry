@@ -15,15 +15,8 @@ import { ValidationFactory } from '../form-factory/validation.factory';
 import { DataSource } from '../question-models/interfaces/data-source';
 import { FormErrorsService } from '../services/form-errors.service';
 import { QuestionGroup } from '../question-models/group-question';
-import { SelectOption } from '../question-models/interfaces/select-option';
-import  * as ngTranslate from '@ngx-translate/core';
-
-// import { concat, of, Observable, Subject, BehaviorSubject } from 'rxjs';
-// import * as _ from 'lodash';
-
-// import { debounceTime, distinctUntilChanged, tap, switchMap, catchError, map } from 'rxjs/operators';
-// import { QuestionBase } from '../question-models';
 import { ValidationErrors } from '@angular/forms';
+import  * as ngTranslate from '@ngx-translate/core';
 
 @Component({
   selector: 'form-renderer',
