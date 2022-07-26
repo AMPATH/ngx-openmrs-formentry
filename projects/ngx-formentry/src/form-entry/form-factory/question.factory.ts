@@ -54,7 +54,8 @@ export class QuestionFactory {
     ) {
       return {
         label: obj.label,
-        value: obj.concept
+        value: obj.concept,
+        showIf: obj.showIf
       };
     });
 

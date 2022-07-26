@@ -1,0 +1,10 @@
+.bx--select--inline .bx--form__helper-text {
+  order: 4;
+}
+
+.bx--select--inline:not(.bx--select--invalid) .bx--form__helper-text {
+  margin-top: 0;
+}
+.bx--select-input__wrapper {
+  min-width: 16rem;
+}
