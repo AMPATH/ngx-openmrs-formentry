@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 import { Subscriber, Observable, Subject, of, Observer } from 'rxjs';
-import * as ngTranslate from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import {
   QuestionFactory,
@@ -50,9 +50,7 @@ export class AppComponent implements OnInit {
     // private encounterPdfViewerService: EncounterPdfViewerService,
     private formErrorsService: FormErrorsService,
     private http: HttpClient,
-    private translate: ngTranslate.TranslateService
-    
-
+    private translate: TranslateService
   ) {
     this.schema = adultForm;
   }
@@ -78,14 +76,6 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
-
-    this.translate.addLangs(['en', 'fr']);
-    this.translate.setDefaultLang('en');
-    this.fetchMockedTranslationsData().then((translationsData: any) => {
-      this.translate.setTranslation('en', translationsData?.en);
-      this.translate.setTranslation('fr', translationsData?.fr);
-    });
-
 
     const ds = {
       dataSourceOptions: { concept: undefined },
