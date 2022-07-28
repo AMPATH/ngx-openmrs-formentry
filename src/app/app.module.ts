@@ -1,10 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormEntryModule } from '@ampath-kenya/ngx-formentry';
 import { AppComponent } from './app.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { of } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +14,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormEntryModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateService,
+    TranslateModule.forRoot({
+        defaultLanguage: 'en'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

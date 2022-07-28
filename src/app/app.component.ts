@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 import { Subscriber, Observable, Subject, of, Observer } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import {
   QuestionFactory,
@@ -20,6 +21,7 @@ import { MockObs } from './mock/mock-obs';
 const adultForm = require('./adult-1.6.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -47,7 +49,8 @@ export class AppComponent implements OnInit {
     private dataSources: DataSources,
     // private encounterPdfViewerService: EncounterPdfViewerService,
     private formErrorsService: FormErrorsService,
-    private http: HttpClient
+    private http: HttpClient,
+    private translate: TranslateService
   ) {
     this.schema = adultForm;
   }
@@ -73,7 +76,6 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
-
 
     const ds = {
       dataSourceOptions: { concept: undefined },
@@ -224,7 +226,15 @@ export class AppComponent implements OnInit {
         this.labelMap[concept.reqId] = concept.display;
       });
     });
+
+    this.fetchMockedTranslationsData().then((translationsData: any) => {
+      this.translate.setTranslation('en', translationsData?.en);
+      this.translate.setTranslation('fr', translationsData?.fr);
+    });
+
+
   }
+  
 
   fetchMockedConceptData (concepts) {
     const promise = new Promise(function(resolve, reject) {
@@ -253,6 +263,25 @@ export class AppComponent implements OnInit {
           }
         ];
         resolve(conceptData);
+      }, 2000);
+    });
+    return promise;
+  }
+
+  fetchMockedTranslationsData () {
+    const promise = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        const translationsData = {
+          "form": "d8e47fbe-3ea1-3271-a9de-23c5c4c67a82",
+          "en": {
+            "Reason For Attendance": "Reason For Attendance in English"
+          },
+          "fr": {
+            "Place of Consultation:": "Place of Consultation in French:",
+            "Consultation Details": "Consultation Details in French"
+          }
+        };
+        resolve(translationsData);
       }, 2000);
     });
     return promise;

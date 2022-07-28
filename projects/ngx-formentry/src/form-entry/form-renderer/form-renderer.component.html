@@ -2,7 +2,7 @@
 <div *ngIf="node.question.renderingType === 'form'">
   <ngx-tab-set (onSelect)="tabSelected($event)" [selectedIndex]="activeTab">
     <ngx-tab
-      [tabTitle]="question.label"
+      [tabTitle]="question.label | translate"
       *ngFor="let question of node.question.questions; let i = index"
     >
       <form-renderer
@@ -58,7 +58,7 @@
         <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
       </svg>
       <p class="bx--accordion__title">
-        {{ node.question.label }}
+        {{ node.question.label | translate }}
       </p>
     </button>
     <div [collapse]="isCollapsed">
@@ -124,15 +124,9 @@
         <i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i>
       </a>
 
-      <label
-        *ngIf="node.question.label"
-        [style.color]="hasErrors() ? 'red' : ''"
-        class="bx--label"
-        [attr.for]="node.question.key"
-      >
-        {{ node.question.required ? '*' : '' }}
-        {{ node.question.prefix ? node.question.prefix + ' ' : ''
-        }}{{ node.question.label }}
+      <label *ngIf="node.question.label" [style.color]="hasErrors() ? 'red' : ''" class="bx--label"
+        [attr.for]="node.question.key">
+        {{ node.question.required ? '*' : '' }} {{ node.question.prefix ? node.question.prefix + ' ' : '' }}{{ node.question.label  | translate }}
       </label>
 
       <div
@@ -158,7 +152,7 @@
             [id]="node.question.key + 'id'"
           >
             <option *ngFor="let o of node.question.options" [value]="o.value">
-              {{ o.label }}
+              {{ o.label | translate }}
             </option>
           </ibm-select>
 
@@ -274,7 +268,7 @@
                   [id]="node.question.key + 'id'"
                   [value]="o.value"
                 />
-                {{ o.label }}
+                {{ o.label | translate }}
               </label>
             </div>
           </div>
@@ -348,7 +342,7 @@
           node.question.extras.questionInfo !== ' '
         "
       >
-        {{ node.question.extras.questionInfo }}
+        {{ node.question.extras.questionInfo | translate }}
       </div>
     </div>
   </div>
@@ -361,7 +355,7 @@
   <!--ARRAY CONTROL-->
   <div [ngSwitch]="node.question.renderingType">
     <div class="well" style="padding: 2px" *ngSwitchCase="'repeating'">
-      <h4 style="margin: 2px; font-weight: bold">{{ node.question.label }}</h4>
+      <h4 style="margin: 2px; font-weight: bold">{{ node.question.label | translate}}</h4>
       <hr
         style="
           margin-left: -2px;
