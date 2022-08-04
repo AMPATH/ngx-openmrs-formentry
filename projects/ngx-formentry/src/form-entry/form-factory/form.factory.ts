@@ -32,7 +32,7 @@ export class FormFactory {
     public controlService: FormControlService,
     public questionFactroy: QuestionFactory,
     public controlRelationsFactory: ControlRelationsFactory
-  ) {}
+  ) { }
 
   createForm(schema: any, dataSource?: any): Form {
     const form: Form = new Form(schema, this, this.questionFactroy);
@@ -179,7 +179,8 @@ export class FormFactory {
   createArrayNodeChild(
     question: RepeatingQuestion,
     node: ArrayNode,
-    factory?: FormFactory
+    factory?: FormFactory,
+    position?: number
   ): GroupNode {
     if (factory === null || factory === undefined) {
       factory = this;
@@ -197,7 +198,12 @@ export class FormFactory {
     }
 
     const group = factory.createGroupNode(groupQuestion, null, null, node.form);
-    node.children.push(group);
+
+    if (position >= 0) {
+      node.children.splice(position, 0, group)
+    } else {
+      node.children.push(group);
+    }
 
     if (node.control instanceof AfeFormArray) {
       const nodeControl = node.control as AfeFormArray;

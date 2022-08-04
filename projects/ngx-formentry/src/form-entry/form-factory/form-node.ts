@@ -18,7 +18,8 @@ export interface ChildNodeCreatedListener {
 export type CreateArrayChildNodeFunction = (
   question: RepeatingQuestion,
   node: ArrayNode,
-  factory?: FormFactory
+  factory?: FormFactory,
+  position?: number
 ) => GroupNode;
 
 export interface RemoveArrayChildNodeFunction {
@@ -128,6 +129,10 @@ export class ArrayNode extends NodeBase implements ChildNodeCreatedListener {
   }
 
   public createChildNode(): GroupNode {
+    if (this.children.length >= this.question.extras.questionOptions.max) {
+      confirm(`Cannot have more than ${this.question.extras.questionOptions.max} entries`);
+      return;
+    }
     if (this.createChildFunc) {
       const g: GroupNode = this.createChildFunc(
         this.question as RepeatingQuestion,
@@ -141,10 +146,26 @@ export class ArrayNode extends NodeBase implements ChildNodeCreatedListener {
   }
 
   public removeAt(index: number) {
-    const removePrompt = confirm('Are you sure you want to remove?');
-    if (removePrompt) {
-      if (this.removeChildFunc) {
+    if (this.children.length <= this.question.extras.questionOptions.min) {
+      const clearPrompt = confirm(`Are you sure you want to clear this entry?`);
+      if (clearPrompt && this.removeChildFunc && this.createChildNode) {
         this.removeChildFunc(index, this);
+
+        const g: GroupNode = this.createChildFunc(
+          this.question as RepeatingQuestion,
+          this,
+          this.formFactory,
+          index
+        );
+        this.fireChildNodeCreatedListener(g);
+        return g;
+      }
+    } else {
+      const removePrompt = confirm('Are you sure you want to remove?');
+      if (removePrompt) {
+        if (this.removeChildFunc) {
+          this.removeChildFunc(index, this);
+        }
       }
     }
   }
