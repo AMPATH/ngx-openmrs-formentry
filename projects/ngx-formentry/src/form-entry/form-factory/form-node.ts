@@ -161,7 +161,7 @@ export class ArrayNode extends NodeBase implements ChildNodeCreatedListener {
         return g;
       }
     } else {
-      const removePrompt = confirm('Are you sure you want to remove?');
+      const removePrompt = confirm('Are you sure you want to delete this item?');
       if (removePrompt) {
         if (this.removeChildFunc) {
           this.removeChildFunc(index, this);

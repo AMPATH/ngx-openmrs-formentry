@@ -74,8 +74,8 @@ export class FormRendererComponent implements OnInit, OnChanges {
       this.parentComponent.addChildComponent(this);
     }
 
-    if (this.node && this.node.question.renderingType === 'repeating' && this?.node?.question?.extras?.questionOptions?.min) {
-      for (let index = this.node.children.length; index < this?.node?.question?.extras?.questionOptions?.min; index++) {
+    if (this.node && this.node.question.renderingType === 'repeating' && this?.node?.question?.extras?.questionOptions?.min >= 0) {
+      for (let index = this.node.children.length; index < this.node.question.extras.questionOptions.min; index++) {
         this.node.createChildNode();
       }
     }

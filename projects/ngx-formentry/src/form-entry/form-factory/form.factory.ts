@@ -32,7 +32,7 @@ export class FormFactory {
     public controlService: FormControlService,
     public questionFactroy: QuestionFactory,
     public controlRelationsFactory: ControlRelationsFactory
-  ) { }
+  ) {}
 
   createForm(schema: any, dataSource?: any): Form {
     const form: Form = new Form(schema, this, this.questionFactroy);
