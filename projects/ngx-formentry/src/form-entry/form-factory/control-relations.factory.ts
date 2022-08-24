@@ -119,6 +119,8 @@ export class ControlRelationsFactory {
                     | AfeFormArray).addValueChangeListener((value) => {
                     if ((rootControl as any).updateCalculatedValue) {
                       (rootControl as any).updateCalculatedValue();
+                    } else if ((rootControl as any).updateAutopopulatedValue) {
+                      (rootControl as any).updateAutopopulatedValue();
                     }
 
                     rootControl.updateValueAndValidity();
@@ -290,6 +292,13 @@ export class ControlRelationsFactory {
       questionBase.calculateExpression &&
       questionBase.calculateExpression.length > 0 &&
       questionBase.calculateExpression.indexOf(id) !== -1
+    ) {
+      hasRelation = true;
+    } else if (
+      !hasRelation &&
+      questionBase.autopopulateExpression &&
+      questionBase.autopopulateExpression.length > 0 &&
+      questionBase.autopopulateExpression.indexOf(id) !== -1
     ) {
       hasRelation = true;
     }

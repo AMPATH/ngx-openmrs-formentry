@@ -14,6 +14,7 @@ import {
 } from '../../abstract-controls-extension';
 import { QuestionBase } from '../question-models/question-base';
 import { JsExpressionHelper } from '../helpers/js-expression-helper';
+import { JsExpressionAutopopulate } from '../helpers/autopopulate-expression-helper';
 import { Form } from './form';
 // Add ability to display all fields for debugging
 import { DebugModeService } from './../services/debug-mode.service';
@@ -23,6 +24,7 @@ export class HidersDisablersFactory {
   constructor(
     private expressionRunner: ExpressionRunner,
     private expressionHelper: JsExpressionHelper,
+    private expressionAutopopulate: JsExpressionAutopopulate,
     private _debugModeService: DebugModeService
   ) {}
 
@@ -35,6 +37,7 @@ export class HidersDisablersFactory {
       question.disable as string,
       control,
       this.expressionHelper.helperFunctions,
+      this.expressionAutopopulate.autopopulateFunctions,
       {},
       form
     );

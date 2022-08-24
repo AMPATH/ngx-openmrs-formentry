@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HistoricalEncounterDataService } from '../services/historical-encounter-data.service';
 import { JsExpressionHelper } from './js-expression-helper';
+import { JsExpressionAutopopulate } from './autopopulate-expression-helper';
 import {
   Runnable,
   ExpressionRunner
@@ -32,12 +33,14 @@ export class HistoricalHelperService {
     }
 
     const helper = new JsExpressionHelper();
+    const autopopulate = new JsExpressionAutopopulate();
     const control: AfeFormControl = new AfeFormControl();
     const runner: ExpressionRunner = new ExpressionRunner();
     const runnable: Runnable = runner.getRunnable(
       expr,
       control,
       helper.helperFunctions,
+      autopopulate.autopopulateFunctions,
       deps
     );
 

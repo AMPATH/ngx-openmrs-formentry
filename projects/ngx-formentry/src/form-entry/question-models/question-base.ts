@@ -39,6 +39,7 @@ export class QuestionBase implements BaseOptions {
   disable?: string | boolean;
   readOnly?: string | boolean;
   calculateExpression?: string;
+  autopopulateExpression?: string;
   componentConfigs: Array<any>;
   options?: any;
 
@@ -57,6 +58,7 @@ export class QuestionBase implements BaseOptions {
     this.alert = options.alert;
     this.historicalDataValue = options.historicalDataValue;
     this.calculateExpression = options.calculateExpression;
+    this.autopopulateExpression = options.autopopulateExpression;
   }
 
   setHistoricalValue(v: boolean) {
