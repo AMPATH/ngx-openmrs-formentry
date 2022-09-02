@@ -262,7 +262,7 @@
 
           <div *ngSwitchCase="'radio'">
             <radio [id]="node.question.key + 'id'" [formControlName]="node.question.key"
-              [options]="node.question.options" [selected]="node.control.value" [isOptionUnselectable]="node.question.isOptionUnselectable"></radio>
+              [options]="node.question.options" [selected]="node.control.value" [allowRadioUnselect]="node.question.allowRadioUnselect"></radio>
           </div>
 
           <div *ngSwitchCase="'checkbox'">

@@ -236,8 +236,8 @@ export class QuestionFactory {
     question.label = schemaQuestion.label;
     question.key = schemaQuestion.id;
     question.extras = schemaQuestion;
-    question.isOptionUnselectable =
-      schemaQuestion.questionOptions.isOptionUnselectable;
+    question.allowRadioUnselect =
+      schemaQuestion.questionOptions.allowRadioUnselect;
     question.options = schemaQuestion.questionOptions.answers.map((obj) => {
       return {
         label: obj.label,

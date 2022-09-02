@@ -8,7 +8,7 @@ export class RadioButtonQuestion extends QuestionBase {
   constructor(options: RadioButtonOptions) {
     super(options);
     this.renderingType = 'radio';
-    this.isOptionUnselectable = options.isOptionUnselectable === false;
+    this.allowRadioUnselect = options.allowRadioUnselect === false;
     this.options = options.options || [];
     this.controlType = AfeControlType.AfeFormControl;
   }

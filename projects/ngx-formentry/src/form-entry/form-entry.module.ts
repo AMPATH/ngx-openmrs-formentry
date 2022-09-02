@@ -45,7 +45,6 @@ import { CustomControlWrapperModule } from '../components/custom-control-wrapper
 import { LazyElementsModule } from '@angular-extensions/elements';
 import { CustomComponentWrapperModule } from '../components/custom-component-wrapper/custom-component-wrapper..module';
 
-
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -106,4 +105,4 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
     NgxDateTimePickerModule
   ]
 })
-export class FormEntryModule { }
+export class FormEntryModule {}
