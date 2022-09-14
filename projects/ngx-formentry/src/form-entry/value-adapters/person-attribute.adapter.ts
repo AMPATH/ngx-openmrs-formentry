@@ -79,7 +79,10 @@ export class PersonAttribuAdapter implements ValueAdapter {
   ) {
     if (
       rootNode.question.extras &&
-      rootNode.question.extras.type === 'personAttribute'
+      (rootNode.question.extras.type === 'personAttribute' ||
+        rootNode.question.extras.type === 'amrsLocations' ||
+        rootNode.question.extras.type === 'nonAmrsLocations' ||
+        rootNode.question.extras.type === 'siblingLocations')
     ) {
       array.push(rootNode);
     }

@@ -32,7 +32,7 @@
     "jspdf": "^1.5.3",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
-    "ngx-bootstrap": "^4.3.0",
+    "ngx-bootstrap": "4.3.0",
     "ngx-cookie": "^4.0.2",
     "ngx-file-uploader": "0.0.18",
     "ngx-webcam": "^0.2.2",
