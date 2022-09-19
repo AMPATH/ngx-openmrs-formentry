@@ -3147,17 +3147,23 @@
               "type": "obs",
               "validators": []
             },
-            {
-              "label": "Temp (C):",
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
-                "max": "43",
-                "min": "25"
-              },
-              "type": "obs",
-              "validators": []
-            },
+						{
+							"label": "Temp(C):",
+							"questionOptions": {
+								"rendering": "decimal",
+								"concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+								"max": "43.00",
+								"min": "25.00"
+							},
+							"type": "obs",
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							],
+							"id": "temp"
+						},
             {
               "label": "Weight (Kg):",
               "id": "weight",

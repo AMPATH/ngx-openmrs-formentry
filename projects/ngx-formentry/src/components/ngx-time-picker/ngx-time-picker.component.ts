@@ -1,30 +1,26 @@
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR
-} from "@angular/forms";
-import { Component, OnInit, forwardRef } from "@angular/core";
-import * as moment_ from "moment";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, forwardRef } from '@angular/core';
+import * as moment_ from 'moment';
 const moment = moment_;
 
 @Component({
-  selector: "ngx-time-picker",
-  templateUrl: "./ngx-time-picker.component.html",
-  styleUrls: ["./ngx-time-picker.component.css"],
+  selector: 'ngx-time-picker',
+  templateUrl: './ngx-time-picker.component.html',
+  styleUrls: ['./ngx-time-picker.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => NgxTimePickerComponent),
-    },
-  ],
+      useExisting: forwardRef(() => NgxTimePickerComponent)
+    }
+  ]
 })
 export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
-  public value: string = moment().format("HH:mm:ss");
+  public value: string = moment().format('HH:mm:ss');
   public onChange: any = () => {};
   public onTouched: any = () => {};
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public writeValue(value: any): void {
     this.value = this.formatTimeValue(value);
@@ -50,23 +46,27 @@ export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
     */
     let timeArray = [];
     let dateArray = [];
-    let timeValue = "";
+    let timeValue = '';
 
-    if (typeof timeInputString === "undefined" || timeInputString === null) {
+    if (typeof timeInputString === 'undefined' || timeInputString === null) {
     } else {
-      timeArray = timeInputString.split(":");
-      dateArray = timeInputString.split("-");
+      timeArray = timeInputString.split(':');
+      dateArray = timeInputString.split('-');
     }
     if (timeArray.length === 1 && moment(timeInputString).isValid()) {
-      timeValue = moment(timeInputString).format("HH:mm:ss");
+      timeValue = moment(timeInputString).format('HH:mm:ss');
     } else if (timeArray.length > 1 && timeArray.length < 2) {
-      timeValue = moment(timeInputString,moment.defaultFormat).format('HH:mm:ss');
-    } else if(timeArray.length >= 2 && dateArray.length > 1){
-        timeValue = moment(timeInputString,moment.defaultFormat).format('HH:mm:ss');;
-    }else if(timeArray.length >= 2 && dateArray.length <= 1) {
-      timeValue = moment(timeInputString,'HH:mm:ss').format('HH:mm:ss');
-    }else {
-      timeValue = moment().format("HH:mm:ss");
+      timeValue = moment(timeInputString, moment.defaultFormat).format(
+        'HH:mm:ss'
+      );
+    } else if (timeArray.length >= 2 && dateArray.length > 1) {
+      timeValue = moment(timeInputString, moment.defaultFormat).format(
+        'HH:mm:ss'
+      );
+    } else if (timeArray.length >= 2 && dateArray.length <= 1) {
+      timeValue = moment(timeInputString, 'HH:mm:ss').format('HH:mm:ss');
+    } else {
+      timeValue = moment().format('HH:mm:ss');
     }
     return timeValue;
   }
