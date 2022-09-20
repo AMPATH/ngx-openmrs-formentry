@@ -23,6 +23,7 @@ import { MaxValidationModel } from '../question-models/max-validation.model';
 import { MinValidationModel } from '../question-models/min-validation.model';
 import { JsExpressionValidationModel } from '../question-models/js-expression-validation.model';
 import { ConditionalValidationModel } from '../question-models/conditional-validation.model';
+import { DecimalPointValidationModel } from '../question-models/decimal-point-validation.model';
 import { DummyDataSource } from '../data-sources/dummy-data-source';
 import { HistoricalHelperService } from '../helpers/historical-expression-helper-service';
 import { Form } from './form';
@@ -132,6 +133,33 @@ export class QuestionFactory {
     return question;
   }
 
+  toDecimalQuestion(schemaQuestion: any): TextInputQuestion {
+    const question = new TextInputQuestion({
+      placeholder: '',
+      type: '',
+      key: ''
+    });
+    question.label = schemaQuestion.label;
+    question.key = schemaQuestion.id;
+    question.renderingType = 'decimal';
+    question.placeholder = schemaQuestion.questionOptions.placeholder || '';
+    question.extras = schemaQuestion;
+
+    const mappings: any = {
+      label: 'label',
+      required: 'required',
+      id: 'key'
+    };
+
+    this.copyProperties(mappings, schemaQuestion, question);
+    question.validators = this.addValidators(schemaQuestion);
+    this.addDisableOrHideProperty(schemaQuestion, question);
+    this.addAlertProperty(schemaQuestion, question);
+    this.addHistoricalExpressions(schemaQuestion, question);
+    this.addCalculatorProperty(schemaQuestion, question);
+    return question;
+  }
+
   toDateQuestion(schemaQuestion: any): DateQuestion {
     if (schemaQuestion.type === 'encounterDatetime') {
       return this.toEncounterDatetimeQuestion(schemaQuestion);
@@ -170,7 +198,6 @@ export class QuestionFactory {
       required: 'required',
       id: 'key'
     };
-
 
     this.copyProperties(mappings, schemaQuestion, question);
     this.addDisableOrHideProperty(schemaQuestion, question);
@@ -723,12 +750,14 @@ export class QuestionFactory {
         return this.toNumericQuestion(schema);
       case 'number':
         return this.toNumberQuestion(schema);
+      case 'decimal':
+        return this.toDecimalQuestion(schema);
       case 'encounterDatetime':
         return this.toEncounterDatetimeQuestion(schema);
       case 'date':
         return this.toDateQuestion(schema);
       case 'time':
-          return this.toTimeQuestion(schema);
+        return this.toTimeQuestion(schema);
       case 'multiCheckbox':
         return this.toMultiCheckboxQuestion(schema);
       case 'drug':
@@ -831,6 +860,11 @@ export class QuestionFactory {
           case 'js_expression':
             validators.push(new JsExpressionValidationModel(validator));
             break;
+          case 'decimal':
+            const decimalModel = new DecimalPointValidationModel(validator);
+            decimalModel.setValuesAndExpressions();
+            validators.push(decimalModel);
+            break;
           case 'conditionalAnswered':
             validators.push(new ConditionalValidationModel(validator));
             break;
@@ -843,26 +877,21 @@ export class QuestionFactory {
 
     const questionOptions = schemaQuestion.questionOptions;
     const renderingType = questionOptions ? questionOptions.rendering : '';
-    switch (renderingType) {
-      case 'number':
-        if (questionOptions.max && questionOptions.min) {
-          validators.push(
-            new MaxValidationModel({
-              type: 'max',
-              max: questionOptions.max
-            })
-          );
-          validators.push(
-            new MinValidationModel({
-              type: 'min',
-              min: questionOptions.min
-            })
-          );
-        }
-
-        break;
-      default:
-        break;
+    if (renderingType === 'number' || renderingType === 'decimal') {
+      if (questionOptions.max && questionOptions.min) {
+        validators.push(
+          new MaxValidationModel({
+            type: 'max',
+            max: questionOptions.max
+          })
+        );
+        validators.push(
+          new MinValidationModel({
+            type: 'min',
+            min: questionOptions.min
+          })
+        );
+      }
     }
 
     // add conditional required validators
