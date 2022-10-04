@@ -33,6 +33,7 @@ import { CustomControlQuestion } from '../question-models/custom-control-questio
 export class QuestionFactory {
   dataSources: any = {};
   historicalHelperService: HistoricalHelperService = new HistoricalHelperService();
+  quetionIndex = 0;
   constructor() {}
 
   createQuestionModel(formSchema: any, form?: Form): QuestionBase {
@@ -45,6 +46,7 @@ export class QuestionFactory {
 
   toSelectQuestion(schemaQuestion: any): SelectQuestion {
     const question = new SelectQuestion({ options: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -88,6 +90,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -117,6 +120,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -145,6 +149,7 @@ export class QuestionFactory {
       return this.toEncounterDatetimeQuestion(schemaQuestion);
     }
     const question = new DateQuestion({ type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.renderingType = 'date';
     question.validators = this.addValidators(schemaQuestion);
     question.extras = schemaQuestion;
@@ -170,6 +175,7 @@ export class QuestionFactory {
 
   toEncounterDatetimeQuestion(schemaQuestion: any): DateQuestion {
     const question = new DateQuestion({ type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.renderingType = 'date';
@@ -199,6 +205,7 @@ export class QuestionFactory {
 
   toCheckBoxQuestion(schemaQuestion: any): CheckBoxQuestion {
     const question = new CheckBoxQuestion({ options: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -234,6 +241,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -271,6 +279,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -301,6 +310,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -325,6 +335,7 @@ export class QuestionFactory {
 
   toFileUploadQuestion(schemaQuestion: any): FileUploadQuestion {
     const question = new FileUploadQuestion({ type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -349,6 +360,7 @@ export class QuestionFactory {
 
   toDrugQuestion(schemaQuestion: any): SelectQuestion {
     const question = new SelectQuestion({ options: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -372,6 +384,7 @@ export class QuestionFactory {
 
   toProblemQuestion(schemaQuestion: any): SelectQuestion {
     const question = new SelectQuestion({ options: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -395,6 +408,7 @@ export class QuestionFactory {
 
   toConceptAnswerSelect(schemaQuestion: any): SelectQuestion {
     const question = new SelectQuestion({ options: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -426,6 +440,7 @@ export class QuestionFactory {
       type: '',
       key: ''
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.questions = this.getChildrenQuestionModels(
@@ -458,6 +473,7 @@ export class QuestionFactory {
 
   toGroupQuestion(schemaQuestion: any): QuestionGroup {
     const question = new QuestionGroup({ questions: [], type: '', key: '' });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.questions = this.getChildrenQuestionModels(
@@ -533,6 +549,7 @@ export class QuestionFactory {
       searchFunction: function () {},
       resolveFunction: function () {}
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -564,6 +581,7 @@ export class QuestionFactory {
       searchFunction: function () {},
       resolveFunction: function () {}
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -601,6 +619,7 @@ export class QuestionFactory {
       searchFunction: function () {},
       resolveFunction: function () {}
     });
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -634,7 +653,7 @@ export class QuestionFactory {
       label: '',
       rendering: ''
     });
-
+    question.questionIndex = this.quetionIndex;
     question.label = schemaQuestion.label;
     question.prefix = schemaQuestion.prefix;
     question.key = schemaQuestion.id;
@@ -710,6 +729,7 @@ export class QuestionFactory {
   }
 
   toModel(schema: any, renderType: string): any {
+    this.quetionIndex++;
     if (renderType === 'ui-select-extended') {
       renderType = schema.type;
     }
