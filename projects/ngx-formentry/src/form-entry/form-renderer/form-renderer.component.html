@@ -185,6 +185,11 @@
         (onDateChange)="onDateChanged(node)"
         [showWeeks]="node.question.showWeeksAdder"
       ></ngx-date-time-picker>
+      <ngx-time-picker  
+      *ngSwitchCase="'time'"  
+      id="node.question.key + 'id'"  
+      [formControlName]="node.question.key"
+      ></ngx-time-picker>
       <ng-select
         *ngSwitchCase="'multi-select'"
         [style.height]="'auto'"
@@ -214,6 +219,16 @@
         [type]="'number'"
         [id]="node.question.key + 'id'"
         [step]="'any'"
+        [min]="node.question.extras.questionOptions.min"
+        [max]="node.question.extras.questionOptions.max"
+      />
+      <input
+        class="form-control"
+        *ngSwitchCase="'decimal'"
+        [formControlName]="node.question.key"
+        [attr.placeholder]="node.question.placeholder"
+        [type]="'text'"
+        [id]="node.question.key + 'id'"
         [min]="node.question.extras.questionOptions.min"
         [max]="node.question.extras.questionOptions.max"
       />

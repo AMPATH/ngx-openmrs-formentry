@@ -121,6 +121,24 @@
               "questionOptions": {
                 "rendering": "ui-select-extended"
               }
+            },
+            {
+              "label": "Time of Consent",
+              "questionInfo":"",
+              "id": "timeOfConsent",
+              "questionOptions": {
+                "concept": "4e1a9d59-3d06-47eb-82a7-30410db249e4",
+                "rendering": "time",
+                "maxTime":"17:59",
+                "minTime": "00:00"
+              },
+              "type": "obs",
+              "validators": [{
+                "type": "time"
+              }],
+              "hide": {
+                "hideWhenExpression": ""
+              }
             }
           ]
         }
