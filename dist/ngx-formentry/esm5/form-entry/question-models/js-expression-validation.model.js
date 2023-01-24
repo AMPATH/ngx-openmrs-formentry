@@ -1,0 +1,14 @@
+import * as tslib_1 from "tslib";
+import { ValidationModel } from './validation.model';
+var JsExpressionValidationModel = /** @class */ (function (_super) {
+    tslib_1.__extends(JsExpressionValidationModel, _super);
+    function JsExpressionValidationModel(validations) {
+        var _this = _super.call(this, validations) || this;
+        _this.failsWhenExpression = validations.failsWhenExpression;
+        return _this;
+    }
+    return JsExpressionValidationModel;
+}(ValidationModel));
+export { JsExpressionValidationModel };
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoianMtZXhwcmVzc2lvbi12YWxpZGF0aW9uLm1vZGVsLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQGFtcGF0aC1rZW55YS9uZ3gtb3Blbm1ycy1mb3JtZW50cnkvIiwic291cmNlcyI6WyJmb3JtLWVudHJ5L3F1ZXN0aW9uLW1vZGVscy9qcy1leHByZXNzaW9uLXZhbGlkYXRpb24ubW9kZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQztBQUVyRDtJQUFpRCx1REFBZTtJQUc5RCxxQ0FBWSxXQUFnQjtRQUE1QixZQUNFLGtCQUFNLFdBQVcsQ0FBQyxTQUVuQjtRQURDLEtBQUksQ0FBQyxtQkFBbUIsR0FBRyxXQUFXLENBQUMsbUJBQW1CLENBQUM7O0lBQzdELENBQUM7SUFDSCxrQ0FBQztBQUFELENBQUMsQUFQRCxDQUFpRCxlQUFlLEdBTy9EIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgVmFsaWRhdGlvbk1vZGVsIH0gZnJvbSAnLi92YWxpZGF0aW9uLm1vZGVsJztcblxuZXhwb3J0IGNsYXNzIEpzRXhwcmVzc2lvblZhbGlkYXRpb25Nb2RlbCBleHRlbmRzIFZhbGlkYXRpb25Nb2RlbCB7XG4gIGZhaWxzV2hlbkV4cHJlc3Npb246IHN0cmluZztcblxuICBjb25zdHJ1Y3Rvcih2YWxpZGF0aW9uczogYW55KSB7XG4gICAgc3VwZXIodmFsaWRhdGlvbnMpO1xuICAgIHRoaXMuZmFpbHNXaGVuRXhwcmVzc2lvbiA9IHZhbGlkYXRpb25zLmZhaWxzV2hlbkV4cHJlc3Npb247XG4gIH1cbn1cbiJdfQ==

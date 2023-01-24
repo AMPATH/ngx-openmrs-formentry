@@ -1,0 +1,15 @@
+import * as tslib_1 from "tslib";
+import { ValidationModel } from './validation.model';
+var ConditionalValidationModel = /** @class */ (function (_super) {
+    tslib_1.__extends(ConditionalValidationModel, _super);
+    function ConditionalValidationModel(validations) {
+        var _this = _super.call(this, validations) || this;
+        _this.referenceQuestionId = validations.referenceQuestionId;
+        _this.referenceQuestionAnswers = validations.referenceQuestionAnswers;
+        return _this;
+    }
+    return ConditionalValidationModel;
+}(ValidationModel));
+export { ConditionalValidationModel };
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uZGl0aW9uYWwtdmFsaWRhdGlvbi5tb2RlbC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0BhbXBhdGgta2VueWEvbmd4LW9wZW5tcnMtZm9ybWVudHJ5LyIsInNvdXJjZXMiOlsiZm9ybS1lbnRyeS9xdWVzdGlvbi1tb2RlbHMvY29uZGl0aW9uYWwtdmFsaWRhdGlvbi5tb2RlbC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxFQUFFLGVBQWUsRUFBRSxNQUFNLG9CQUFvQixDQUFDO0FBRXJEO0lBQWdELHNEQUFlO0lBSTdELG9DQUFZLFdBQWdCO1FBQTVCLFlBQ0Usa0JBQU0sV0FBVyxDQUFDLFNBR25CO1FBRkMsS0FBSSxDQUFDLG1CQUFtQixHQUFHLFdBQVcsQ0FBQyxtQkFBbUIsQ0FBQztRQUMzRCxLQUFJLENBQUMsd0JBQXdCLEdBQUcsV0FBVyxDQUFDLHdCQUF3QixDQUFDOztJQUN2RSxDQUFDO0lBQ0gsaUNBQUM7QUFBRCxDQUFDLEFBVEQsQ0FBZ0QsZUFBZSxHQVM5RCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFZhbGlkYXRpb25Nb2RlbCB9IGZyb20gJy4vdmFsaWRhdGlvbi5tb2RlbCc7XG5cbmV4cG9ydCBjbGFzcyBDb25kaXRpb25hbFZhbGlkYXRpb25Nb2RlbCBleHRlbmRzIFZhbGlkYXRpb25Nb2RlbCB7XG4gIHJlZmVyZW5jZVF1ZXN0aW9uSWQ6IHN0cmluZztcbiAgcmVmZXJlbmNlUXVlc3Rpb25BbnN3ZXJzOiBhbnk7XG5cbiAgY29uc3RydWN0b3IodmFsaWRhdGlvbnM6IGFueSkge1xuICAgIHN1cGVyKHZhbGlkYXRpb25zKTtcbiAgICB0aGlzLnJlZmVyZW5jZVF1ZXN0aW9uSWQgPSB2YWxpZGF0aW9ucy5yZWZlcmVuY2VRdWVzdGlvbklkO1xuICAgIHRoaXMucmVmZXJlbmNlUXVlc3Rpb25BbnN3ZXJzID0gdmFsaWRhdGlvbnMucmVmZXJlbmNlUXVlc3Rpb25BbnN3ZXJzO1xuICB9XG59XG4iXX0=

@@ -1,0 +1,16 @@
+import * as tslib_1 from "tslib";
+import { QuestionBase } from './question-base';
+import { AfeControlType } from '../../abstract-controls-extension/afe-control-type';
+var TextInputQuestion = /** @class */ (function (_super) {
+    tslib_1.__extends(TextInputQuestion, _super);
+    function TextInputQuestion(options) {
+        var _this = _super.call(this, options) || this;
+        _this.placeholder = options.placeholder || '';
+        _this.controlType = AfeControlType.AfeFormControl;
+        return _this;
+    }
+    return TextInputQuestion;
+}(QuestionBase));
+export { TextInputQuestion };
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGV4dC1pbnB1dC1xdWVzdGlvbi5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0BhbXBhdGgta2VueWEvbmd4LW9wZW5tcnMtZm9ybWVudHJ5LyIsInNvdXJjZXMiOlsiZm9ybS1lbnRyeS9xdWVzdGlvbi1tb2RlbHMvdGV4dC1pbnB1dC1xdWVzdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBRS9DLE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxvREFBb0QsQ0FBQztBQUVwRjtJQUF1Qyw2Q0FBWTtJQUVqRCwyQkFBWSxPQUE0QjtRQUF4QyxZQUNFLGtCQUFNLE9BQU8sQ0FBQyxTQUdmO1FBRkMsS0FBSSxDQUFDLFdBQVcsR0FBRyxPQUFPLENBQUMsV0FBVyxJQUFJLEVBQUUsQ0FBQztRQUM3QyxLQUFJLENBQUMsV0FBVyxHQUFHLGNBQWMsQ0FBQyxjQUFjLENBQUM7O0lBQ25ELENBQUM7SUFDSCx3QkFBQztBQUFELENBQUMsQUFQRCxDQUF1QyxZQUFZLEdBT2xEIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUXVlc3Rpb25CYXNlIH0gZnJvbSAnLi9xdWVzdGlvbi1iYXNlJztcbmltcG9ydCB7IFRleHRRdWVzdGlvbk9wdGlvbnMgfSBmcm9tICcuL2ludGVyZmFjZXMvdGV4dC1xdWVzdGlvbi1vcHRpb25zJztcbmltcG9ydCB7IEFmZUNvbnRyb2xUeXBlIH0gZnJvbSAnLi4vLi4vYWJzdHJhY3QtY29udHJvbHMtZXh0ZW5zaW9uL2FmZS1jb250cm9sLXR5cGUnO1xuXG5leHBvcnQgY2xhc3MgVGV4dElucHV0UXVlc3Rpb24gZXh0ZW5kcyBRdWVzdGlvbkJhc2Uge1xuICBwbGFjZWhvbGRlcjogc3RyaW5nO1xuICBjb25zdHJ1Y3RvcihvcHRpb25zOiBUZXh0UXVlc3Rpb25PcHRpb25zKSB7XG4gICAgc3VwZXIob3B0aW9ucyk7XG4gICAgdGhpcy5wbGFjZWhvbGRlciA9IG9wdGlvbnMucGxhY2Vob2xkZXIgfHwgJyc7XG4gICAgdGhpcy5jb250cm9sVHlwZSA9IEFmZUNvbnRyb2xUeXBlLkFmZUZvcm1Db250cm9sO1xuICB9XG59XG4iXX0=
