@@ -85,6 +85,10 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
+    this.dataSources.registerDataSource('personAddress', {
+      searchOptions: this.sampleSearch,
+      resolveSelectedValue: this.sampleResolve
+    });
 
     const ds = {
       dataSourceOptions: { concept: undefined },

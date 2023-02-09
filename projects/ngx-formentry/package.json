@@ -1,6 +1,6 @@
 {
   "name": "@ampath-kenya/ngx-openmrs-formentry",
-  "version": "2.12.17",
+  "version": "2.12.20",
   "peerDependencies": {
     "@angular/common": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -18,5 +18,12 @@
     "shelljs": "^0.7.0",
     "slick-carousel": "^1.6.0",
     "tree-model": "^1.0.5"
-  }
+  },
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
