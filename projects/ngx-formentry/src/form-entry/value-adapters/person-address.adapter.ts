@@ -14,6 +14,7 @@ export class PersonAddressAdapter implements ValueAdapter {
 
   generateNodePayload(rootNode: NodeBase) {
     const nodes = this.getPersonAddressNodes(rootNode);
+    const element = {};
     const payload = [];
     nodes.forEach((node) => {
       if (
@@ -22,13 +23,10 @@ export class PersonAddressAdapter implements ValueAdapter {
         node.control.value !== '' &&
         node.initialValue !== node.control.value
       ) {
-        const addressType =
-          node.question.extras.questionOptions.addressType +
-          ':' +
+        element[node.question.extras.questionOptions.addressType] =
           node.control.value;
-        payload.push({
-          addressType
-        });
+        element['uuid'] = node.control.uuid;
+        payload.push(element);
       }
     });
     return payload;
@@ -39,24 +37,18 @@ export class PersonAddressAdapter implements ValueAdapter {
   }
 
   populateNode(rootNode: NodeBase, payload) {
-    if (!Array.isArray(payload)) {
-      throw new Error('Expected an array of addresses');
-    }
-
     const nodes = this.getPersonAddressNodes(rootNode);
-
     nodes.forEach((node) => {
-      payload.forEach((element) => {
-        if (
-          element.attributeType.uuid ===
-          node.question.extras.questionOptions.attributeType
-        ) {
-          if (element.value.uuid) {
-            node.control.setValue(element.value.uuid);
-            node.initialValue = element.value.uuid;
+      Object.keys(payload).forEach((key, value) => {
+        if (key === node.question.extras.questionOptions.addressType) {
+          if (value) {
+            node.control.setValue(payload[key]);
+            node.initialValue = payload[key];
+            node.control.uuid = payload['uuid'];
           } else {
-            node.control.setValue(element.value);
-            node.initialValue = element.value;
+            node.control.setValue(payload[key]);
+            node.initialValue = payload[key];
+            node.control.uuid = payload['uuid'];
           }
         }
       });

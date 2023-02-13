@@ -40,7 +40,6 @@ import { SharedModule } from '../shared.module';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { NgxTimePickerModule } from '../components/ngx-time-picker/ngx-time-picker.module';
 import { PersonAddressAdapter } from './value-adapters/person-address.adapter';
-export { PersonAddressAdapter } from './value-adapters/person-address.adapter';
 
 @NgModule({
   imports: [
