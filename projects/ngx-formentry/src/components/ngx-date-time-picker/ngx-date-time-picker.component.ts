@@ -99,7 +99,7 @@ export class NgxDateTimePickerComponent
 
   public weekSelect($event) {
     const dateToUse = moment().format();
-    const nextWeekDate = moment(dateToUse).add($event.value, 'weeks');
+    const nextWeekDate = moment(dateToUse).add($event.value, 'days');
     const nextWeekTime = dateToUse;
     this.setDateTime(nextWeekDate, nextWeekTime);
   }
