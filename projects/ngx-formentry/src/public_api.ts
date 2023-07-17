@@ -19,6 +19,7 @@ export { HistoricalEncounterDataService } from './form-entry/services/historical
 export { FormErrorsService } from './form-entry/services/form-errors.service';
 export { EncounterAdapter } from './form-entry/value-adapters/encounter.adapter';
 export { PersonAttribuAdapter } from './form-entry/value-adapters/person-attribute.adapter';
+export { PersonAddressAdapter } from './form-entry/value-adapters/person-address.adapter';
 export { OrderValueAdapter } from './form-entry/value-adapters/order.adapter';
 export { ObsValueAdapter } from './form-entry/value-adapters/obs.adapter';
 export { ObsAdapterHelper } from './form-entry/value-adapters/obs-adapter-helper';

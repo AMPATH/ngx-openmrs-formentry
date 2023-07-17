@@ -1,7 +1,7 @@
 {
   "name": "@ampath-kenya/ngx-openmrs-formentry",
   "main": "ngx-openmrs-formentry/dist/ngx-formentry",
-  "version": "2.12.17",
+  "version": "2.12.20",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -85,5 +85,16 @@
       "prettier --write",
       "ng lint ngx-openmrs-formentry"
     ]
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.com/AMPATH/ngx-openmrs-formentry.svg?branch=master)](https://travis-ci.com/AMPATH/ngx-openmrs-formentry)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMPATH/ngx-openmrs-formentry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AMPATH/ngx-openmrs-formentry/issues"
+  },
+  "homepage": "https://github.com/AMPATH/ngx-openmrs-formentry#readme"
 }

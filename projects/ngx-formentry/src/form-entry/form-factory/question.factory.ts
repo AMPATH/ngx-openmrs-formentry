@@ -573,6 +573,35 @@ export class QuestionFactory {
     this.addCalculatorProperty(schemaQuestion, question);
     return question;
   }
+  toPersonAddressQuestion(schemaQuestion: any): UiSelectQuestion {
+    const question = new UiSelectQuestion({
+      options: [],
+      type: '',
+      key: '',
+      searchFunction: function () {},
+      resolveFunction: function () {}
+    });
+    question.label = schemaQuestion.label;
+    question.key = schemaQuestion.id;
+    question.renderingType = 'text';
+    question.validators = this.addValidators(schemaQuestion);
+    question.extras = schemaQuestion;
+    question.dataSource = 'personAddress';
+
+    const mappings: any = {
+      label: 'label',
+      required: 'required',
+      id: 'key'
+    };
+
+    this.copyProperties(mappings, schemaQuestion, question);
+    this.addHistoricalExpressions(schemaQuestion, question);
+    this.addDisableOrHideProperty(schemaQuestion, question);
+    this.addAlertProperty(schemaQuestion, question);
+    this.addHistoricalExpressions(schemaQuestion, question);
+    this.addCalculatorProperty(schemaQuestion, question);
+    return question;
+  }
 
   toEncounterProviderQuestion(schemaQuestion: any): UiSelectQuestion {
     const question = new UiSelectQuestion({

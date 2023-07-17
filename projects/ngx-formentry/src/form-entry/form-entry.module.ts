@@ -39,6 +39,7 @@ import { CheckboxModule } from '../components/check-box/checkbox.module';
 import { SharedModule } from '../shared.module';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { NgxTimePickerModule } from '../components/ngx-time-picker/ngx-time-picker.module';
+import { PersonAddressAdapter } from './value-adapters/person-address.adapter';
 
 @NgModule({
   imports: [
@@ -88,7 +89,8 @@ import { NgxTimePickerModule } from '../components/ngx-time-picker/ngx-time-pick
     EncounterAdapter,
     PersonAttribuAdapter,
     OrderValueAdapter,
-    DebugModeService
+    DebugModeService,
+    PersonAddressAdapter
   ],
   exports: [
     FormRendererComponent,
