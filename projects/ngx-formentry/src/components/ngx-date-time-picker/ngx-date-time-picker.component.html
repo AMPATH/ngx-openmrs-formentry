@@ -22,13 +22,13 @@
     </div>
     <div [class]="getWeekPickerCssClass()" *ngIf="showWeeks">
       <mat-select
-        placeholder="Select Weeks"
+        placeholder="Select Days"
         class="form-control"
         name="weeks"
         (selectionChange)="weekSelect($event)"
       >
         <mat-option *ngFor="let count of weeks" [value]="count">
-          {{ count }} Weeks
+          {{ count }} Days
         </mat-option>
       </mat-select>
     </div>
