@@ -184,6 +184,8 @@
         [weeks]="node.question.extras.questionOptions.weeksList"
         (onDateChange)="onDateChanged(node)"
         [showWeeks]="node.question.showWeeksAdder"
+        [showHolidays]="node.question.showHolidays"
+        [dataSource]="dataSource"
       ></ngx-date-time-picker>
       <ngx-time-picker  
       *ngSwitchCase="'time'"  

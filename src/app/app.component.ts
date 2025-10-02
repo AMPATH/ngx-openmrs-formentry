@@ -85,6 +85,32 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
+    this.dataSources.registerDataSource('holidays', [
+      {
+        date: '2025-01-01',
+        name: "New Year's Day"
+      },
+      {
+        date: '2025-06-01',
+        name: 'Madaraka Day'
+      },
+      {
+        date: '2025-10-20',
+        name: 'Mashujaa Day'
+      },
+      {
+        date: '2025-12-12',
+        name: 'Jamhuri Day'
+      },
+      {
+        date: '2025-12-25',
+        name: 'Christmas Day'
+      },
+      {
+        date: '2025-12-26',
+        name: 'Boxing Day'
+      }
+    ]);
 
     const ds = {
       dataSourceOptions: { concept: undefined },

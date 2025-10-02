@@ -25,4 +25,5 @@ export interface BaseOptions {
   historicalDisplay?: any;
   rows?: any;
   showWeeksAdder?: any;
+  showHolidays?: boolean;
 }

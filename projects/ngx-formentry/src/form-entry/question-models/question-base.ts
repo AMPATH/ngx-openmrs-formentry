@@ -15,6 +15,7 @@ export class QuestionBase implements BaseOptions {
   historicalDisplay?: any;
   rows?: any;
   showWeeksAdder?: any;
+  showHolidays?: boolean;
   key: string;
   alert?: any;
 

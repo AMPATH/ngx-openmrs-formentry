@@ -16,3 +16,35 @@
 .time-btn {
   margin-top: -20px;
 }
+
+::ng-deep .highlight-date {
+  border-radius: 999px;
+  background-color: purple !important;
+}
+
+::ng-deep .highlight-date[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  height: 30px;
+}
+
+::ng-deep .highlight-date[data-tooltip]:hover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #333;
+  z-index: 1000;
+}
