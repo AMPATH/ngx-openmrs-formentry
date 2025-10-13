@@ -221,13 +221,13 @@ export class NgxDateTimePickerComponent
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
       const date = new Date(cell.getAttribute('aria-label'));
-      const dateString = date.toISOString().split('T')[0];
       const cellDate = moment(date).format('YYYY-MM-DD');
 
-      const holiday = this.dataSource.find((v) => v.date === cellDate);
-      if (holiday) {
+      const holidays = this.dataSource.filter((v) => v.date === cellDate);
+      if (holidays.length > 0) {
+        const holidayName = holidays.map((h) => h.name).join('\n\n');
         cell.classList.add('highlight-date');
-        cell.setAttribute('data-tooltip', holiday.name);
+        cell.setAttribute('data-tooltip', holidayName);
       } else {
         cell.classList.remove('highlight-date');
         cell.removeAttribute('data-tooltip');

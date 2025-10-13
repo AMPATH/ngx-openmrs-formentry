@@ -19,13 +19,13 @@
 
 ::ng-deep .highlight-date {
   border-radius: 999px;
-  background-color: purple !important;
+  background-color: lightgreen !important;
 }
 
 ::ng-deep .highlight-date[data-tooltip]:hover::after {
   content: attr(data-tooltip);
   position: absolute;
-  top: -30px;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #333;
@@ -33,9 +33,11 @@
   padding: 10px 10px;
   border-radius: 4px;
   font-size: 12px;
-  white-space: nowrap;
+  line-height: 8px;
+  white-space: pre-wrap;
   z-index: 1000;
-  height: 30px;
+  height: fit-content;
+  width: max-content;
 }
 
 ::ng-deep .highlight-date[data-tooltip]:hover::before {

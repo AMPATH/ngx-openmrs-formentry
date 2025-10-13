@@ -21,6 +21,7 @@ import { MockObs } from './mock/mock-obs';
 const adultForm = require('./adult-1.4.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
+const holidayDummyDataSource = require('./mock/mock-holidays.json');
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -85,32 +86,7 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
-    this.dataSources.registerDataSource('holidays', [
-      {
-        date: '2025-01-01',
-        name: "New Year's Day"
-      },
-      {
-        date: '2025-06-01',
-        name: 'Madaraka Day'
-      },
-      {
-        date: '2025-10-20',
-        name: 'Mashujaa Day'
-      },
-      {
-        date: '2025-12-12',
-        name: 'Jamhuri Day'
-      },
-      {
-        date: '2025-12-25',
-        name: 'Christmas Day'
-      },
-      {
-        date: '2025-12-26',
-        name: 'Boxing Day'
-      }
-    ]);
+    this.dataSources.registerDataSource('holidays', holidayDummyDataSource);
 
     const ds = {
       dataSourceOptions: { concept: undefined },
