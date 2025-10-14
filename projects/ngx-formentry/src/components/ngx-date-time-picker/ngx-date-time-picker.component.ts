@@ -225,7 +225,10 @@ export class NgxDateTimePickerComponent
 
       const holidays = this.dataSource.filter((v) => v.date === cellDate);
       if (holidays.length > 0) {
-        const holidayName = holidays.map((h) => h.name).join('\n\n');
+        const holidayName = holidays
+          .map((h) => h.name)
+          .sort()
+          .join('\n\n');
         cell.classList.add('highlight-date');
         cell.setAttribute('data-tooltip', holidayName);
       } else {
