@@ -5,7 +5,7 @@ import { AfeControlType } from '../../abstract-controls-extension/afe-control-ty
 export class DateQuestion extends QuestionBase {
   showTime = true;
   showWeeksAdder = false;
-  showHolidays = false;
+  showHolidays = true;
   dataSource?: any;
 
   constructor(options: DateQuestionOptions) {

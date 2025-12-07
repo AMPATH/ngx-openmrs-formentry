@@ -60,7 +60,7 @@ export class NgxDateTimePickerComponent
   @Input() showWeeks = true;
   @Input() dateFormat = 'MMMM DD, YYYY (dddd)';
 
-  private _showHolidays = false;
+  private _showHolidays = true;
   @Input()
   public set showHolidays(v: boolean | string) {
     this._showHolidays = v === true || v === 'true';
