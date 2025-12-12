@@ -21,6 +21,7 @@ import { MockObs } from './mock/mock-obs';
 const adultForm = require('./adult-1.4.json');
 const adultFormObs = require('./mock/obs.json');
 const formOrdersPayload = require('./mock/orders.json');
+const holidayDummyDataSource = require('./mock/mock-holidays.json');
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -85,6 +86,7 @@ export class AppComponent implements OnInit {
       searchOptions: this.sampleSearch,
       resolveSelectedValue: this.sampleResolve
     });
+    this.dataSources.registerDataSource('holidays', holidayDummyDataSource);
 
     const ds = {
       dataSourceOptions: { concept: undefined },

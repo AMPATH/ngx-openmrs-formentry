@@ -6,7 +6,8 @@ import {
   Input,
   forwardRef,
   EventEmitter,
-  Output
+  Output,
+  ViewChild
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -16,6 +17,7 @@ import {
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as moment_ from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
 const moment = moment_;
 
 export const MY_FORMATS = {
@@ -23,7 +25,7 @@ export const MY_FORMATS = {
     dateInput: 'LL'
   },
   display: {
-    dateInput: 'LL',
+    dateInput: 'MMMM DD, YYYY (dddd)', // August 18, 2025 (Monday)
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY'
@@ -56,6 +58,27 @@ export class NgxDateTimePickerComponent
   @Input() modelValue: any;
   @Input() showTime = false;
   @Input() showWeeks = true;
+  @Input() dateFormat = 'MMMM DD, YYYY (dddd)';
+
+  private _showHolidays = true;
+  @Input()
+  public set showHolidays(v: boolean | string) {
+    this._showHolidays = v === true || v === 'true';
+  }
+
+  @ViewChild('picker') picker: MatDatepicker<Date>;
+
+  private observer: MutationObserver | null = null;
+
+  private _dataSource: any;
+  @Input()
+  public get dataSource(): any {
+    return this._dataSource;
+  }
+  public set dataSource(v: any) {
+    this._dataSource = v;
+  }
+
   @Output() onDateChange = new EventEmitter<any>();
   public onChange: any = () => {};
   public onTouched: any = () => {};
@@ -157,5 +180,61 @@ export class NgxDateTimePickerComponent
     this.onChange(this.value);
 
     return dateTimeString;
+  }
+
+  onOpen() {
+    if (this._showHolidays) {
+      const calendarBody = document.querySelector('.mat-calendar-content');
+      if (calendarBody) {
+        this.observer = new MutationObserver(() => {
+          this.highlightHolidays();
+        });
+        this.observer.observe(calendarBody, {
+          childList: true,
+          subtree: true
+        });
+      }
+    }
+  }
+
+  onClose() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+  }
+
+  public highlightHolidays() {
+    const isMonthView = !!document.querySelector('mat-month-view');
+    if (!isMonthView) {
+      const calendarCells = document.querySelectorAll(
+        '.mat-calendar-body-cell'
+      );
+      for (let i = 0; i < calendarCells.length; i++) {
+        calendarCells[i].classList.remove('highlight-date');
+        calendarCells[i].removeAttribute('data-tooltip');
+      }
+      return;
+    }
+
+    const cells = document.querySelectorAll('.mat-calendar-body-cell');
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      const date = new Date(cell.getAttribute('aria-label'));
+      const cellDate = moment(date).format('YYYY-MM-DD');
+
+      const holidays = this.dataSource.filter((v) => v.date === cellDate);
+      if (holidays.length > 0) {
+        const holidayName = holidays
+          .map((h) => h.name)
+          .sort()
+          .join('\n\n');
+        cell.classList.add('highlight-date');
+        cell.setAttribute('data-tooltip', holidayName);
+      } else {
+        cell.classList.remove('highlight-date');
+        cell.removeAttribute('data-tooltip');
+      }
+    }
   }
 }

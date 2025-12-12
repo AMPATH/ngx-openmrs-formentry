@@ -34,6 +34,7 @@ export class FormRendererComponent implements OnInit {
   public childComponents: FormRendererComponent[] = [];
   public showTime: boolean;
   public showWeeks: boolean;
+  public showHolidays: boolean;
   public activeTab: number;
   public dataSource: DataSource;
   public isCollapsed = false;
@@ -55,6 +56,8 @@ export class FormRendererComponent implements OnInit {
   public ngOnInit() {
     this.setUpRemoteSelect();
     this.setUpFileUpload();
+    this.setUpDatepickerHolidays();
+
     if (this.node && this.node.form) {
       const tab = this.node.form.valueProcessingInfo.lastFormTab;
       if (tab && tab !== this.activeTab) {
@@ -129,6 +132,14 @@ export class FormRendererComponent implements OnInit {
       ];
       // console.log('Key', this.node.question);
       // console.log('Data source', this.dataSource);
+    }
+  }
+
+  public setUpDatepickerHolidays() {
+    if (this.node && this.node.question && this.node.question.showHolidays) {
+      this.dataSource = this.dataSources.dataSources[
+        this.node.question.dataSource
+      ];
     }
   }
 

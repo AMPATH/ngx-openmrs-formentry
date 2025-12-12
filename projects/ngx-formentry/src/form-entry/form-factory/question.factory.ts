@@ -169,6 +169,8 @@ export class QuestionFactory {
     question.validators = this.addValidators(schemaQuestion);
     question.extras = schemaQuestion;
     question.showTime = schemaQuestion.questionOptions.showTime as boolean;
+    question.showHolidays = schemaQuestion.questionOptions
+      .showHolidays as boolean;
     question.showWeeksAdder = schemaQuestion.questionOptions.weeksList
       ? true
       : false;
@@ -178,6 +180,8 @@ export class QuestionFactory {
       required: 'required',
       id: 'key'
     };
+
+    question.dataSource = 'holidays';
 
     this.copyProperties(mappings, schemaQuestion, question);
     this.addDisableOrHideProperty(schemaQuestion, question);
@@ -214,6 +218,8 @@ export class QuestionFactory {
     question.key = schemaQuestion.id;
     question.validators = this.addValidators(schemaQuestion);
     question.extras = schemaQuestion;
+    question.showHolidays = schemaQuestion.questionOptions
+      .showHolidays as boolean;
     question.showWeeksAdder = schemaQuestion.questionOptions.weeksList
       ? true
       : false;
@@ -224,6 +230,8 @@ export class QuestionFactory {
       id: 'key'
     };
     question.showTime = true;
+
+    question.dataSource = 'holidays';
 
     this.copyProperties(mappings, schemaQuestion, question);
     this.addDisableOrHideProperty(schemaQuestion, question);
