@@ -183,18 +183,16 @@ export class NgxDateTimePickerComponent
   }
 
   onOpen() {
-    // if (this._showHolidays) {
-      const calendarBody = document.querySelector('.mat-calendar-content');
-      if (calendarBody) {
-        this.observer = new MutationObserver(() => {
-          this.highlightHolidays();
-        });
-        this.observer.observe(calendarBody, {
-          childList: true,
-          subtree: true
-        });
-      }
-    // }
+    const calendarBody = document.querySelector('.mat-calendar-content');
+    if (calendarBody) {
+      this.observer = new MutationObserver(() => {
+        this.highlightHolidays();
+      });
+      this.observer.observe(calendarBody, {
+        childList: true,
+        subtree: true
+      });
+    }
   }
 
   onClose() {
