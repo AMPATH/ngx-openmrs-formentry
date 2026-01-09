@@ -136,9 +136,11 @@ export class FormRendererComponent implements OnInit {
   }
 
   public setUpDatepickerHolidays() {
-    this.dataSource = this.dataSources.dataSources[
-      this.node.question.dataSource
-    ];
+    if (this.node && this.node.question && this.node.question.showHolidays) {
+      this.dataSource = this.dataSources.dataSources[
+        this.node.question.dataSource
+      ];
+    }
   }
 
   checkSection(node: NodeBase) {
